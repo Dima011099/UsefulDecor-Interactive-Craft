@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "lock_box",
+  "category": "building",
+  "pattern": [
+    "PPP",
+    "PIP",
+    "PPP"
+  ],
+  "key": {
+    "P": [
+      "minecraft:oak_planks"
+    ],
+    "I": [
+      "minecraft:iron_ingot"
+    ]
+  },
+  "result": {
+    "id": "useful_interactive:oak_box",
+    "count": 1
+  }
+}

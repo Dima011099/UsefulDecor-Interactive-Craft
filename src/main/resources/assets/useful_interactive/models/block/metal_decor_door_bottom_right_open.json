@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_right_open",
+  "textures": {
+    "bottom": "useful_interactive:block/metal_decor_door_bottom",
+    "top": "useful_interactive:block/metal_decor_door_top"
+  }
+}

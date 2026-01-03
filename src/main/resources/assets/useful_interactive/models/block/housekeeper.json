@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "top": "useful_interactive:block/housekeeper_top",
+    "bottom": "useful_interactive:block/housekeeper_bottom",
+    "side": "useful_interactive:block/housekeeper_side",
+    "front": "useful_interactive:block/housekeeper_front"
+  }
+}

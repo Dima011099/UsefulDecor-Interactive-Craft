@@ -1,0 +1,24 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_chest": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "useful_interactive:key_item",
+              "minecraft:chest"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "useful_interactive:box",
+      "useful_interactive:oak_box"
+    ]
+  }
+}

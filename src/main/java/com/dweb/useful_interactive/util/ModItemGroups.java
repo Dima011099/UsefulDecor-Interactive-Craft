@@ -1,0 +1,44 @@
+package com.dweb.useful_interactive.util;
+
+import com.dweb.useful_interactive.block.Box;
+import com.dweb.useful_interactive.items.KeyItem;
+
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
+
+public class ModItemGroups {
+    // Создаем ключ для группы
+    public static final ItemGroup USEFUL_GROUP = Registry.register(Registries.ITEM_GROUP,
+            Identifier.of("useful_interactive", "useful_group"), 
+            FabricItemGroup.builder()
+                    // Иконка вкладки (например, ваша коробка)
+                    .icon(() -> new ItemStack(Box.BOX_ITEM)) 
+                    // Название вкладки (используйте перевод в lang файле)
+                    .displayName(Text.translatable("itemGroup.useful_interactive.useful_group"))
+                    // Добавляем предметы в группу
+                    .entries((displayContext, entries) -> {
+                        entries.add(Box.BOX_ITEM);
+                        entries.add(Box.OAK_BOX_ITEM);
+                        entries.add(Box.OAK_GLASS_PANE_ITEM);
+                        entries.add(Box.METAL_DECOR_DOOR_ITEM);
+                        entries.add(Box.OAK_DECOR_DOOR_ITEM);
+                        entries.add(KeyItem.MY_ITEM);
+                        entries.add(Box.BIRCH_BOX_ITEM);
+                        entries.add(Box.OAK_IRON_GLASS_PANE_ITEM);
+                        entries.add(Box.IRON_GLASS_PANE_ITEM);
+                        entries.add(Box.BIRCH_IRON_GLASS_PANE_ITEM);
+                        entries.add(Box.BIRCH_DECOR_DOOR_ITEM);
+                        entries.add(Box.HOUSEKEEPER_ITEM);
+                        entries.add(Box.BATANIC_TABLE_ITEM);
+                    })
+                    .build());
+
+    public static void registerItemGroups() {
+        // Метод для инициализации в главном классе
+    }
+}

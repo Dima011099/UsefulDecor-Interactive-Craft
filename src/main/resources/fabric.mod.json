@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "useful_interactive",
+	"version": "${version}",
+	"name": "UsefulDecor: Interactive Craft",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Dmitrii Marchenko"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/useful_interactive/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.dweb.useful_interactive.UsefulDecorMod"
+		],
+		"client": [
+			"com.dweb.useful_interactive.UsefulDecorModClient"
+		],
+		"fabric-datagen": [
+			"com.dweb.useful_interactive.UsefulDecorModDataGenerator"
+		]
+	},
+	"mixins": [
+		"useful_interactive.mixins.json",
+		{
+			"config": "useful_interactive.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.18.2",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

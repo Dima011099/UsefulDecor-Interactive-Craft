@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "window_glass_pane",
+  "category": "building",
+  "pattern": [
+    "GGG",
+    "PPP"
+  ],
+  "key": {
+    "G": [
+      "minecraft:glass"
+    ],
+    "P": [
+      "minecraft:oak_planks"
+    ]
+  },
+  "result": {
+    "id": "useful_interactive:oak_glass_pane",
+    "count": 8
+  }
+}

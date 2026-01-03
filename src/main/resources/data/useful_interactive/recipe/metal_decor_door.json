@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "decor_door",
+  "category": "building",
+  "pattern": [
+    "PI",
+    "PI",
+    "PI"
+  ],
+  "key": {
+    "P": [
+      "minecraft:oak_planks"
+    ],
+    "I": [
+      "minecraft:iron_ingot"
+    ]
+  },
+  "result": {
+    "id": "useful_interactive:metal_decor_door",
+    "count": 1
+  }
+}

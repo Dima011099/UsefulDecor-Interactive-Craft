@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "top": "useful_interactive:block/batanic_table_top",
+    "bottom": "useful_interactive:block/batanic_table_bottom",
+    "side": "useful_interactive:block/batanic_table_side",
+    "front": "useful_interactive:block/batanic_table_front"
+  }
+}

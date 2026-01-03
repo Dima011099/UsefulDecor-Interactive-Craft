@@ -1,0 +1,38 @@
+{
+    "item.useful_interactive.key_item": "Ключ от замка",
+    "block.useful_interactive.box": "Сундук с замком",
+    "item.useful_interactive.box": "Сундук с замком",
+    "block.useful_interactive.oak_box": "Дубовый Сундук с замком",
+    "item.useful_interactive.oak_box": "Дубовый Сундук с замком",
+
+
+    "block.useful_interactive.birch_box": "Березовый Сундук с замком",
+    "item.useful_interactive.birch_box": "Березовый Сундук с замком",
+    "block.useful_interactive.iron_blue_box": "Железный голубой Сундук с замком",
+    "item.useful_interactive.iron_blue_box": "Железный голубой Сундук с замком",
+    "block.useful_interactive.birch_decor_door": "Березовая Декоративная дверь",
+    "item.useful_interactive.birch_decor_door": "Березовая Декоративная дверь",
+    "block.useful_interactive.iron_blue_decor_door": "Железная голубая Декоративная дверь",
+    "item.useful_interactive.iron_blue_door": "Железная голубая Декоративная дверь",
+    "block.useful_interactive.oak_iron_glass_pane": "Дубове окно с железом",
+    "item.useful_interactive.oak_iron_glass_pane": "Дубове окно с железом",
+    "block.useful_interactive.birch_iron_glass_pane": "Березовое Железное окно",
+    "item.useful_interactive.birch_iron_glass_pane": "Березовое Железное окно",
+    "block.useful_interactive.iron_glass_pane": "Железное окно",
+    "item.useful_interactive.iron_glass_pane": "Железное окно",
+
+    "block.useful_interactive.housekeeper": "Ключница",
+    "item.useful_interactive.housekeeper": "Ключница",
+    "block.useful_interactive.batanic_table": "Батанический стол",
+    "item.useful_interactive.batanic_table": "Батанический стол",
+    "block.useful_interactive.oak_street_lamp": "Дубовая уличная лампа",
+    "item.useful_interactive.oak_street_lamp": "Дубовая уличная лампа",
+
+
+    "block.useful_interactive.oak_decor_door": "Декоративная дубовая дверь",
+    "item.useful_interactive.oak_decor_door": "Декоративная дубовая дверь",
+    "block.useful_interactive.metal_decor_door": "Декоративная железная дверь",
+    "item.useful_interactive.metal_decor_door": "Декоративная железная дверь",
+    "item.useful_interactive.oak_glass_pane": "Дубовое окно",
+    "itemGroup.useful_interactive.useful_group": "Полезный Интерактив"
+}

@@ -1,0 +1,24 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_plans": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:oak_planks",
+              "useful_interactive:key_item"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "useful_interactive:oak_decor_door",
+      "useful_interactive:metal_decor_door"
+    ]
+  }
+}
