@@ -1,8 +1,7 @@
-package com.dweb.useful_interactive.block;
+package com.dweb.useful_interactive.common;
 
-import com.dweb.useful_interactive.blockentites.ModBlockEntites;
-import com.dweb.useful_interactive.util.ILockableManager;
-import com.dweb.useful_interactive.util.LockComponent;
+import com.dweb.useful_interactive.core.ILockableManager;
+import com.dweb.useful_interactive.registry.blockentites.ModBlockEntites;
 import com.mojang.serialization.Codec;
 
 import net.minecraft.block.BlockState;

@@ -1,7 +1,7 @@
-package com.dweb.useful_interactive.block;
+package com.dweb.useful_interactive.common;
 
-import com.dweb.useful_interactive.util.ILockableManager;
-import com.dweb.useful_interactive.util.LockableManager;
+import com.dweb.useful_interactive.core.ILockableManager;
+
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.enums.DoubleBlockHalf;

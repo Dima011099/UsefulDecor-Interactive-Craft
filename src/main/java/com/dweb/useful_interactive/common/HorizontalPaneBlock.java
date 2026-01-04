@@ -1,4 +1,4 @@
-package com.dweb.useful_interactive.block;
+package com.dweb.useful_interactive.common;
 
 import net.minecraft.block.BlockState;
 

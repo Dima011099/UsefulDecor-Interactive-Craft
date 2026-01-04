@@ -1,6 +1,5 @@
-package com.dweb.useful_interactive.block;
+package com.dweb.useful_interactive.common;
 
-import com.dweb.useful_interactive.util.LockableManager;
 import com.mojang.serialization.MapCodec;
 
 import net.minecraft.block.*;

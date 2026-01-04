@@ -6,12 +6,12 @@ import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.dweb.useful_interactive.block.ModBlocks;
-import com.dweb.useful_interactive.items.KeyItem;
-import com.dweb.useful_interactive.items.ModItems;
-import com.dweb.useful_interactive.blockentites.ModBlockEntites;
-import com.dweb.useful_interactive.util.ModComponentType;
-import com.dweb.useful_interactive.util.ModItemGroups;
+import com.dweb.useful_interactive.common.ModComponentType;
+import com.dweb.useful_interactive.common.ModItemGroups;
+import com.dweb.useful_interactive.registry.blockentites.ModBlockEntites;
+import com.dweb.useful_interactive.registry.blocks.ModBlocks;
+import com.dweb.useful_interactive.registry.items.KeyItem;
+import com.dweb.useful_interactive.registry.items.ModItems;
 
 public class UsefulDecorMod implements ModInitializer {
 	public static final String MOD_ID = "useful_interactive";

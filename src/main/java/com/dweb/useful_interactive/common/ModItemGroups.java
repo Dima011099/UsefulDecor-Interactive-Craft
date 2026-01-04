@@ -1,7 +1,7 @@
-package com.dweb.useful_interactive.util;
+package com.dweb.useful_interactive.common;
 
-import com.dweb.useful_interactive.items.ModItems;
-import com.dweb.useful_interactive.items.KeyItem;
+import com.dweb.useful_interactive.registry.items.KeyItem;
+import com.dweb.useful_interactive.registry.items.ModItems;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;

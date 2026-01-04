@@ -1,9 +1,8 @@
-package com.dweb.useful_interactive.items;
+package com.dweb.useful_interactive.registry.items;
 
 
 
 import com.dweb.useful_interactive.UsefulDecorMod;
-
 
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;

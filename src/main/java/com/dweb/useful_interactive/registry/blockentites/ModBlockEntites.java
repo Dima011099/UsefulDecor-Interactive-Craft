@@ -1,13 +1,11 @@
-package com.dweb.useful_interactive.blockentites;
+package com.dweb.useful_interactive.registry.blockentites;
 
-
-import com.dweb.useful_interactive.block.ModBlocks;
-import com.dweb.useful_interactive.block.ModStorageBlocks;
-import com.dweb.useful_interactive.block.ModUtilityBlocks;
+import com.dweb.useful_interactive.registry.blocks.ModArchitecturalBlocks;
+import com.dweb.useful_interactive.registry.blocks.ModStorageBlocks;
+import com.dweb.useful_interactive.registry.blocks.ModUtilityBlocks;
 import com.dweb.useful_interactive.UsefulDecorMod;
-import com.dweb.useful_interactive.block.BoxBlockEntity;
-import com.dweb.useful_interactive.block.DoorDecorEntity;
-import com.dweb.useful_interactive.block.ModArchitecturalBlocks;
+import com.dweb.useful_interactive.common.BoxBlockEntity;
+import com.dweb.useful_interactive.common.DoorDecorEntity;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;

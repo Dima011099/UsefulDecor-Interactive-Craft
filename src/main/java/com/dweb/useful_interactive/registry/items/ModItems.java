@@ -1,11 +1,10 @@
-package com.dweb.useful_interactive.items;
+package com.dweb.useful_interactive.registry.items;
 
 
 import com.dweb.useful_interactive.UsefulDecorMod;
-import com.dweb.useful_interactive.block.ModArchitecturalBlocks;
-import com.dweb.useful_interactive.block.ModBlocks;
-import com.dweb.useful_interactive.block.ModStorageBlocks;
-import com.dweb.useful_interactive.block.ModUtilityBlocks;
+import com.dweb.useful_interactive.registry.blocks.ModArchitecturalBlocks;
+import com.dweb.useful_interactive.registry.blocks.ModStorageBlocks;
+import com.dweb.useful_interactive.registry.blocks.ModUtilityBlocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;

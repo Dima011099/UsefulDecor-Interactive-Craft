@@ -1,4 +1,4 @@
-package com.dweb.useful_interactive.block;
+package com.dweb.useful_interactive.registry.blocks;
 
 import com.dweb.useful_interactive.UsefulDecorMod;
 

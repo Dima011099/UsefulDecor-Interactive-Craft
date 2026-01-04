@@ -1,4 +1,4 @@
-package com.dweb.useful_interactive.items;
+package com.dweb.useful_interactive.core;
 
 import java.util.UUID;
 

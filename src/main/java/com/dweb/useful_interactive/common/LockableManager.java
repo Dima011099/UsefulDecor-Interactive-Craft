@@ -1,6 +1,7 @@
-package com.dweb.useful_interactive.util;
+package com.dweb.useful_interactive.common;
 
-import com.dweb.useful_interactive.items.KeyItem;
+import com.dweb.useful_interactive.core.ILockableManager;
+import com.dweb.useful_interactive.registry.items.KeyItem;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;

@@ -1,8 +1,8 @@
-package com.dweb.useful_interactive.items;
+package com.dweb.useful_interactive.registry.items;
 
 import java.util.UUID;
 
-import com.dweb.useful_interactive.util.ModComponentType;
+import com.dweb.useful_interactive.common.ModComponentType;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

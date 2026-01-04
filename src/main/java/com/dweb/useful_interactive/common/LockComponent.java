@@ -1,4 +1,4 @@
-package com.dweb.useful_interactive.util;
+package com.dweb.useful_interactive.common;
 
 public final class LockComponent {
 
