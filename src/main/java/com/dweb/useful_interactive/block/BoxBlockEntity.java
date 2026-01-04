@@ -1,5 +1,6 @@
 package com.dweb.useful_interactive.block;
 
+import com.dweb.useful_interactive.blockentites.ModBlockEntites;
 import com.dweb.useful_interactive.util.ILockableManager;
 import com.dweb.useful_interactive.util.LockComponent;
 import com.mojang.serialization.Codec;
@@ -44,7 +45,7 @@ public class BoxBlockEntity extends LootableContainerBlockEntity implements ILoc
 
 
     public BoxBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlocks.BOX_BLOCK_ENTITY_TYPE, pos, state);
+        super(ModBlockEntites.BOX_BLOCK_ENTITY_TYPE, pos, state);
     }
     /*****  */
 

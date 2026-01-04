@@ -1,5 +1,6 @@
 package com.dweb.useful_interactive.block;
 
+import com.dweb.useful_interactive.blockentites.ModBlockEntites;
 import com.dweb.useful_interactive.util.ILockableManager;
 import com.dweb.useful_interactive.util.LockComponent;
 import com.mojang.serialization.Codec;
@@ -20,7 +21,7 @@ public class DoorDecorEntity extends BlockEntity implements ILockableManager {
 
 
     public DoorDecorEntity(BlockPos pos, BlockState state) {
-        super(ModBlocks.DOOR_BLOCK_ENTITY_TYPE,pos, state);
+        super(ModBlockEntites.DOOR_BLOCK_ENTITY_TYPE,pos, state);
     }
 
     @Override
