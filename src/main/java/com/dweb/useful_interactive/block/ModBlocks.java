@@ -20,8 +20,23 @@ import net.minecraft.util.Identifier;
 
 
 
-public class Box {
+public class ModBlocks {
+
+
+/* 
+    private static RegistryKey<Block> blockKey(String id) {
+        return RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(UsefulDecorMod.MOD_ID, id));
+    }
+
+    private static RegistryKey<Item> itemKey(String id) {
+        return RegistryKey.of(RegistryKeys.ITEM, Identifier.of(UsefulDecorMod.MOD_ID, id));
+    }*/
+
+
+
     // Регистрируем ключи блоков
+
+    
     public static final RegistryKey<Block> BOX_KEY = RegistryKey.of(
             RegistryKeys.BLOCK,
             Identifier.of(UsefulDecorMod.MOD_ID, "box")
@@ -151,11 +166,35 @@ public class Box {
 
 
     // 3. Регистрация самого Блока
+    
     public static final Block BOX_BLOCK = registerBlock(
             new BoxBlock(AbstractBlock.Settings.create().registryKey(BOX_KEY).strength(2.0f, 50.0f)), 
             BOX_KEY
     );
+    /*
 
+private static Block registerBlock(Block block, String id) {
+    return Registry.register(
+        Registries.BLOCK,
+        Identifier.of(UsefulDecorMod.MOD_ID, id),
+        block
+    );
+}
+
+private static Item registerBlockItem(Block block, String id) {
+    return Registry.register(
+        Registries.ITEM,
+        Identifier.of(UsefulDecorMod.MOD_ID, id),
+        new BlockItem(block, new Item.Settings())
+    );
+}
+
+
+    public static final Block BOX_BLOCK = registerBlock(
+        new BoxBlock(AbstractBlock.Settings.create().strength(4.0f, 50.0f)),
+        "box"
+    );
+*/
     public static final Block OAK_BOX_BLOCK = registerBlock(
             new BoxBlock(AbstractBlock.Settings.create().registryKey(OAK_BOX_KEY).strength(4.0f, 50.0f)), 
             OAK_BOX_KEY

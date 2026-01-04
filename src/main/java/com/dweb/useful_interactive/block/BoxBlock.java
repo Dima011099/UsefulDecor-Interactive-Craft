@@ -54,7 +54,7 @@ public class BoxBlock extends BlockWithEntity {
         }
 
         if (chest.isLocked()) {
-            player.sendMessage(Text.literal("Закрыто. Нужен ключ."), true);
+            player.sendMessage(Text.translatable("message.useful_interactive.needs_key"), true);
             return ActionResult.CONSUME;
         }
 

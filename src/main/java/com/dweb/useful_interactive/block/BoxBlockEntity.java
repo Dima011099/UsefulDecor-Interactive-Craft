@@ -44,7 +44,7 @@ public class BoxBlockEntity extends LootableContainerBlockEntity implements ILoc
 
 
     public BoxBlockEntity(BlockPos pos, BlockState state) {
-        super(Box.BOX_BLOCK_ENTITY_TYPE, pos, state);
+        super(ModBlocks.BOX_BLOCK_ENTITY_TYPE, pos, state);
     }
     /*****  */
 
@@ -73,7 +73,7 @@ public class BoxBlockEntity extends LootableContainerBlockEntity implements ILoc
 
     @Override
     protected Text getContainerName() {
-        return Text.translatable("container.dima.box");
+        return Text.translatable("container.useful_interactive.box");
     }
 
     @Override

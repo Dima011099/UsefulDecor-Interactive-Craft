@@ -20,7 +20,7 @@ public class DoorDecorEntity extends BlockEntity implements ILockableManager {
 
 
     public DoorDecorEntity(BlockPos pos, BlockState state) {
-        super(Box.DOOR_BLOCK_ENTITY_TYPE,pos, state);
+        super(ModBlocks.DOOR_BLOCK_ENTITY_TYPE,pos, state);
     }
 
     @Override

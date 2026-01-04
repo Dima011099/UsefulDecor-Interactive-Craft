@@ -6,7 +6,7 @@ import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.dweb.useful_interactive.block.Box;
+import com.dweb.useful_interactive.block.ModBlocks;
 import com.dweb.useful_interactive.items.KeyItem;
 import com.dweb.useful_interactive.util.ModComponentType;
 import com.dweb.useful_interactive.util.ModItemGroups;
@@ -24,7 +24,7 @@ public class UsefulDecorMod implements ModInitializer {
 		ModComponentType.register();
 
 		KeyItem.register();
-		Box.register();
+		ModBlocks.register();
 
 		ModItemGroups.registerItemGroups();
 	}

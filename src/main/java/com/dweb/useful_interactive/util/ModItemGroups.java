@@ -1,6 +1,6 @@
 package com.dweb.useful_interactive.util;
 
-import com.dweb.useful_interactive.block.Box;
+import com.dweb.useful_interactive.block.ModBlocks;
 import com.dweb.useful_interactive.items.KeyItem;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
@@ -17,24 +17,24 @@ public class ModItemGroups {
             Identifier.of("useful_interactive", "useful_group"), 
             FabricItemGroup.builder()
                     // Иконка вкладки (например, ваша коробка)
-                    .icon(() -> new ItemStack(Box.BOX_ITEM)) 
+                    .icon(() -> new ItemStack(ModBlocks.BOX_ITEM)) 
                     // Название вкладки (используйте перевод в lang файле)
                     .displayName(Text.translatable("itemGroup.useful_interactive.useful_group"))
                     // Добавляем предметы в группу
                     .entries((displayContext, entries) -> {
-                        entries.add(Box.BOX_ITEM);
-                        entries.add(Box.OAK_BOX_ITEM);
-                        entries.add(Box.OAK_GLASS_PANE_ITEM);
-                        entries.add(Box.METAL_DECOR_DOOR_ITEM);
-                        entries.add(Box.OAK_DECOR_DOOR_ITEM);
+                        entries.add(ModBlocks.BOX_ITEM);
+                        entries.add(ModBlocks.OAK_BOX_ITEM);
+                     //   entries.add(ModBlocks.OAK_GLASS_PANE_ITEM);
+                        entries.add(ModBlocks.METAL_DECOR_DOOR_ITEM);
+                        entries.add(ModBlocks.OAK_DECOR_DOOR_ITEM);
                         entries.add(KeyItem.MY_ITEM);
-                        entries.add(Box.BIRCH_BOX_ITEM);
-                        entries.add(Box.OAK_IRON_GLASS_PANE_ITEM);
-                        entries.add(Box.IRON_GLASS_PANE_ITEM);
-                        entries.add(Box.BIRCH_IRON_GLASS_PANE_ITEM);
-                        entries.add(Box.BIRCH_DECOR_DOOR_ITEM);
-                        entries.add(Box.HOUSEKEEPER_ITEM);
-                        entries.add(Box.BATANIC_TABLE_ITEM);
+                        entries.add(ModBlocks.BIRCH_BOX_ITEM);
+                        entries.add(ModBlocks.OAK_IRON_GLASS_PANE_ITEM);
+                        entries.add(ModBlocks.IRON_GLASS_PANE_ITEM);
+                        entries.add(ModBlocks.BIRCH_IRON_GLASS_PANE_ITEM);
+                        entries.add(ModBlocks.BIRCH_DECOR_DOOR_ITEM);
+                        entries.add(ModBlocks.HOUSEKEEPER_ITEM);
+                        entries.add(ModBlocks.BATANIC_TABLE_ITEM);
                     })
                     .build());
 

@@ -44,12 +44,19 @@ public class DoorDecor extends DoorBlock implements BlockEntityProvider {
 
         if (LockableManager.handleKeyUse(player, stack, door)){
             door.markDirty();
-            world.updateListeners(pos, state, state, Block.NOTIFY_LISTENERS);
+           // world.updateListeners(pos, state, state, Block.NOTIFY_ALL);
+           world.updateListeners(
+                door.getPos(),
+                world.getBlockState(door.getPos()),
+                world.getBlockState(door.getPos()),
+                Block.NOTIFY_ALL
+            );
+            
             return ActionResult.CONSUME;
         }
 
         if (door.isLocked()) {
-            player.sendMessage(Text.literal("Закрыто. Нужен ключ."), true);
+            player.sendMessage(Text.translatable("message.useful_interactive.needs_key"), true);
             return ActionResult.CONSUME;
         }
 

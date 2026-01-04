@@ -4,6 +4,7 @@ package com.dweb.useful_interactive.items;
 
 import com.dweb.useful_interactive.UsefulDecorMod;
 
+
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -21,8 +22,7 @@ public class KeyItem {
 
     // 2. Передаем ключ в Settings через .registryKey(MY_ITEM_KEY)
     public static final Item MY_ITEM = registerItem(
-            new MKeyItem(new Item.Settings().registryKey(MY_ITEM_KEY)), 
-            MY_ITEM_KEY
+            new MKeyItem(new Item.Settings().registryKey(MY_ITEM_KEY)), MY_ITEM_KEY
     );
 
     // Исправленный метод регистрации
