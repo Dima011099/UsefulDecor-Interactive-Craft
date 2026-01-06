@@ -18,7 +18,8 @@
   "rewards": {
     "recipes": [
       "useful_interactive:oak_decor_door",
-      "useful_interactive:metal_decor_door"
+      "useful_interactive:metal_decor_door",
+      "useful_interactive:birch_decor_door"
     ]
   }
 }

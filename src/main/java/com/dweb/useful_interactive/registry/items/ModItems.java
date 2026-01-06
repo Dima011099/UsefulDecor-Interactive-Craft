@@ -71,6 +71,7 @@ public class ModItems {
     );
 
     //Для функциональных блоков
+    /*
     public static final RegistryKey<Item> BATANIC_TABLE_ITEM_KEY = RegistryKey.of(
         RegistryKeys.ITEM,
         Identifier.of(UsefulDecorMod.MOD_ID, "batanic_table")
@@ -79,7 +80,7 @@ public class ModItems {
     public static final RegistryKey<Item> HOUSEKEEPER_ITEM_KEY = RegistryKey.of(
         RegistryKeys.ITEM,
         Identifier.of(UsefulDecorMod.MOD_ID, "housekeeper")
-    );
+    );*/
 
 
     // Регистрация Предмета для блоков
@@ -97,10 +98,12 @@ public class ModItems {
     public static final Item BIRCH_IRON_GLASS_PANE_ITEM = registerBlockItem(ModArchitecturalBlocks.BIRCH_IRON_GLASS_PANE, BIRCH_IRON_GLASS_PANE_ITEM_KEY);
 
     // функциональные блоки
+
+    /* 
     public static final Item BATANIC_TABLE_ITEM = registerBlockItem(ModUtilityBlocks.BATANIC_TABLE_BLOCK, BATANIC_TABLE_ITEM_KEY);
     public static final Item HOUSEKEEPER_ITEM = registerBlockItem(ModUtilityBlocks.HOUSEKEEPER_BLOCK, HOUSEKEEPER_ITEM_KEY);
 
-
+*/
     private static Item registerBlockItem(Block block, RegistryKey<Item> key) {
         return Registry.register(Registries.ITEM, key, new BlockItem(block, new Item.Settings().registryKey(key)));
     }

@@ -16,7 +16,10 @@
   },
   "rewards": {
     "recipes": [
-      "useful_interactive:oak_glass_pane"
+      "useful_interactive:oak_glass_pane",
+      "useful_interactive:oak_iron_glass_pane",
+      "useful_interactive:birch_iron_glass_pane",
+      "useful_interactive:iron_glass_pane"
     ]
   }
 }

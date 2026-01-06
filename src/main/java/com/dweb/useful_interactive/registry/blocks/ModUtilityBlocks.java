@@ -11,6 +11,7 @@ import net.minecraft.util.Identifier;
 
 public class ModUtilityBlocks {
         //Ключи функциональных блоков
+        /* 
     public static final RegistryKey<Block> BATANIC_TABLE_KEY = RegistryKey.of(
             RegistryKeys.BLOCK,
             Identifier.of(UsefulDecorMod.MOD_ID, "batanic_table")
@@ -32,7 +33,7 @@ public class ModUtilityBlocks {
     public static final Block HOUSEKEEPER_BLOCK = ModBlocks.registerBlock(
             new BoxBlock(AbstractBlock.Settings.create().registryKey(HOUSEKEEPER_KEY).strength(4.0f, 50.0f)), 
             HOUSEKEEPER_KEY
-    );
+    );*/
 
     public static void register() {}
 }

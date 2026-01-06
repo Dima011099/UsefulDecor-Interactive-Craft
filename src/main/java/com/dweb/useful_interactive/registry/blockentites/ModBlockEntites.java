@@ -22,9 +22,9 @@ public class ModBlockEntites {
         BoxBlockEntity::new, 
         ModStorageBlocks.BOX_BLOCK, 
         ModStorageBlocks.OAK_BOX_BLOCK, 
-        ModStorageBlocks.BIRCH_BOX_BLOCK, 
+        ModStorageBlocks.BIRCH_BOX_BLOCK/*, 
         ModUtilityBlocks.HOUSEKEEPER_BLOCK, 
-        ModUtilityBlocks.BATANIC_TABLE_BLOCK).build()
+    ModUtilityBlocks.BATANIC_TABLE_BLOCK*/).build()
 );
 
 public static final BlockEntityType<DoorDecorEntity> DOOR_BLOCK_ENTITY_TYPE = Registry.register(

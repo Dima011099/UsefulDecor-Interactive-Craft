@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "window_glass_pane",
+  "category": "building",
+  "pattern": [
+    "GGG",
+    "PPP",
+    "III"
+  ],
+  "key": {
+    "G": [
+      "minecraft:glass"
+    ],
+    "P": [
+      "minecraft:birch_planks"
+    ],
+    "I":[
+        "minecraft:iron_ingot"
+    ]
+  },
+  "result": {
+    "id": "useful_interactive:birch_iron_glass_pane",
+    "count": 8
+  }
+}
