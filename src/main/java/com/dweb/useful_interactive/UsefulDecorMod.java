@@ -12,6 +12,7 @@ import com.dweb.useful_interactive.registry.blockentites.ModBlockEntites;
 import com.dweb.useful_interactive.registry.blocks.ModBlocks;
 import com.dweb.useful_interactive.registry.items.KeyItem;
 import com.dweb.useful_interactive.registry.items.ModItems;
+import com.dweb.useful_interactive.registry.ui.ModScreenHandlers;
 
 public class UsefulDecorMod implements ModInitializer {
 	public static final String MOD_ID = "useful_interactive";
@@ -24,13 +25,19 @@ public class UsefulDecorMod implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModComponentType.register();
+	
 
 		KeyItem.register();
 		ModBlocks.register();
 		ModItems.register();
 
+
 		ModBlockEntites.register();
 
+
+		ModScreenHandlers.registerScreenHandlers();
+
 		ModItemGroups.registerItemGroups();
+
 	}
 }

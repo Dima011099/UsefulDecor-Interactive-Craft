@@ -2,6 +2,7 @@ package com.dweb.useful_interactive.registry.blocks;
 
 import com.dweb.useful_interactive.UsefulDecorMod;
 import com.dweb.useful_interactive.common.BoxBlock;
+import com.dweb.useful_interactive.common.BoxCabinetBlock;
 
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -26,9 +27,14 @@ public class ModStorageBlocks {
         Identifier.of(UsefulDecorMod.MOD_ID, "birch_box")
     );
 
+    public static final RegistryKey<Block> BIRCH_BOX_CABINET_KEY = RegistryKey.of(
+        RegistryKeys.BLOCK,
+        Identifier.of(UsefulDecorMod.MOD_ID, "birch_box_cabinet")
+    );
+
     //Регистрируем сам блок
 
-      public static final Block BOX_BLOCK = ModBlocks.registerBlock(
+    public static final Block BOX_BLOCK = ModBlocks.registerBlock(
             new BoxBlock(AbstractBlock.Settings.create().registryKey(BOX_KEY).strength(2.0f, 50.0f)), 
             BOX_KEY
     );
@@ -42,6 +48,12 @@ public class ModStorageBlocks {
         new BoxBlock(AbstractBlock.Settings.create().registryKey(BIRCH_BOX_KEY).strength(3.0f, 50.0f)), 
         BIRCH_BOX_KEY
     );
+
+     public static final Block BIRCH_BOX_CABINET_BLOCK = ModBlocks.registerBlock(
+        new BoxCabinetBlock(AbstractBlock.Settings.create().registryKey(BIRCH_BOX_CABINET_KEY).strength(3.0f, 50.0f)), 
+        BIRCH_BOX_CABINET_KEY
+    );
+
 
      public static void register() {}
 }

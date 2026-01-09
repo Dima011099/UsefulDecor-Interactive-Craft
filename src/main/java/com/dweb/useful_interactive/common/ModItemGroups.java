@@ -33,8 +33,8 @@ public class ModItemGroups {
                         entries.add(ModItems.IRON_GLASS_PANE_ITEM);
                         entries.add(ModItems.BIRCH_IRON_GLASS_PANE_ITEM);
                         entries.add(ModItems.BIRCH_DECOR_DOOR_ITEM);
-                        /*entries.add(ModItems.HOUSEKEEPER_ITEM);
-                        entries.add(ModItems.BATANIC_TABLE_ITEM);*/
+                        entries.add(ModItems.HOUSEKEEPER_ITEM);
+                        /*entries.add(ModItems.BATANIC_TABLE_ITEM);*/
                     })
                     .build());
 

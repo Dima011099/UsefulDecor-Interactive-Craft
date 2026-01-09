@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager.Builder;
+import net.minecraft.state.property.EnumProperty;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -20,11 +21,13 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
+
 import org.jetbrains.annotations.Nullable;
 
 
 public class BoxBlock extends BlockWithEntity {
     public static final MapCodec<BoxBlock> CODEC = createCodec(BoxBlock::new);
+       public static final EnumProperty<Direction> FACING = FacingBlock.FACING;
 
     @Override
     public MapCodec<? extends BoxBlock> getCodec() {
@@ -97,14 +100,17 @@ public class BoxBlock extends BlockWithEntity {
     super.onStateReplaced(state, world, pos, moved);
  }
 
+
  @Override
  protected void appendProperties(Builder<Block, BlockState> builder) {
-    builder.add(FacingBlock.FACING);
+    builder.add(FACING);
     super.appendProperties(builder);
  }
 
  @Override
  public @org.jspecify.annotations.Nullable BlockState getPlacementState(ItemPlacementContext ctx) {
-    return this.getDefaultState().with(FacingBlock.FACING, ctx.getHorizontalPlayerFacing().getOpposite());
+    return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
  }
+
+ 
 }
