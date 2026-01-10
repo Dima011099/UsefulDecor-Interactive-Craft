@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import com.dweb.useful_interactive.common.ModComponentType;
 import com.dweb.useful_interactive.common.ModItemGroups;
+import com.dweb.useful_interactive.common.ModRecipeTypes;
 import com.dweb.useful_interactive.registry.blockentites.ModBlockEntites;
 import com.dweb.useful_interactive.registry.blocks.ModBlocks;
 import com.dweb.useful_interactive.registry.items.KeyItem;
@@ -25,7 +26,7 @@ public class UsefulDecorMod implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModComponentType.register();
-	
+	ModRecipeTypes.register();
 
 		KeyItem.register();
 		ModBlocks.register();

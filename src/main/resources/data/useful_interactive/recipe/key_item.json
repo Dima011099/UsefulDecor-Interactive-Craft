@@ -1,11 +1,9 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "useful_interactive:key_box_craft",
   "group": "lock_key",
   "category": "equipment",
   "pattern": [
-    "N",
-    "I",
-    "N"
+    " NIN"
   ],
   "key": {
     "N": [

@@ -11,10 +11,14 @@ import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.FacingBlock;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.Inventory;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.screen.ScreenHandlerContext;
+import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
 import net.minecraft.state.StateManager.Builder;
 import net.minecraft.state.property.EnumProperty;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -42,18 +46,17 @@ public class KeyBoxBlock extends BlockWithEntity{
 
      @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-        if (!world.isClient()) {
-            NamedScreenHandlerFactory screenHandlerFactory = state.createScreenHandlerFactory(world, pos);
-            if (screenHandlerFactory != null) {
-                player.openHandledScreen(screenHandlerFactory);
-            }
-        }
-        return ActionResult.CONSUME;
+    if (!world.isClient()) {
+        player.openHandledScreen(new SimpleNamedScreenHandlerFactory((syncId, playerInventory, p) -> {
+              Inventory temporaryInventory = new SimpleInventory(4); 
+            return new KeyCabinetScreenHandler(syncId, playerInventory, temporaryInventory,ScreenHandlerContext.create(world, pos));
+        }, Text.translatable("container.key_cabinet"))); 
+    }
+    return ActionResult.SUCCESS;
     }
 
         @Override
     public BlockRenderType getRenderType(BlockState state) {
-        // Обязательно для BlockWithEntity, иначе блок будет невидимым
         return BlockRenderType.MODEL;
     }
 
@@ -67,7 +70,4 @@ public class KeyBoxBlock extends BlockWithEntity{
  public @org.jspecify.annotations.Nullable BlockState getPlacementState(ItemPlacementContext ctx) {
     return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
  }
-
-
-  
 }
