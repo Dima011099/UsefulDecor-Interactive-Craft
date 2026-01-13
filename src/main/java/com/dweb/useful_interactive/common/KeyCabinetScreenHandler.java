@@ -24,11 +24,15 @@ public class KeyCabinetScreenHandler extends ScreenHandler {
     private final CraftingInventory inputInventory = new CraftingInventory(this, 4, 1); 
     private final CraftingResultInventory resultInventory = new CraftingResultInventory();
     private final ScreenHandlerContext context;
+
+    
   
 
  public KeyCabinetScreenHandler(int syncId, PlayerInventory playerInventory) {
     this(syncId, playerInventory, new SimpleInventory(4), ScreenHandlerContext.EMPTY);
 }
+
+
 
     public KeyCabinetScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory, ScreenHandlerContext context) {
         super(ModScreenHandlers.KEY_CABINET, syncId);
@@ -37,6 +41,8 @@ public class KeyCabinetScreenHandler extends ScreenHandler {
         inventory.onOpen(playerInventory.player);
 
         
+
+    
      
 
    this.addSlot(new CraftingResultSlot(playerInventory.player, inputInventory, resultInventory, 0, 134, 47));
@@ -65,6 +71,8 @@ public class KeyCabinetScreenHandler extends ScreenHandler {
     }
 
 
+
+
 @Override
 public void onClosed(PlayerEntity player) {
     super.onClosed(player);
@@ -84,6 +92,8 @@ public void onClosed(PlayerEntity player) {
 
     @Override
     public void onContentChanged(Inventory inventory) {
+        super.onContentChanged(inventory);
+        
          this.context.run((world, pos) -> {
         if (!(world instanceof ServerWorld serverWorld)) return;
 
@@ -95,22 +105,26 @@ public void onClosed(PlayerEntity player) {
             }
         };
 
-
-        Optional<RecipeEntry<KeyCabinetRecipe>> match = serverWorld.getRecipeManager()
+      Optional<RecipeEntry<KeyCabinetRecipe>> match = serverWorld.getRecipeManager()
                 .getFirstMatch(ModRecipeTypes.KEY_CABINET, input, serverWorld);
 
-        ItemStack result;
+        ItemStack result = ItemStack.EMPTY;
         if (match.isPresent()) {
             result = match.get().value().craft(input, serverWorld.getRegistryManager());
+
+                           
+        
         } else {
             result = ItemStack.EMPTY;
            
         }
-
         
 
-        resultInventory.setStack(0, result);
-      
+resultInventory.setStack(0, result);
+
+        
+  inputInventory.markDirty();
+  resultInventory.markDirty();     
   this.sendContentUpdates();
 
     });

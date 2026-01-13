@@ -37,6 +37,8 @@ public class KeyCabinetRecipe implements Recipe<RecipeInput> {
     }
 
 
+ 
+/* 
 @Override
 public boolean matches(RecipeInput input, World world) {
     int totalSlotsRequired = 0;
@@ -74,6 +76,33 @@ public boolean matches(RecipeInput input, World world) {
 
     return true;
 }
+*/
+@Override
+public boolean matches(RecipeInput input, World world) {
+    // pattern[0] — это твоя единственная строка в JSON (например, "S###")
+    String row = pattern[0]; 
+    
+    // Проверяем соответствие ингредиентов в первых слотах
+    for (int x = 0; x < row.length(); x++) {
+        char c = row.charAt(x);
+        ItemStack stack = input.getStackInSlot(x); // Прямой индекс 0, 1, 2, 3
+        
+        if (c == ' ') {
+            if (!stack.isEmpty()) return false;
+        } else {
+            Ingredient ingredient = key.get(c);
+            if (ingredient == null || !ingredient.test(stack)) return false;
+        }
+    }
+
+    // Проверяем, что остальные слоты (если инвентарь больше паттерна) пусты
+    for (int i = row.length(); i < input.size(); i++) {
+        if (!input.getStackInSlot(i).isEmpty()) return false;
+    }
+
+    return true;
+}
+
 
     @Override
     public ItemStack craft(RecipeInput input, RegistryWrapper.WrapperLookup lookup) {

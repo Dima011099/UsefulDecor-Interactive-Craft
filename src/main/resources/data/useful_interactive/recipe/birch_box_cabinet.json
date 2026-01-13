@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "lock_box",
+  "category": "building",
+  "pattern": [
+    "PL ",
+    "PI ",
+    "PL "
+  ],
+  "key": {
+    "P": [
+      "minecraft:birch_planks"
+    ],
+    "I": [
+      "minecraft:iron_ingot"
+    ],
+    "L": [
+        "minecraft:birch_log"
+    ]
+  },
+  "result": {
+    "id": "useful_interactive:birch_box_cabinet",
+    "count": 1
+  }
+}

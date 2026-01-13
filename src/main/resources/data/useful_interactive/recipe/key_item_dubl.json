@@ -1,0 +1,23 @@
+{
+  "type": "useful_interactive:key_box_craft",
+  "group": "lock_key",
+  "category": "equipment",
+  "pattern": [
+    "KNIN"
+  ],
+  "key": {
+    "N": [
+      "minecraft:iron_nugget"
+    ],
+    "I": [
+      "minecraft:iron_ingot"
+    ],
+    "K": [
+      "useful_interactive:key_item"
+    ]
+  },
+  "result": {
+    "id": "useful_interactive:key_item",
+    "count": 1
+  }
+}

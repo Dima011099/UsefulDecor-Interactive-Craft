@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "lock_box",
+  "category": "building",
+  "pattern": [
+    "NNN",
+    "NIN",
+    "NNN"
+  ],
+  "key": {
+    "N": [
+      "minecraft:iron_nugget"
+    ],
+    "I": [
+      "minecraft:iron_ingot"
+    ]
+  },
+  "result": {
+    "id": "useful_interactive:housekeeper",
+    "count": 1
+  }
+}
