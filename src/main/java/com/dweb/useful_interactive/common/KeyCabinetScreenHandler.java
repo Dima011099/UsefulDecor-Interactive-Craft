@@ -12,6 +12,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.recipe.input.RecipeInput;
 import net.minecraft.screen.ScreenHandler;
@@ -26,7 +27,10 @@ public class KeyCabinetScreenHandler extends ScreenHandler {
     private final ScreenHandlerContext context;
 
     
-  
+   private RecipeInput input;
+
+   private boolean isCrafting = false;
+private ItemStack lastInputSnapshot = ItemStack.EMPTY;
 
  public KeyCabinetScreenHandler(int syncId, PlayerInventory playerInventory) {
     this(syncId, playerInventory, new SimpleInventory(4), ScreenHandlerContext.EMPTY);
@@ -45,7 +49,21 @@ public class KeyCabinetScreenHandler extends ScreenHandler {
     
      
 
-   this.addSlot(new CraftingResultSlot(playerInventory.player, inputInventory, resultInventory, 0, 134, 47));
+   this.addSlot(new CraftingResultSlot(playerInventory.player, inputInventory, resultInventory, 0, 134, 47){
+    @Override
+    public void onTakeItem(PlayerEntity player, ItemStack stack) {
+        ItemStack itemStack = inputInventory.getStack(0).copy();
+
+        consumeIngredients(input);
+        stack.getItem().onCraft(stack, player.getEntityWorld());
+
+        inputInventory.setStack(0, itemStack);
+        if(itemStack != ItemStack.EMPTY && itemStack.getItem() == KeyItem.MY_ITEM)
+            stack.set(ModComponentType.KEY_F_CLOSE, itemStack.get(ModComponentType.KEY_F_CLOSE));
+        updateToClient();
+        sendContentUpdates();
+    }
+   });
 
         this.addSlot(new SpecificItemSlot(inputInventory, 0, 52, 22));
      this.addSlot(new Slot(inputInventory, 1, 26, 47));
@@ -90,45 +108,78 @@ public void onClosed(PlayerEntity player) {
     }
 
 
-    @Override
-    public void onContentChanged(Inventory inventory) {
-        super.onContentChanged(inventory);
-        
-         this.context.run((world, pos) -> {
+@Override
+public void onContentChanged(Inventory inventory) {
+    super.onContentChanged(inventory);
+    
+    // Предотвращаем рекурсию
+    if (isCrafting) return;
+    
+    this.context.run((world, pos) -> {
         if (!(world instanceof ServerWorld serverWorld)) return;
 
-        RecipeInput input = new RecipeInput() {
+        // Проверяем, изменились ли входные слоты
+     
+        ItemStack currentInput = createInputSnapshot();
+        if (ItemStack.areEqual(currentInput, lastInputSnapshot)) {
+            return; // Ничего не изменилось, выходим
+        }
+
+        input = new RecipeInput() {
             public int size() { return inputInventory.size(); }
-                       @Override
+            @Override
             public ItemStack getStackInSlot(int slot) {
                 return inputInventory.getStack(slot);
             }
         };
 
-      Optional<RecipeEntry<KeyCabinetRecipe>> match = serverWorld.getRecipeManager()
-                .getFirstMatch(ModRecipeTypes.KEY_CABINET, input, serverWorld);
+        Optional<RecipeEntry<KeyCabinetRecipe>> match = serverWorld.getRecipeManager()
+            .getFirstMatch(ModRecipeTypes.KEY_CABINET, input, serverWorld);
 
         ItemStack result = ItemStack.EMPTY;
         if (match.isPresent()) {
+            isCrafting = true; // Устанавливаем флаг
             result = match.get().value().craft(input, serverWorld.getRegistryManager());
-
-                           
-        
-        } else {
-            result = ItemStack.EMPTY;
-           
+            
+            // Потребляем ингредиенты
+            
+            
+            lastInputSnapshot = createInputSnapshot(); // Сохраняем новое состояние
+            isCrafting = false; // Сбрасываем флаг
         }
-        
 
-resultInventory.setStack(0, result);
-
-        
-  inputInventory.markDirty();
-  resultInventory.markDirty();     
-  this.sendContentUpdates();
-
+        resultInventory.setStack(0, result);
+        inputInventory.markDirty();
+        resultInventory.markDirty();     
+        this.sendContentUpdates();
+        this.updateToClient();
     });
+}
+
+private ItemStack createInputSnapshot() {
+    ItemStack snapshot = new ItemStack(Items.AIR, 1);
+
+    // Пример: собираем "снимок" из всех входных слотов
+    for (int i = 0; i < inputInventory.size(); i++) {
+        ItemStack slotStack = inputInventory.getStack(i);
+        if (!slotStack.isEmpty()) {
+            snapshot = slotStack.copy();
+            break;
+        }
     }
+
+    return snapshot;
+}
+
+private void consumeIngredients(RecipeInput input) {
+    // Потребляем ингредиенты из входных слотов
+    for (int i = 0; i < input.size(); i++) {
+        ItemStack stack = input.getStackInSlot(i);
+        if (!stack.isEmpty()) {
+            stack.decrement(1);
+        }
+    }
+}
 }
 
 class SpecificItemSlot extends Slot {
@@ -138,7 +189,6 @@ class SpecificItemSlot extends Slot {
 
     @Override
     public boolean canInsert(ItemStack stack) {
-        // Разрешаем вставку, только если предмет совпадает с ALLOWED_ITEM
         return stack.getItem() == KeyItem.MY_ITEM;
     }
 }
