@@ -1,6 +1,7 @@
 package com.dweb.useful_interactive.common;
 
-import com.dweb.useful_interactive.core.ILockableManager;
+import com.dweb.useful_interactive.core.lock.ILockableManager;
+import com.dweb.useful_interactive.domain.lock.LockComponent;
 import com.dweb.useful_interactive.registry.blockentites.ModBlockEntites;
 import com.mojang.serialization.Codec;
 

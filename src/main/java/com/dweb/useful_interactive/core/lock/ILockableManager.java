@@ -1,4 +1,4 @@
-package com.dweb.useful_interactive.core;
+package com.dweb.useful_interactive.core.lock;
 
 public interface ILockableManager {
     boolean isLocked();

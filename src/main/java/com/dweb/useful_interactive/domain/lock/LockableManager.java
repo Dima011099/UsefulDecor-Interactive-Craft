@@ -1,6 +1,7 @@
-package com.dweb.useful_interactive.common;
+package com.dweb.useful_interactive.domain.lock;
 
-import com.dweb.useful_interactive.core.ILockableManager;
+import com.dweb.useful_interactive.common.ModComponentType;
+import com.dweb.useful_interactive.core.lock.ILockableManager;
 import com.dweb.useful_interactive.registry.items.KeyItem;
 
 import net.minecraft.entity.player.PlayerEntity;

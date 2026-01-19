@@ -1,6 +1,7 @@
 package com.dweb.useful_interactive.common;
 
-import com.dweb.useful_interactive.core.ILockableManager;
+import com.dweb.useful_interactive.core.lock.ILockableManager;
+import com.dweb.useful_interactive.domain.lock.LockableManager;
 
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;

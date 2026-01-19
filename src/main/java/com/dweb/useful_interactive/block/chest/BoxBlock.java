@@ -1,5 +1,6 @@
 package com.dweb.useful_interactive.common;
 
+import com.dweb.useful_interactive.domain.lock.LockableManager;
 import com.mojang.serialization.MapCodec;
 
 import net.minecraft.block.*;
