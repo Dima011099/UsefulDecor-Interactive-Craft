@@ -1,4 +1,4 @@
-package com.dweb.useful_interactive.common;
+package com.dweb.useful_interactive.registry;
 
 import com.dweb.useful_interactive.registry.items.KeyItem;
 import com.dweb.useful_interactive.registry.items.ModItems;

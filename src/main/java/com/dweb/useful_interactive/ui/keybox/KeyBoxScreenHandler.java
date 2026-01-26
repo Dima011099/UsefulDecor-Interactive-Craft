@@ -1,9 +1,12 @@
-package com.dweb.useful_interactive.common;
+package com.dweb.useful_interactive.ui.keybox;
 
 import java.util.Optional;
 
+import com.dweb.useful_interactive.recipe.ModRecipeTypes;
+import com.dweb.useful_interactive.recipe.keybox.KeyBoxRecipe;
+import com.dweb.useful_interactive.registry.ModComponentType;
 import com.dweb.useful_interactive.registry.items.KeyItem;
-import com.dweb.useful_interactive.registry.ui.ModScreenHandlers;
+import com.dweb.useful_interactive.ui.ModScreenHandlers;
 
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.inventory.CraftingResultInventory;
@@ -21,7 +24,7 @@ import net.minecraft.screen.slot.CraftingResultSlot;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.server.world.ServerWorld;
 
-public class KeyCabinetScreenHandler extends ScreenHandler {
+public class KeyBoxScreenHandler extends ScreenHandler {
     private final CraftingInventory inputInventory = new CraftingInventory(this, 4, 1); 
     private final CraftingResultInventory resultInventory = new CraftingResultInventory();
     private final ScreenHandlerContext context;
@@ -32,13 +35,13 @@ public class KeyCabinetScreenHandler extends ScreenHandler {
    private boolean isCrafting = false;
 private ItemStack lastInputSnapshot = ItemStack.EMPTY;
 
- public KeyCabinetScreenHandler(int syncId, PlayerInventory playerInventory) {
+ public KeyBoxScreenHandler(int syncId, PlayerInventory playerInventory) {
     this(syncId, playerInventory, new SimpleInventory(4), ScreenHandlerContext.EMPTY);
 }
 
 
 
-    public KeyCabinetScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory, ScreenHandlerContext context) {
+    public KeyBoxScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory, ScreenHandlerContext context) {
         super(ModScreenHandlers.KEY_CABINET, syncId);
         this.context = context;
 
@@ -133,7 +136,7 @@ public void onContentChanged(Inventory inventory) {
             }
         };
 
-        Optional<RecipeEntry<KeyCabinetRecipe>> match = serverWorld.getRecipeManager()
+        Optional<RecipeEntry<KeyBoxRecipe>> match = serverWorld.getRecipeManager()
             .getFirstMatch(ModRecipeTypes.KEY_CABINET, input, serverWorld);
 
         ItemStack result = ItemStack.EMPTY;

@@ -1,7 +1,7 @@
 package com.dweb.useful_interactive.registry.blocks;
 
 import com.dweb.useful_interactive.UsefulDecorMod;
-import com.dweb.useful_interactive.common.KeyBoxBlock;
+import com.dweb.useful_interactive.block.keybox.KeyBoxBlock;
 
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;

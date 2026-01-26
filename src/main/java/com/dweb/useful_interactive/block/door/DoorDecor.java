@@ -1,4 +1,4 @@
-package com.dweb.useful_interactive.common;
+package com.dweb.useful_interactive.block.door;
 
 import com.dweb.useful_interactive.core.lock.ILockableManager;
 import com.dweb.useful_interactive.domain.lock.LockableManager;

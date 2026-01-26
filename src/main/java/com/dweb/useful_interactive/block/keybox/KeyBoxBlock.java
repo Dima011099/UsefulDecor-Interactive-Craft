@@ -1,7 +1,9 @@
-package com.dweb.useful_interactive.common;
+package com.dweb.useful_interactive.block.keybox;
 
 
 
+import com.dweb.useful_interactive.block.chest.BoxBlock;
+import com.dweb.useful_interactive.ui.keybox.KeyBoxScreenHandler;
 import com.mojang.serialization.MapCodec;
 
 import net.minecraft.block.Block;
@@ -49,7 +51,7 @@ public class KeyBoxBlock extends BlockWithEntity{
     if (!world.isClient()) {
         player.openHandledScreen(new SimpleNamedScreenHandlerFactory((syncId, playerInventory, p) -> {
               Inventory temporaryInventory = new SimpleInventory(4); 
-            return new KeyCabinetScreenHandler(syncId, playerInventory, temporaryInventory,ScreenHandlerContext.create(world, pos));
+            return new KeyBoxScreenHandler(syncId, playerInventory, temporaryInventory,ScreenHandlerContext.create(world, pos));
         }, Text.translatable("container.key_cabinet"))); 
     }
     return ActionResult.SUCCESS;

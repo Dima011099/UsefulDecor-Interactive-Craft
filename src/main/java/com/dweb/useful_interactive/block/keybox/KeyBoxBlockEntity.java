@@ -1,7 +1,8 @@
-package com.dweb.useful_interactive.common;
+package com.dweb.useful_interactive.block.keybox;
 
 
 import com.dweb.useful_interactive.registry.blockentites.ModBlockEntites;
+import com.dweb.useful_interactive.ui.keybox.KeyBoxScreenHandler;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -22,7 +23,7 @@ public class KeyBoxBlockEntity extends BlockEntity implements NamedScreenHandler
 
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory inv, PlayerEntity player) {
-        return new KeyCabinetScreenHandler(syncId, inv);
+        return new KeyBoxScreenHandler(syncId, inv);
     }
 
     

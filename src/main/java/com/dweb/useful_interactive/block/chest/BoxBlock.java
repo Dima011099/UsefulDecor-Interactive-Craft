@@ -1,4 +1,4 @@
-package com.dweb.useful_interactive.common;
+package com.dweb.useful_interactive.block.chest;
 
 import com.dweb.useful_interactive.domain.lock.LockableManager;
 import com.mojang.serialization.MapCodec;

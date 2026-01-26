@@ -1,4 +1,4 @@
-package com.dweb.useful_interactive.common;
+package com.dweb.useful_interactive.recipe.keybox;
 
 import java.util.Map;
 
@@ -19,18 +19,19 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 
+import com.dweb.useful_interactive.recipe.ModRecipeTypes;
 import com.mojang.serialization.Codec;
 
 import java.util.Arrays;
 import java.util.HashMap; 
 
 
-public class KeyCabinetRecipe implements Recipe<RecipeInput> {
+public class KeyBoxRecipe implements Recipe<RecipeInput> {
     private final ItemStack output;
     private final String[] pattern;
     private final Map<Character, Ingredient> key;
 
-    public KeyCabinetRecipe(String[] pattern, Map<Character, Ingredient> key, ItemStack output) {
+    public KeyBoxRecipe(String[] pattern, Map<Character, Ingredient> key, ItemStack output) {
         this.key = key;
         this.output = output;
         this.pattern = pattern;
@@ -161,28 +162,28 @@ public boolean matches(RecipeInput input, World world) {
         return output;
     }
 
-  public static class Serializer implements RecipeSerializer<KeyCabinetRecipe> {
+  public static class Serializer implements RecipeSerializer<KeyBoxRecipe> {
         private static final Codec<Map<Character, Ingredient>> KEY_CODEC = Codec.unboundedMap(
             Codec.string(1, 1).xmap(s -> s.charAt(0), String::valueOf),
             Ingredient.CODEC
         );
 
-        public static final MapCodec<KeyCabinetRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
+        public static final MapCodec<KeyBoxRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
             Codec.STRING.listOf().fieldOf("pattern").xmap(
                 list -> list.toArray(String[]::new), 
                 Arrays::asList
             ).forGetter(recipe -> recipe.pattern),
             KEY_CODEC.fieldOf("key").forGetter(recipe -> recipe.key),
             ItemStack.VALIDATED_CODEC.fieldOf("result").forGetter(recipe -> recipe.output)
-        ).apply(inst, KeyCabinetRecipe::new));
+        ).apply(inst, KeyBoxRecipe::new));
 
         @Override
-        public MapCodec<KeyCabinetRecipe> codec() {
+        public MapCodec<KeyBoxRecipe> codec() {
             return CODEC;
         }
 
         @Override
-        public PacketCodec<RegistryByteBuf, KeyCabinetRecipe> packetCodec() {
+        public PacketCodec<RegistryByteBuf, KeyBoxRecipe> packetCodec() {
             return PacketCodec.ofStatic(
                 (buf, recipe) -> {
                     buf.writeVarInt(recipe.pattern.length);
@@ -201,7 +202,7 @@ public boolean matches(RecipeInput input, World world) {
                     int keySize = buf.readVarInt();
                     Map<Character, Ingredient> key = new HashMap<>();
                     for (int i = 0; i < keySize; i++) key.put(buf.readChar(), Ingredient.PACKET_CODEC.decode(buf));
-                    return new KeyCabinetRecipe(pattern, key, ItemStack.PACKET_CODEC.decode(buf));
+                    return new KeyBoxRecipe(pattern, key, ItemStack.PACKET_CODEC.decode(buf));
                 }
             );
         }

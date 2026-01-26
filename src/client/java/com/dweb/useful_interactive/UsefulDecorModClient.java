@@ -1,8 +1,8 @@
 package com.dweb.useful_interactive;
 
 import com.dweb.useful_interactive.registry.blocks.ModArchitecturalBlocks;
-import com.dweb.useful_interactive.registry.ui.ModScreenHandlers;
 import com.dweb.useful_interactive.ui.KeyCabinetScreen;
+import com.dweb.useful_interactive.ui.ModScreenHandlers;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;

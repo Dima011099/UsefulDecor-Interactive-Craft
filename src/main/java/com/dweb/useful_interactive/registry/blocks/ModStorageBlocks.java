@@ -1,8 +1,8 @@
 package com.dweb.useful_interactive.registry.blocks;
 
 import com.dweb.useful_interactive.UsefulDecorMod;
-import com.dweb.useful_interactive.common.BoxBlock;
-import com.dweb.useful_interactive.common.BoxCabinetBlock;
+import com.dweb.useful_interactive.block.cabinet.BoxCabinetBlock;
+import com.dweb.useful_interactive.block.chest.BoxBlock;
 
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;

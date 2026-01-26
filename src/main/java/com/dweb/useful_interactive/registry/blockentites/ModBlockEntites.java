@@ -4,9 +4,9 @@ import com.dweb.useful_interactive.registry.blocks.ModArchitecturalBlocks;
 import com.dweb.useful_interactive.registry.blocks.ModStorageBlocks;
 import com.dweb.useful_interactive.registry.blocks.ModUtilityBlocks;
 import com.dweb.useful_interactive.UsefulDecorMod;
-import com.dweb.useful_interactive.common.BoxBlockEntity;
-import com.dweb.useful_interactive.common.DoorDecorEntity;
-import com.dweb.useful_interactive.common.KeyBoxBlockEntity;
+import com.dweb.useful_interactive.block.chest.BoxBlockEntity;
+import com.dweb.useful_interactive.block.door.DoorDecorEntity;
+import com.dweb.useful_interactive.block.keybox.KeyBoxBlockEntity;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;

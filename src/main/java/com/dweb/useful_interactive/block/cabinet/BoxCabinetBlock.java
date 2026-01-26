@@ -1,7 +1,8 @@
-package com.dweb.useful_interactive.common;
+package com.dweb.useful_interactive.block.cabinet;
 
 import net.minecraft.block.BlockState;
 
+import com.dweb.useful_interactive.block.chest.BoxBlock;
 
 import net.minecraft.block.Block;
 import net.minecraft.util.math.BlockPos;
