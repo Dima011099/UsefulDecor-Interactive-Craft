@@ -19,8 +19,9 @@ repositories {
 }
 
 loom {
+	accessWidenerPath = file("src/main/resources/useful_interactive.accesswidener")
 	splitEnvironmentSourceSets()
-
+	
 	mods {
 		"dm-dima-mod" {
 			sourceSet sourceSets.main

@@ -25,7 +25,6 @@ import com.mojang.serialization.Codec;
 import java.util.Arrays;
 import java.util.HashMap; 
 
-
 public class KeyBoxRecipe implements Recipe<RecipeInput> {
     private final ItemStack output;
     private final String[] pattern;
@@ -37,91 +36,42 @@ public class KeyBoxRecipe implements Recipe<RecipeInput> {
         this.pattern = pattern;
     }
 
-
- 
-/* 
-@Override
-public boolean matches(RecipeInput input, World world) {
-    int totalSlotsRequired = 0;
-    for (String row : pattern) totalSlotsRequired += row.length();
+    @Override
+    public boolean matches(RecipeInput input, World world) {
+        String row = pattern[0]; 
     
-    if (input.size() < totalSlotsRequired) {
-        return false;
-    }
-
-    for (int y = 0; y < pattern.length; y++) {
-        String row = pattern[y];
         for (int x = 0; x < row.length(); x++) {
             char c = row.charAt(x);
-            int slotIndex = y * row.length() + x;
-
-            if (slotIndex >= input.size()) {
-                return c == ' '; 
-            }
-
-            ItemStack stack = input.getStackInSlot(slotIndex);
-
+            ItemStack stack = input.getStackInSlot(x); 
+        
             if (c == ' ') {
                 if (!stack.isEmpty()) return false;
             } else {
                 Ingredient ingredient = key.get(c);
-                // test(stack) — правильный метод для 2026 года
                 if (ingredient == null || !ingredient.test(stack)) return false;
             }
         }
-    }
-    
-    for (int i = totalSlotsRequired; i < input.size(); i++) {
-        if (!input.getStackInSlot(i).isEmpty()) return false;
-    }
-
-    return true;
-}
-*/
-@Override
-public boolean matches(RecipeInput input, World world) {
-    // pattern[0] — это твоя единственная строка в JSON (например, "S###")
-    String row = pattern[0]; 
-    
-    // Проверяем соответствие ингредиентов в первых слотах
-    for (int x = 0; x < row.length(); x++) {
-        char c = row.charAt(x);
-        ItemStack stack = input.getStackInSlot(x); // Прямой индекс 0, 1, 2, 3
-        
-        if (c == ' ') {
-            if (!stack.isEmpty()) return false;
-        } else {
-            Ingredient ingredient = key.get(c);
-            if (ingredient == null || !ingredient.test(stack)) return false;
+        for (int i = row.length(); i < input.size(); i++) {
+            if (!input.getStackInSlot(i).isEmpty()) return false;
         }
+
+        return true;
     }
-
-    // Проверяем, что остальные слоты (если инвентарь больше паттерна) пусты
-    for (int i = row.length(); i < input.size(); i++) {
-        if (!input.getStackInSlot(i).isEmpty()) return false;
-    }
-
-    return true;
-}
-
 
     @Override
     public ItemStack craft(RecipeInput input, RegistryWrapper.WrapperLookup lookup) {
         return this.output.copy();
     }
 
+    @Override
+    public RecipeSerializer<? extends Recipe<RecipeInput>> getSerializer() {
+        return ModRecipeTypes.KEY_CABINET_SERIALIZER;
+    }
 
-        @Override
-        public RecipeSerializer<? extends Recipe<RecipeInput>> getSerializer() {
-             return ModRecipeTypes.KEY_CABINET_SERIALIZER;
-        }
-
-        @Override
-        public RecipeType<? extends Recipe<RecipeInput>> getType() {
-            return ModRecipeTypes.KEY_CABINET;
-        }
-
-
+    @Override
+    public RecipeType<? extends Recipe<RecipeInput>> getType() {
+        return ModRecipeTypes.KEY_CABINET;
+    }
 
     @Override
     public IngredientPlacement getIngredientPlacement() {
@@ -135,23 +85,23 @@ public boolean matches(RecipeInput input, World world) {
 
 
     public DefaultedList<Ingredient> getIngredients() {
-    DefaultedList<Ingredient> ingredients = DefaultedList.ofSize(pattern.length * pattern[0].length(), Ingredient.ofItems());
+        DefaultedList<Ingredient> ingredients = DefaultedList.ofSize(pattern.length * pattern[0].length(), Ingredient.ofItems());
 
-    for (int y = 0; y < pattern.length; y++) {
-        String row = pattern[y];
-        for (int x = 0; x < row.length(); x++) {
-            char c = row.charAt(x);
-            int index = y * row.length() + x;
+        for (int y = 0; y < pattern.length; y++) {
+            String row = pattern[y];
+            for (int x = 0; x < row.length(); x++) {
+                char c = row.charAt(x);
+                int index = y * row.length() + x;
 
-            if (c == ' ') {
-                ingredients.set(index, Ingredient.ofItems());
-            } else {
-                ingredients.set(index, key.get(c)); // key.get(c) → Ingredient
+                if (c == ' ') {
+                    ingredients.set(index, Ingredient.ofItems());
+                } else {
+                    ingredients.set(index, key.get(c)); // key.get(c) → Ingredient
+                }
             }
         }
-    }
 
-    return ingredients;
+        return ingredients;
     }
 
     public boolean fits(int width, int height) {
@@ -162,7 +112,7 @@ public boolean matches(RecipeInput input, World world) {
         return output;
     }
 
-  public static class Serializer implements RecipeSerializer<KeyBoxRecipe> {
+    public static class Serializer implements RecipeSerializer<KeyBoxRecipe> {
         private static final Codec<Map<Character, Ingredient>> KEY_CODEC = Codec.unboundedMap(
             Codec.string(1, 1).xmap(s -> s.charAt(0), String::valueOf),
             Ingredient.CODEC
@@ -207,6 +157,4 @@ public boolean matches(RecipeInput input, World world) {
             );
         }
     }
-        
-    
 }

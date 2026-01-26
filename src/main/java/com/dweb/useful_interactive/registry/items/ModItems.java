@@ -83,9 +83,9 @@ public class ModItems {
         Identifier.of(UsefulDecorMod.MOD_ID, "batanic_table")
     );
 */
-    public static final RegistryKey<Item> HOUSEKEEPER_ITEM_KEY = RegistryKey.of(
+    public static final RegistryKey<Item> KEYBOX_ITEM_KEY = RegistryKey.of(
         RegistryKeys.ITEM,
-        Identifier.of(UsefulDecorMod.MOD_ID, "housekeeper")
+        Identifier.of(UsefulDecorMod.MOD_ID, "keybox")
     );
 
 
@@ -94,7 +94,7 @@ public class ModItems {
     public static final Item OAK_BOX_ITEM = registerBlockItem(ModStorageBlocks.OAK_BOX_BLOCK, OAK_BOX_ITEM_KEY);
     public static final Item BIRCH_BOX_ITEM = registerBlockItem(ModStorageBlocks.BIRCH_BOX_BLOCK, BIRCH_BOX_ITEM_KEY);
 
-     public static final Item BIRCH_BOX_CABINET_ITEM = registerBlockItem(ModStorageBlocks.BIRCH_BOX_CABINET_BLOCK, BIRCH_BOX_CABINET_ITEM_KEY);
+    public static final Item BIRCH_BOX_CABINET_ITEM = registerBlockItem(ModStorageBlocks.BIRCH_BOX_CABINET_BLOCK, BIRCH_BOX_CABINET_ITEM_KEY);
     //Двери
     public static final Item OAK_DECOR_DOOR_ITEM = registerBlockItem(ModArchitecturalBlocks.OAK_DECOR_DOOR, OAK_DECOR_DOOR_ITEM_KEY);
     public static final Item METAL_DECOR_DOOR_ITEM = registerBlockItem(ModArchitecturalBlocks.METAL_DECOR_DOOR, METAL_DECOR_DOOR_ITEM_KEY);
@@ -110,7 +110,7 @@ public class ModItems {
 
     
   //  public static final Item BATANIC_TABLE_ITEM = registerBlockItem(ModUtilityBlocks.BATANIC_TABLE_BLOCK, BATANIC_TABLE_ITEM_KEY);
-    public static final Item HOUSEKEEPER_ITEM = registerBlockItem(ModUtilityBlocks.HOUSEKEEPER_BLOCK, HOUSEKEEPER_ITEM_KEY);
+    public static final Item KEYBOX_ITEM = registerBlockItem(ModUtilityBlocks.KEYBOX_BLOCK, KEYBOX_ITEM_KEY);
 
 
     private static Item registerBlockItem(Block block, RegistryKey<Item> key) {

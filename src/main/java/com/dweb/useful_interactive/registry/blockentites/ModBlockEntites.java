@@ -17,8 +17,7 @@ import net.minecraft.util.Identifier;
 public class ModBlockEntites {
     public static final BlockEntityType<BoxBlockEntity> BOX_BLOCK_ENTITY_TYPE = Registry.register(
     Registries.BLOCK_ENTITY_TYPE,
-    Identifier.of(UsefulDecorMod.MOD_ID, "box_be"),//AOK_BOX_BLOCK
-    // Это актуальный способ для последних версий Fabric
+    Identifier.of(UsefulDecorMod.MOD_ID, "box_be"),
     FabricBlockEntityTypeBuilder.create(
         BoxBlockEntity::new, 
         ModStorageBlocks.BOX_BLOCK, 
@@ -30,8 +29,7 @@ public class ModBlockEntites {
 
 public static final BlockEntityType<DoorDecorEntity> DOOR_BLOCK_ENTITY_TYPE = Registry.register(
     Registries.BLOCK_ENTITY_TYPE,
-    Identifier.of(UsefulDecorMod.MOD_ID, "door_be"),//AOK_BOX_BLOCK
-    // Это актуальный способ для последних версий Fabric
+    Identifier.of(UsefulDecorMod.MOD_ID, "door_be"),
     FabricBlockEntityTypeBuilder.create(
         DoorDecorEntity::new, 
         ModArchitecturalBlocks.OAK_DECOR_DOOR, 
@@ -41,15 +39,14 @@ public static final BlockEntityType<DoorDecorEntity> DOOR_BLOCK_ENTITY_TYPE = Re
 
 public static final  BlockEntityType<KeyBoxBlockEntity> KEY_BOX_ENTITY_TYPE = Registry.register(
     Registries.BLOCK_ENTITY_TYPE,
-    Identifier.of(UsefulDecorMod.MOD_ID, "key_box_be"),//AOK_BOX_BLOCK
-    // Это актуальный способ для последних версий Fabric
+    Identifier.of(UsefulDecorMod.MOD_ID, "key_box_be"),
     FabricBlockEntityTypeBuilder.create(
         KeyBoxBlockEntity::new,
-        ModUtilityBlocks.HOUSEKEEPER_BLOCK  
+        ModUtilityBlocks.KEYBOX_BLOCK  
     ).build()
 );
 
     public static void register() {
-        UsefulDecorMod.LOGGER.debug("Регистрация блочных сущностей для " + UsefulDecorMod.MOD_ID);
+        UsefulDecorMod.LOGGER.debug("Registering block entities for " + UsefulDecorMod.MOD_ID);
     }
 }

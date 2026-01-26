@@ -19,7 +19,8 @@
     "recipes": [
       "useful_interactive:box",
       "useful_interactive:oak_box",
-      "useful_interactive:birch_box"
+      "useful_interactive:birch_box",
+      "useful_interactive:birch_box_cabinet"
     ]
   }
 }

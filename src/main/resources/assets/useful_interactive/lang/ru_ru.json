@@ -20,8 +20,8 @@
     "block.useful_interactive.iron_glass_pane": "Железное окно",
     "item.useful_interactive.iron_glass_pane": "Железное окно",
 
-    "block.useful_interactive.housekeeper": "Ключница",
-    "item.useful_interactive.housekeeper": "Ключница",
+    "block.useful_interactive.keybox": "Ключница",
+    "item.useful_interactive.keybox": "Ключница",
     "block.useful_interactive.batanic_table": "Ботанический стол",
     "item.useful_interactive.batanic_table": "Ботанический стол",
     "block.useful_interactive.oak_street_lamp": "Дубовый уличный фонарь",
@@ -41,5 +41,9 @@
     "message.useful_interactive.unlocked": "Отперто",
     "message.useful_interactive.needs_key": "Закрыто. Нужен ключ.",
 
-     "container.useful_interactive.box": "Сундук"
+    "container.useful_interactive.box": "Сундук",
+    "container.useful_interactive.keybox": "Ключница",
+
+    "block.useful_interactive.birch_box_cabinet": "Шкаф",
+    "item.useful_interactive.birch_box_cabinet": "Шкаф"
 }

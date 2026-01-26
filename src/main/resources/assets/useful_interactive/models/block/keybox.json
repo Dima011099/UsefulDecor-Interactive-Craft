@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "top": "useful_interactive:block/keybox_top",
+    "bottom": "useful_interactive:block/keybox_bottom",
+    "side": "useful_interactive:block/keybox_side",
+    "front": "useful_interactive:block/keybox_front"
+  }
+}

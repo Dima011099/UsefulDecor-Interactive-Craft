@@ -17,9 +17,9 @@ public class ModUtilityBlocks {
             Identifier.of(UsefulDecorMod.MOD_ID, "batanic_table")
     );
     */
-    public static final RegistryKey<Block> HOUSEKEEPER_KEY = RegistryKey.of(
+    public static final RegistryKey<Block> KEYBOX_KEY = RegistryKey.of(
             RegistryKeys.BLOCK,
-            Identifier.of(UsefulDecorMod.MOD_ID, "housekeeper")
+            Identifier.of(UsefulDecorMod.MOD_ID, "keybox")
     );
 
 
@@ -31,9 +31,9 @@ public class ModUtilityBlocks {
             BATANIC_TABLE_KEY
     );
 */
-    public static final Block HOUSEKEEPER_BLOCK = ModBlocks.registerBlock(
-            new KeyBoxBlock(AbstractBlock.Settings.create().registryKey(HOUSEKEEPER_KEY).strength(4.0f, 50.0f)), 
-            HOUSEKEEPER_KEY
+    public static final Block KEYBOX_BLOCK = ModBlocks.registerBlock(
+            new KeyBoxBlock(AbstractBlock.Settings.create().registryKey(KEYBOX_KEY).strength(4.0f, 50.0f)), 
+            KEYBOX_KEY
     );
 
     public static void register() {}

@@ -26,18 +26,16 @@ public class HorizontalPaneBlock extends HorizontalFacingBlock {
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));
     }
 
-   @Override
-   protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+    @Override
+    protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         Direction direction = state.get(FACING);
         return (direction == Direction.NORTH || direction == Direction.SOUTH) ? NORTH_SOUTH_SHAPE : EAST_WEST_SHAPE;
-   }
+    }
 
-   @Override
-   protected VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-      //  return this.getOutlineShape(state, world, pos, context);
-     // return super.getCollisionShape(state, world, pos, context);
-     return Block.createCuboidShape(0f, 0f, 0f, 16f, 16, 16f);
-   }
+    @Override
+    protected VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return Block.createCuboidShape(0f, 0f, 0f, 16f, 16, 16f);
+    }
   
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {

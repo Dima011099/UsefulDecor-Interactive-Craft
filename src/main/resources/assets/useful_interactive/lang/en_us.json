@@ -20,8 +20,8 @@
     "block.useful_interactive.iron_glass_pane": "Iron Window",
     "item.useful_interactive.iron_glass_pane": "Iron Window",
 
-    "block.useful_interactive.housekeeper": "Housekeeper",
-    "item.useful_interactive.housekeeper": "Housekeeper",
+    "block.useful_interactive.keybox": "KeyBox",
+    "item.useful_interactive.keybox": "KeyBox",
     "block.useful_interactive.batanic_table": "Botanic Table",
     "item.useful_interactive.batanic_table": "Botanic Table",
     "block.useful_interactive.oak_street_lamp": "Oak Street Lamp",
@@ -41,6 +41,10 @@
     "message.useful_interactive.unlocked": "Unlocked",
     "message.useful_interactive.needs_key": "Locked. Requires a key.",
 
-    "container.useful_interactive.box": "Chest"
+    "container.useful_interactive.box": "Chest",
+    "container.useful_interactive.keybox": "KeyBox",
+    
+    "block.useful_interactive.birch_box_cabinet": "Cabinet",
+    "item.useful_interactive.birch_box_cabinet": "Cabinet"
 
 }

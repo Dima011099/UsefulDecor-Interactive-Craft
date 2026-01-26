@@ -44,9 +44,7 @@ public class KeyBoxScreenHandler extends ScreenHandler {
         super(ModScreenHandlers.KEY_CABINET, syncId);
         this.context = context;
         this.player = playerInventory.player;
-
         inventory.onOpen(playerInventory.player);
-
         lastInputSnapshot = createInputSnapshot();
 
         this.addSlot(new CraftingResultSlot(playerInventory.player, inputInventory, resultInventory, 0, 134, 47){
@@ -84,9 +82,6 @@ public class KeyBoxScreenHandler extends ScreenHandler {
         return ItemStack.EMPTY; 
     }
 
-
-
-
     @Override
     public void onClosed(PlayerEntity player) {
         super.onClosed(player);
@@ -97,29 +92,24 @@ public class KeyBoxScreenHandler extends ScreenHandler {
         }
     }
 
-
     @Override
     public boolean canUse(PlayerEntity player) {
         return true;
     }
 
-
     @Override
     public void onContentChanged(Inventory inventory) {
         super.onContentChanged(inventory);
     
-        // Предотвращаем рекурсию
         if (isCrafting) return;
     
         this.context.run((world, pos) -> {
             if (!(world instanceof ServerWorld serverWorld)) return;
-
-        // Проверяем, изменились ли входные слоты
      
             List<ItemStack> currentInput = createInputSnapshot();
 
             if(inputsEqual(currentInput, lastInputSnapshot)){
-                return; // Ничего не изменилось, выходим
+                return;
             }
         
 
@@ -136,12 +126,12 @@ public class KeyBoxScreenHandler extends ScreenHandler {
 
             ItemStack result = ItemStack.EMPTY;
            
-            isCrafting = true; // Устанавливаем флаг
+            isCrafting = true; 
             if (match.isPresent())
                 result = match.get().value().craft(input, serverWorld.getRegistryManager());
  
-            lastInputSnapshot = createInputSnapshot(); // Сохраняем новое состояние
-            isCrafting = false; // Сбрасываем флаг
+            lastInputSnapshot = createInputSnapshot();
+            isCrafting = false; 
         
 
             resultInventory.setStack(0, result);
@@ -189,6 +179,12 @@ public class KeyBoxScreenHandler extends ScreenHandler {
             }
         }
    } 
+   
+    @Override
+    public boolean canInsertIntoSlot(ItemStack stack, Slot slot) {
+        return slot.inventory == this.inputInventory && slot.getIndex() < 4;
+    }
+   
 }
 
 class SpecificItemSlot extends Slot {

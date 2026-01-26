@@ -1,9 +1,8 @@
 package com.dweb.useful_interactive.ui;
 
-import net.minecraft.registry.Registry;
-
 import com.dweb.useful_interactive.ui.keybox.KeyBoxScreenHandler;
 
+import net.minecraft.registry.Registry;
 import net.minecraft.registry.Registries;
 import net.minecraft.resource.featuretoggle.FeatureFlags;
 import net.minecraft.screen.ScreenHandlerType;
@@ -16,7 +15,5 @@ public class ModScreenHandlers {
             new ScreenHandlerType<>(KeyBoxScreenHandler::new, FeatureFlags.VANILLA_FEATURES)
     );
 
-    public static void registerScreenHandlers() {
-        // Метод для инициализации класса в ModInitializer
-    }
+    public static void registerScreenHandlers() {}
 }

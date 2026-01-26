@@ -22,9 +22,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-
 import org.jetbrains.annotations.Nullable;
-
 
 public class BoxBlock extends BlockWithEntity {
     public static final MapCodec<BoxBlock> CODEC = createCodec(BoxBlock::new);
@@ -90,28 +88,25 @@ public class BoxBlock extends BlockWithEntity {
         return defaultDelta;
     }
 
- @Override
- protected void onStateReplaced(BlockState state, ServerWorld world, BlockPos pos, boolean moved) {
-    BlockEntity blockEntity = world.getBlockEntity(pos);
+    @Override
+    protected void onStateReplaced(BlockState state, ServerWorld world, BlockPos pos, boolean moved) {
+        BlockEntity blockEntity = world.getBlockEntity(pos);
     
-    if (blockEntity instanceof BoxBlockEntity boxEntity) {
-        ItemScatterer.spawn(world, pos, boxEntity);
-        world.updateComparators(pos, state.getBlock());
+        if (blockEntity instanceof BoxBlockEntity boxEntity) {
+            ItemScatterer.spawn(world, pos, boxEntity);
+            world.updateComparators(pos, state.getBlock());
+        }
+        super.onStateReplaced(state, world, pos, moved);
     }
-    super.onStateReplaced(state, world, pos, moved);
- }
 
+    @Override
+    protected void appendProperties(Builder<Block, BlockState> builder) {
+        builder.add(FACING);
+        super.appendProperties(builder);
+    }
 
- @Override
- protected void appendProperties(Builder<Block, BlockState> builder) {
-    builder.add(FACING);
-    super.appendProperties(builder);
- }
-
- @Override
- public @org.jspecify.annotations.Nullable BlockState getPlacementState(ItemPlacementContext ctx) {
-    return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
- }
-
- 
+    @Override
+    public @org.jspecify.annotations.Nullable BlockState getPlacementState(ItemPlacementContext ctx) {
+        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
+    }
 }

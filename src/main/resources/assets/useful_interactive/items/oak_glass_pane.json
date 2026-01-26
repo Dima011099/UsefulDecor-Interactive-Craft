@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "useful_interactive:block/oak_glass_pane"
+    "model": "useful_interactive:item/oak_glass_pane"
   }
 }

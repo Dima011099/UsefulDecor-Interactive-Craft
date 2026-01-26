@@ -1,6 +1,5 @@
 package com.dweb.useful_interactive.block.keybox;
 
-
 import com.dweb.useful_interactive.registry.blockentites.ModBlockEntites;
 import com.dweb.useful_interactive.ui.keybox.KeyBoxScreenHandler;
 
@@ -25,7 +24,4 @@ public class KeyBoxBlockEntity extends BlockEntity implements NamedScreenHandler
     public ScreenHandler createMenu(int syncId, PlayerInventory inv, PlayerEntity player) {
         return new KeyBoxScreenHandler(syncId, inv);
     }
-
-    
-    
 }

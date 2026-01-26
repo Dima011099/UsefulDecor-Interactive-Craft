@@ -16,7 +16,8 @@
   },
   "rewards": {
     "recipes": [
-      "useful_interactive:key_item"
+      "useful_interactive:key_item",
+      "useful_interactive:keybox"
     ]
   }
 }

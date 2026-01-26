@@ -24,30 +24,25 @@ import net.minecraft.util.math.BlockPos;
 
 
 public class BoxBlockEntity extends LootableContainerBlockEntity implements ILockableManager {
-    
-    // Инвентарь на 27 слотов (как в обычном сундуке)
     private DefaultedList<ItemStack> inventory = DefaultedList.ofSize(27, ItemStack.EMPTY);
     private final LockComponent lock = new LockComponent();
 
-
-  private static final Codec<DefaultedList<ItemStack>> INVENTORY_CODEC = 
-    ItemStack.OPTIONAL_CODEC.listOf().xmap(
-        list -> {
-            DefaultedList<ItemStack> defaultedList = DefaultedList.ofSize(27, ItemStack.EMPTY);
-            for (int i = 0; i < Math.min(list.size(), 27); i++) {
-                defaultedList.set(i, list.get(i));
-            }
-            return defaultedList;
-        },
-        // При записи превращаем DefaultedList обратно в List
-        java.util.ArrayList::new 
-    );
+    private static final Codec<DefaultedList<ItemStack>> INVENTORY_CODEC = 
+        ItemStack.OPTIONAL_CODEC.listOf().xmap(
+            list -> {
+                DefaultedList<ItemStack> defaultedList = DefaultedList.ofSize(27, ItemStack.EMPTY);
+                for (int i = 0; i < Math.min(list.size(), 27); i++) {
+                    defaultedList.set(i, list.get(i));
+                }
+                return defaultedList;
+            },
+            java.util.ArrayList::new 
+        );
 
 
     public BoxBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntites.BOX_BLOCK_ENTITY_TYPE, pos, state);
     }
-    /*****  */
 
      @Override
     public boolean isLocked() {
@@ -69,9 +64,6 @@ public class BoxBlockEntity extends LootableContainerBlockEntity implements ILoc
         return lock.hasKey();
     }
 
-
-/***** */
-
     @Override
     protected Text getContainerName() {
         return Text.translatable("container.useful_interactive.box");
@@ -90,7 +82,6 @@ public class BoxBlockEntity extends LootableContainerBlockEntity implements ILoc
 
     @Override
     protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
-        // Создаем стандартный экран 9x3
         return GenericContainerScreenHandler.createGeneric9x3(syncId, playerInventory, this);
     }
 
@@ -99,18 +90,14 @@ public class BoxBlockEntity extends LootableContainerBlockEntity implements ILoc
         return 27;
     }
 
-  @Override
+    @Override
     protected void writeData(WriteView view) {
         super.writeData(view);
-        // Записываем строку напрямую через ключ
         if(lock.hasKey())
             view.put("BoxKey", Codec.STRING, lock.getKey());
 
         view.put("Inventory", INVENTORY_CODEC, this.inventory);
         view.put("closed", Codec.BOOL, lock.isLocked());
-        
-        // Инвентарь в LootableContainerBlockEntity обычно сохраняется через super.writeData,
-        // но если вы используете кастомный список, его тоже можно записать здесь.  DefaultedList<ItemStack>
     }
 
     @Override
@@ -125,8 +112,6 @@ public class BoxBlockEntity extends LootableContainerBlockEntity implements ILoc
 
     @Override
     protected void readData(ReadView view) {
-     
-        // Читаем строку с дефолтным значением
         lock.bindKey(view.read("BoxKey", Codec.STRING).orElse(null));
         lock.setLocked(view.read("closed", Codec.BOOL).orElse(false));
 
@@ -134,6 +119,4 @@ public class BoxBlockEntity extends LootableContainerBlockEntity implements ILoc
                          .orElse(DefaultedList.ofSize(27, ItemStack.EMPTY));
         super.readData(view);
     }
-
-
 }

@@ -1,6 +1,6 @@
 {
 	"textures": {
-		"particle": "useful_interactive:block/birch_box_cabinet_other",
+		"particle": "useful_interactive:block/birch_box_cabinet_front",
 		"front": "useful_interactive:block/birch_box_cabinet_front",
 		"other": "useful_interactive:block/birch_box_cabinet_other"
 	},
@@ -17,5 +17,27 @@
 				"down":  {"uv": [0, 0, 16, 8],  "texture": "#other"}
 			}
 		}
-	]
+	],
+	"display": {
+    "ground": {
+      "rotation": [ 0, 0, 0 ],
+      "translation": [ 0, 3, 0 ],
+      "scale": [ 0.25, 0.25, 0.25 ]
+    },
+    "gui": {
+      "rotation": [ 30, 225, 0 ],
+      "translation": [ 0, 0, 0 ],
+      "scale": [ 0.625, 0.625, 0.625 ]
+    },
+    "head": {
+      "rotation": [ 0, 0, 0 ],
+      "translation": [ 0, 0, 0 ],
+      "scale": [ 1, 1, 1 ]
+    },
+    "fixed": {
+        "rotation": [ 0, 0, 0 ],
+        "translation": [ 0, 0, 0 ],
+        "scale": [ 0.5, 0.5, 0.5 ]
+    }
+  }
 }

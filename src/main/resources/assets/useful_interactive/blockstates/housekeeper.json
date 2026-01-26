@@ -1,8 +1,0 @@
-{
-  "variants": {
-    "facing=north": { "model": "useful_interactive:block/housekeeper" },
-    "facing=east": { "model": "useful_interactive:block/housekeeper", "y": 90 },
-    "facing=south": { "model": "useful_interactive:block/housekeeper", "y": 180 },
-    "facing=west": { "model": "useful_interactive:block/housekeeper", "y": 270 }
-  }
-}

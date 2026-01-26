@@ -9,7 +9,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-
 public class ModRecipeTypes {
 
     public static final RecipeType<KeyBoxRecipe> KEY_CABINET = registerType("key_box_craft");
@@ -27,9 +26,7 @@ public class ModRecipeTypes {
         );
     }
 
-        // Метод для вызова в главном классе (onInitialize)
     public static void register() {
-        // Просто обращение к классу активирует статические поля выше
         UsefulDecorMod.LOGGER.info("Registering Custom Recipes for " + UsefulDecorMod.MOD_ID);
     }
 }

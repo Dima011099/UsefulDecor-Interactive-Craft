@@ -1,6 +1,6 @@
 {
     "model":{
         "type": "minecraft:model",
-        "model": "useful_interactive:block/housekeeper"
+        "model": "useful_interactive:block/keybox"
     }
 }

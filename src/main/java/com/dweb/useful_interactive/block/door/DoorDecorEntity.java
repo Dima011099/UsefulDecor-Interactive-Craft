@@ -19,7 +19,6 @@ import net.minecraft.util.math.BlockPos;
 public class DoorDecorEntity extends BlockEntity implements ILockableManager {
     private final LockComponent lock = new LockComponent();
 
-
     public DoorDecorEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntites.DOOR_BLOCK_ENTITY_TYPE,pos, state);
     }
@@ -55,11 +54,8 @@ public class DoorDecorEntity extends BlockEntity implements ILockableManager {
 
     @Override
     public Packet<ClientPlayPacketListener> toUpdatePacket() {
-        //return BlockEntityUpdateS2CPacket.create(this);
-        // При создании пакета мы указываем, какие данные в него положить
         return BlockEntityUpdateS2CPacket.create(this, (be, registries) -> {
         NbtCompound nbt = new NbtCompound();
-        // Вручную записываем состояние замка для клиента
         nbt.putBoolean("is_locked", ((DoorDecorEntity)be).isLocked());
         return nbt;
     });
@@ -72,11 +68,8 @@ public class DoorDecorEntity extends BlockEntity implements ILockableManager {
 
     @Override
     protected void readData(ReadView view) {
-     
-        // Читаем строку с дефолтным значением
         lock.bindKey(view.read("locked_key", Codec.STRING).orElse(null));
         lock.setLocked(view.read("is_locked", Codec.BOOL).orElse(false));
         super.readData(view);
     }
-
 }

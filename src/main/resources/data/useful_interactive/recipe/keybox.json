@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "lock_box",
+  "group": "keybox",
   "category": "building",
   "pattern": [
     "NNN",
@@ -16,7 +16,7 @@
     ]
   },
   "result": {
-    "id": "useful_interactive:housekeeper",
+    "id": "useful_interactive:keybox",
     "count": 1
   }
 }

@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "useful_interactive:block/iron_glass_pane"
+    "model": "useful_interactive:item/iron_glass_pane"
   }
 }

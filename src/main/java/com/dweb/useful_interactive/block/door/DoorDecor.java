@@ -45,14 +45,12 @@ public class DoorDecor extends DoorBlock implements BlockEntityProvider {
 
         if (LockableManager.handleKeyUse(player, stack, door)){
             door.markDirty();
-           // world.updateListeners(pos, state, state, Block.NOTIFY_ALL);
-           world.updateListeners(
+            world.updateListeners(
                 door.getPos(),
                 world.getBlockState(door.getPos()),
                 world.getBlockState(door.getPos()),
                 Block.NOTIFY_ALL
             );
-            
             return ActionResult.CONSUME;
         }
 
@@ -84,37 +82,14 @@ public class DoorDecor extends DoorBlock implements BlockEntityProvider {
 
     @Override
     protected float calcBlockBreakingDelta(BlockState state, PlayerEntity player, BlockView world, BlockPos pos) {
-        /*float base = super.calcBlockBreakingDelta(state, player, world, pos);
+        float base = super.calcBlockBreakingDelta(state, player, world, pos);
 
-
-        BlockPos lowerPos = state.get(DoorBlock.HALF) == DoubleBlockHalf.LOWER
-            ? pos
-            : pos.down();
-
-        if (!(world instanceof World realWorld)) {
-            return base;
-        }
-
-        BlockEntity be = realWorld.getBlockEntity(lowerPos);
+        BlockPos lowerPos = state.get(HALF) == DoubleBlockHalf.LOWER ? pos : pos.down();
+        BlockEntity be = world.getBlockEntity(lowerPos);
 
         if (be instanceof ILockableManager lock && lock.isLocked()) {
-            return base / 20.0f;
+            return base / 30.0f;
         }
-
-        return base;*/
-            float base = super.calcBlockBreakingDelta(state, player, world, pos);
-
-    // Ищем нижнюю часть двери, где лежит BlockEntity
-    BlockPos lowerPos = state.get(HALF) == DoubleBlockHalf.LOWER ? pos : pos.down();
-    
-    // Используем BlockView напрямую, он умеет доставать BlockEntity
-    BlockEntity be = world.getBlockEntity(lowerPos);
-
-    if (be instanceof ILockableManager lock && lock.isLocked()) {
-        // Если закрыто, замедляем в 20 раз
-        return base / 30.0f;
-    }
-
-    return base;
+        return base;
     }
 }

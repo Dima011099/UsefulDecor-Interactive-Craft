@@ -1,5 +1,6 @@
 package com.dweb.useful_interactive.ui;
 
+
 import com.dweb.useful_interactive.UsefulDecorMod;
 import com.dweb.useful_interactive.ui.keybox.KeyBoxScreenHandler;
 
@@ -11,31 +12,27 @@ import net.minecraft.util.Identifier;
 import net.minecraft.text.Text;
 
 
-public class KeyCabinetScreen extends HandledScreen<KeyBoxScreenHandler> {
+
+public class KeyCabinetScreen extends HandledScreen<KeyBoxScreenHandler>{
     private static final Identifier TEXTURE = Identifier.of(UsefulDecorMod.MOD_ID, "textures/gui/keybox.png");
+
 
     public KeyCabinetScreen(KeyBoxScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
     }
 
-@Override
-protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
-    int x = (width - backgroundWidth) / 2;
-    int y = (height - backgroundHeight) / 2;
-
-    context.drawTexture(
-    RenderPipelines.GUI_TEXTURED,
-    TEXTURE,
-    x, y, 
-    0.0f, 0.0f, 
-    this.backgroundWidth, 
-    this.backgroundHeight, 
+    @Override
+    protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
+        context.drawTexture(
+            RenderPipelines.GUI_TEXTURED,
+            TEXTURE,
+            x, y, 
+            0.0f, 0.0f, 
+            this.backgroundWidth, 
+            this.backgroundHeight, 
     256, 256
-);
-
-}
-
-
+        );
+    }
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
