@@ -42,7 +42,8 @@ public static final  BlockEntityType<KeyBoxBlockEntity> KEY_BOX_ENTITY_TYPE = Re
     Identifier.of(UsefulDecorMod.MOD_ID, "key_box_be"),
     FabricBlockEntityTypeBuilder.create(
         KeyBoxBlockEntity::new,
-        ModUtilityBlocks.KEYBOX_BLOCK  
+        ModUtilityBlocks.KEYBOX_BLOCK,
+        ModUtilityBlocks.BATANIC_TABLE_BLOCK
     ).build()
 );
 

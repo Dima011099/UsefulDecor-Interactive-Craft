@@ -77,12 +77,12 @@ public class ModItems {
 
 
     //Для функциональных блоков
-    /*
+    
     public static final RegistryKey<Item> BATANIC_TABLE_ITEM_KEY = RegistryKey.of(
         RegistryKeys.ITEM,
         Identifier.of(UsefulDecorMod.MOD_ID, "batanic_table")
     );
-*/
+
     public static final RegistryKey<Item> KEYBOX_ITEM_KEY = RegistryKey.of(
         RegistryKeys.ITEM,
         Identifier.of(UsefulDecorMod.MOD_ID, "keybox")
@@ -111,6 +111,7 @@ public class ModItems {
     
   //  public static final Item BATANIC_TABLE_ITEM = registerBlockItem(ModUtilityBlocks.BATANIC_TABLE_BLOCK, BATANIC_TABLE_ITEM_KEY);
     public static final Item KEYBOX_ITEM = registerBlockItem(ModUtilityBlocks.KEYBOX_BLOCK, KEYBOX_ITEM_KEY);
+    public static final Item BATANIC_TABLE_ITEM = registerBlockItem(ModUtilityBlocks.BATANIC_TABLE_BLOCK, BATANIC_TABLE_ITEM_KEY);
 
 
     private static Item registerBlockItem(Block block, RegistryKey<Item> key) {
