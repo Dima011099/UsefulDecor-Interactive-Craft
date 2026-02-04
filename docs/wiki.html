@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UsefulDecor Wiki | Recipe Book</title>
+
+    <!-- Minecraft font -->
+    <!--link rel="stylesheet" href="https://fonts.cdnfonts.com/css/minecraft-4"-->
+
+    <style>
+        :root {
+            --gui-bg: #c6c6c6;
+            --slot-bg: #8b8b8b;
+            --mc-border-dark: #555555;
+            --mc-border-light: #ffffff;
+            --text-shadow: 2px 2px 0 #3f3f3f;
+            --process-color: #ffaa00;
+        }
+
+        body {
+            background: #1a1a1a;
+            font-family: 'Minecraft', sans-serif;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        img {
+            image-rendering: pixelated;
+        }
+
+        .wiki-container {
+            display: flex;
+            width: 900px;
+            height: 600px;
+            background: var(--gui-bg);
+            border: 4px solid #000;
+            box-shadow:
+                inset -4px -4px 0 var(--mc-border-dark),
+                inset 4px 4px 0 var(--mc-border-light);
+            padding: 10px;
+            color: #3f3f3f;
+        }
+
+        .item-list {
+            width: 250px;
+            border-right: 4px solid var(--mc-border-dark);
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .item-list h2 {
+            font-size: 1.2rem;
+            text-align: center;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        .item-link {
+            padding: 10px;
+            margin-bottom: 5px;
+            background: #a0a0a0;
+            border: 2px solid #000;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: 0.2s;
+        }
+
+        .item-link.active,
+        .item-link:hover {
+            background: #7db45d;
+            color: #fff;
+            transform: translateX(5px);
+        }
+
+        .item-icon {
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+            image-rendering: pixelated;
+        }
+
+        .recipe-display {
+            flex-grow: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .recipe-title {
+            color: #000;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .crafting-table {
+            display: grid;
+            grid-template-columns: repeat(3, 70px);
+            grid-template-rows: repeat(3, 70px);
+            gap: 4px;
+            background: var(--slot-bg);
+            padding: 12px;
+            border: 4px solid #000;
+            margin: 20px 0;
+        }
+
+        .slot {
+            width: 70px;
+            height: 70px;
+            background: var(--slot-bg);
+            border: 4px solid #373737;
+            box-shadow: inset 4px 4px 0 #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            image-rendering: pixelated;
+        }
+
+        .result-arrow {
+            font-size: 3rem;
+            margin: 0 20px;
+            color: #3f3f3f;
+        }
+
+        .result-slot {
+            width: 90px;
+            height: 90px;
+            background: var(--slot-bg);
+            border: 4px solid #373737;
+            box-shadow: inset 4px 4px 0 #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .description {
+            max-width: 400px;
+            background: rgba(0,0,0,0.05);
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        .hotbar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            background: rgba(0,0,0,0.8);
+            padding: 5px;
+            border: 4px solid var(--mc-border-dark);
+            z-index: 1000;
+        }
+
+        .hotbar a {
+            color: var(--process-color);
+            text-decoration: none;
+        }
+
+        .hotbar-slot {
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--mc-border-dark);
+            margin: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .hotbar-slot:hover {
+            border-color: #fff;
+            background: rgba(255,255,255,0.2);
+        }
+
+        @media (max-width: 900px) {
+            .wiki-container {
+                flex-direction: column;
+                width: 100%;
+                height: auto;
+            }
+
+            .item-list {
+                width: 100%;
+                border-right: none;
+                border-bottom: 4px solid var(--mc-border-dark);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="wiki-container">
+    <div class="item-list">
+        <h2>Items Index</h2>
+        <div class="item-link active" data-id="keybox"><span class="item-icon">🗝️</span>keybox</div>
+        <!--div class="item-link" data-id="masterkey"><span class="item-icon">🔑</span>Master Key</div>
+        <div class="item-link" data-id="securebox"><span class="item-icon">📦</span>Secure Box</div>
+        <div class="item-link" data-id="botany"><span class="item-icon">🌿</span>Iron Pot</div>
+        <div class="item-link active" data-id="keyrack"><span class="item-icon">🗝️</span>Key Rack</div>
+        <div class="item-link" data-id="masterkey"><span class="item-icon">🔑</span>Master Key</div>
+        <div class="item-link" data-id="securebox"><span class="item-icon">📦</span>Secure Box</div>
+        <div class="item-link" data-id="botany"><span class="item-icon">🌿</span>Iron Pot</div-->
+    </div>
+
+    <div class="recipe-display">
+        <h1 class="recipe-title" id="item-name">Key Rack</h1>
+        <p id="item-tagline">Органайзер системы доступов</p>
+
+        <div style="display:flex;align-items:center">
+            <div class="crafting-table">
+                <div class="slot"></div><div class="slot"></div><div class="slot"></div>
+                <div class="slot"></div><div class="slot"></div><div class="slot"></div>
+                <div class="slot"></div><div class="slot"></div><div class="slot"></div>
+            </div>
+            <div class="result-arrow">➡</div>
+            <div class="result-slot" id="result-icon"></div>
+        </div>
+
+        <div class="description" id="item-desc"></div>
+        <p style="margin-top:auto;font-size:.7rem;opacity:.7">Category: Security / Storage</p>
+    </div>
+</div>
+
+<div class="hotbar">
+    <a href="/"><div class="hotbar-slot">🏠</div></a>
+    <a href="/roadmap.html"><div class="hotbar-slot">🛣</div></a>
+    <a href="/wiki.html"><div class="hotbar-slot">🛠</div></a>
+</div>
+
+<script>
+const recipes = {
+    keybox: {
+        name: "keybox",
+        tagline: "Органайзер системы доступов",
+        grid: ["🪨", "🪨", "🪨", "🪨", "⛓️", "🪨", "🪨", "🪨", "🪨"],
+        result: "🗝️",
+        desc: "Используется для хранения до 8 привязанных ключей."
+    },
+    masterkey: {
+        name: "Master Key",
+        tagline: "Универсальный физический доступ",
+        grid: ["", "🟡", "", "", "🟡", "", "", "🟦", ""],
+        result: "🔑",
+        desc: "Ключ с полным доступом."
+    },
+    securebox: {
+        name: "Secure Box",
+        tagline: "Хранилище с защитой",
+        grid: ["⬛","⬛","⬛","⬛","📦","⬛","⬛","⬛","⬛"],
+        result: "📦",
+        desc: "Открывается только привязанным ключом."
+    },
+    botany: {
+        name: "Iron Pot",
+        tagline: "Функциональный декор",
+        grid: ["","","","⬛","","⬛","","⬛",""],
+        result: "🌿",
+        desc: "Горшок для полезных растений."
+    }
+};
+
+const slots = document.querySelectorAll('.slot');
+
+document.querySelectorAll('.item-link').forEach(link => {
+    link.addEventListener('click', () => {
+        const id = link.dataset.id;
+        const data = recipes[id];
+
+        document.getElementById('item-name').innerText = data.name;
+        document.getElementById('item-tagline').innerText = data.tagline;
+        document.getElementById('item-desc').innerText = data.desc;
+        document.getElementById('result-icon').innerText = data.result;
+
+        data.grid.forEach((v, i) => slots[i].innerText = v);
+
+        document.querySelectorAll('.item-link').forEach(el => el.classList.remove('active'));
+        link.classList.add('active');
+    });
+});
+
+// init
+document.querySelector('.item-link.active').click();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UsefulDecor | Rethinking Minecraft Interior</title>
+
+    <!-- Minecraft font -->
+    <!--link rel="stylesheet" href="https://fonts.cdnfonts.com/css/minecraft-4"-->
+
+    <!-- AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+    <style>
+        :root {
+            --mc-gui: #c6c6c6;
+            --mc-border-light: #ffffff;
+            --mc-border-dark: #555555;
+            --mc-shadow: rgba(0,0,0,0.5);
+            --accent-yellow: #ffff55;
+        }
+
+        body {
+            margin: 0;
+            background: #1a1a1a;
+            color: #fff;
+            font-family: 'Minecraft', sans-serif;
+        }
+
+        img {
+            image-rendering: pixelated;
+        }
+
+        .mc-panel {
+            background: var(--mc-gui);
+            border: 4px solid #000;
+            box-shadow:
+                inset -4px -4px 0 var(--mc-border-dark),
+                inset 4px 4px 0 var(--mc-border-light);
+            color: #3f3f3f;
+            padding: 20px;
+            position: relative;
+        }
+
+        .hero {
+            height: 100vh;
+            background:
+                linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                url('img/img01.png') center / cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 8px solid #3c8527;
+        }
+
+        .logo-area {
+            text-align: center;
+            filter: drop-shadow(5px 5px 0 #000);
+        }
+
+        .logo-area h1 {
+            font-size: 5rem;
+            margin: 0;
+        }
+
+        .logo-area span {
+            color: var(--accent-yellow);
+            font-size: 1.5rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: -50px auto 50px;
+            padding: 0 20px;
+        }
+
+        .feature-card {
+            transition: transform 0.2s;
+            cursor: pointer;
+            will-change: transform;
+        }
+
+        .feature-card:hover {
+            transform: scale(1.05) translateY(-10px);
+            z-index: 10;
+        }
+
+        .feature-card h3 {
+            color: #0000AA;
+            margin-top: 0;
+            font-size: 1.2rem;
+        }
+
+        .mechanics {
+            max-width: 1000px;
+            margin: 100px auto;
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            background: rgba(0,0,0,0.8);
+            border: 4px solid var(--mc-border-dark);
+            padding: 40px;
+        }
+
+        .mechanics-text h2 {
+            color: var(--accent-yellow);
+        }
+
+        .hotbar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            background: rgba(0,0,0,0.8);
+            padding: 5px;
+            border: 4px solid var(--mc-border-dark);
+            z-index: 1000;
+        }
+
+        .hotbar a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .hotbar-slot {
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--mc-border-dark);
+            margin: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .hotbar-slot:hover {
+            border-color: #fff;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .mc-button {
+            background: #7e7e7e;
+            border: 4px solid #000;
+            box-shadow:
+                inset -4px -4px 0 #4e4e4e,
+                inset 4px 4px 0 #c6c6c6;
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            text-shadow: 2px 2px 0 #000;
+        }
+
+        .mc-button:hover {
+            background: #3c8527;
+            box-shadow:
+                inset -4px -4px 0 #2a5d1b,
+                inset 4px 4px 0 #5dbd44;
+        }
+
+        .screenshot-frame {
+            border: 10px solid #373737;
+            outline: 4px solid #000;
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+<section class="hero">
+    <div class="logo-area" data-aos="zoom-in">
+        <h1>UsefulDecor</h1>
+        <span>[ Interactive Craft v1.0 ]</span><br>
+        <a href="#" class="mc-button">GET THE MOD .JAR</a>
+    </div>
+</section>
+
+<div class="features-grid">
+    <div class="feature-card mc-panel" data-aos="fade-up">
+        <h3>[Key Management]</h3>
+        <p>Forget the chest clutter. Key Rack isn’t just decor—it’s a database for your access. Sort, store, and visualize your keys on the wall.</p>
+    </div>
+
+    <div class="feature-card mc-panel" data-aos="fade-up" data-aos-delay="100">
+        <h3>[Access Control]</h3>
+        <p>Your privacy is now physical. Link Unique Keys to doors and vaults. Griefers will hit a dead end: even with admin rights, they’ll face a locked door that's way harder to break down</p>
+    </div>
+
+    <div class="feature-card mc-panel" data-aos="fade-up" data-aos-delay="200">
+        <h3>[Live Interior]</h3>
+        <p>Plants that work. Every pot is a functional block, integrated into your home's ecosystem.</p>
+    </div>
+</div>
+
+<section class="mechanics" data-aos="fade-right">
+    <div class="mechanics-text">
+        <h2>How it works?</h2>
+        <div>
+            <p>1. <b>Craft:</b> Use the KeyBox to craft a new key or create a duplicate. </p><br>
+            <p>2.  <b>Link:</b>	 Interact key on a door to generate a unique access ID.</p><br>
+            <p>3.  <b>Use:</b>	Press the interact key to open. No one but the key holder can access the object, and locked doors take much longer to break.
+</p>
+        </div>
+    </div>
+    <img src="img/img02.png" width="200" alt="">
+</section>
+
+<img src="img/img03.png" class="screenshot-frame" data-aos="flip-down" alt="">
+
+<div class="hotbar">
+    <a href="/"><div class="hotbar-slot">🏠</div></a>
+    <a href="/roadmap.html"><div class="hotbar-slot">🛣</div></a>
+    <a href="/wiki.html"><div class="hotbar-slot">🛠</div></a>
+</div>
+
+<footer style="text-align:center;padding:100px 0">
+    <p>Not an official Minecraft product.</p>
+    <a class="mc-button" style="background:#f16436">VIEW ON CURSEFORGE</a>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init({ once: true });
+</script>
+
+</body>
+</html>
