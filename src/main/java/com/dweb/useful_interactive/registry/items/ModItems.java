@@ -48,6 +48,10 @@ public class ModItems {
         Identifier.of(UsefulDecorMod.MOD_ID, "birch_decor_door")
     );
 
+    public static final RegistryKey<Item> GLASS_DECOR_DOOR_ITEM_KEY = RegistryKey.of(
+        RegistryKeys.ITEM,
+        Identifier.of(UsefulDecorMod.MOD_ID, "glass_decor_door")
+    );
 
     //Для стеклянной понели
     public static final RegistryKey<Item> OAK_GLASS_PANE_ITEM_KEY = RegistryKey.of(
@@ -75,6 +79,11 @@ public class ModItems {
         Identifier.of(UsefulDecorMod.MOD_ID, "birch_box_cabinet")
     );
 
+    public static final RegistryKey<Item> BIRCH_GARDEN_TRELLIS_ITEM_KEY = RegistryKey.of(
+        RegistryKeys.ITEM,
+        Identifier.of(UsefulDecorMod.MOD_ID, "birch_garden_trellis")
+    );
+
 
     //Для функциональных блоков
     
@@ -99,13 +108,15 @@ public class ModItems {
     public static final Item OAK_DECOR_DOOR_ITEM = registerBlockItem(ModArchitecturalBlocks.OAK_DECOR_DOOR, OAK_DECOR_DOOR_ITEM_KEY);
     public static final Item METAL_DECOR_DOOR_ITEM = registerBlockItem(ModArchitecturalBlocks.METAL_DECOR_DOOR, METAL_DECOR_DOOR_ITEM_KEY);
     public static final Item BIRCH_DECOR_DOOR_ITEM = registerBlockItem(ModArchitecturalBlocks.BIRCH_DECOR_DOOR, BIRCH_DECOR_DOOR_ITEM_KEY);
+    public static final Item GLASS_DECOR_DOOR_ITEM = registerBlockItem(ModArchitecturalBlocks.GLASS_DECOR_DOOR, GLASS_DECOR_DOOR_ITEM_KEY);
+
     //окна
     public static final Item OAK_GLASS_PANE_ITEM = registerBlockItem(ModArchitecturalBlocks.OAK_GLASS_PANE, OAK_GLASS_PANE_ITEM_KEY);
     public static final Item OAK_IRON_GLASS_PANE_ITEM = registerBlockItem(ModArchitecturalBlocks.OAK_IRON_GLASS_PANE, OAK_IRON_GLASS_PANE_ITEM_KEY);
     public static final Item IRON_GLASS_PANE_ITEM = registerBlockItem(ModArchitecturalBlocks.IRON_GLASS_PANE, IRON_GLASS_PANE_ITEM_KEY);
     public static final Item BIRCH_IRON_GLASS_PANE_ITEM = registerBlockItem(ModArchitecturalBlocks.BIRCH_IRON_GLASS_PANE, BIRCH_IRON_GLASS_PANE_ITEM_KEY);
 
-   
+    public static final Item BIRCH_GARDEN_TRELLIS_ITEM = registerBlockItem(ModArchitecturalBlocks.BIRCH_GARDEN_TRELLIS_BLOCK, BIRCH_GARDEN_TRELLIS_ITEM_KEY);
     // функциональные блоки
 
     

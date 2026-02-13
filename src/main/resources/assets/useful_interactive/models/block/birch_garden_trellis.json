@@ -1,0 +1,42 @@
+{
+	"textures": {
+		"0": "useful_interactive:block/birch_garden_trellis",
+		"particle": "useful_interactive:block/birch_garden_trellis"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 7.5],
+			"to": [16, 16, 8.5],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"up": {"uv": [0, 7.5, 16, 8.5], "texture": "#0"},
+				"down": {"uv": [0, 7.5, 16, 8.5], "texture": "#0"},
+				"east": {"uv": [7.5, 0, 8.5, 16], "texture": "#0"},
+				"west": {"uv": [7.5, 0, 8.5, 16], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+    "ground": {
+      "rotation": [ 0, 0, 0 ],
+      "translation": [ 0, 3, 0 ],
+      "scale": [ 0.25, 0.25, 0.25 ]
+    },
+    "gui": {
+      "rotation": [ 30, 225, 0 ],
+      "translation": [ 0, 0, 0 ],
+      "scale": [ 0.625, 0.625, 0.625 ]
+    },
+    "head": {
+      "rotation": [ 0, 0, 0 ],
+      "translation": [ 0, 0, 0 ],
+      "scale": [ 1, 1, 1 ]
+    },
+    "fixed": {
+        "rotation": [ 0, 0, 0 ],
+        "translation": [ 0, 0, 0 ],
+        "scale": [ 0.5, 0.5, 0.5 ]
+    }
+  }
+}

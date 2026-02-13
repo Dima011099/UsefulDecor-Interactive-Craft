@@ -29,6 +29,11 @@ public class ModArchitecturalBlocks {
         Identifier.of(UsefulDecorMod.MOD_ID, "birch_decor_door")
     );
 
+    public static final RegistryKey<Block> GLASS_DECOR_DOOR_KEY = RegistryKey.of(
+        RegistryKeys.BLOCK,
+        Identifier.of(UsefulDecorMod.MOD_ID, "glass_decor_door")
+    );
+
     // Ключи стеклянной панели
     public static final RegistryKey<Block> OAK_GLASS_PANE_KEY = RegistryKey.of(
             RegistryKeys.BLOCK,
@@ -48,6 +53,11 @@ public class ModArchitecturalBlocks {
     public static final RegistryKey<Block> BIRCH_IRON_GLASS_PANE_KEY = RegistryKey.of(
             RegistryKeys.BLOCK,
             Identifier.of(UsefulDecorMod.MOD_ID, "birch_iron_glass_pane")
+    );
+
+    public static final RegistryKey<Block> BIRCH_GARDEN_TRELLIS_KEY = RegistryKey.of(
+            RegistryKeys.BLOCK,
+            Identifier.of(UsefulDecorMod.MOD_ID, "birch_garden_trellis")
     );
 
 
@@ -86,6 +96,18 @@ public class ModArchitecturalBlocks {
         BIRCH_DECOR_DOOR_KEY
     );
 
+    public static final Block GLASS_DECOR_DOOR = ModBlocks.registerBlock(
+        new DoorDecor(
+                BlockSetType.BIRCH, 
+                AbstractBlock.Settings.create()
+                        .registryKey(GLASS_DECOR_DOOR_KEY)
+                        .strength(1.5f)
+                        .nonOpaque() // Двери имеют прозрачные части
+        ),
+        GLASS_DECOR_DOOR_KEY
+    );
+
+
 
     // Блок стеклянной панели
     // Регистрация блока панели
@@ -120,5 +142,16 @@ public class ModArchitecturalBlocks {
         .sounds(BlockSoundGroup.GLASS)),
         BIRCH_IRON_GLASS_PANE_KEY
     );
+
+
+    //birch_garden_trellis
+    public static final Block BIRCH_GARDEN_TRELLIS_BLOCK = ModBlocks.registerBlock(
+        new HorizontalPaneBlock(AbstractBlock.Settings.create().registryKey(BIRCH_GARDEN_TRELLIS_KEY)
+        .nonOpaque() // Делает блок прозрачным
+        .strength(2.0f) // Прочность как у стекла
+        .sounds(BlockSoundGroup.WOOD)),
+        BIRCH_GARDEN_TRELLIS_KEY
+    );
+
     public static void register() {}
 }

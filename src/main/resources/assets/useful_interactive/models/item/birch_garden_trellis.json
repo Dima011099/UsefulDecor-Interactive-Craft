@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "useful_interactive:block/birch_garden_trellis"
+  }
+}

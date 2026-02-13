@@ -36,6 +36,8 @@ public class ModItemGroups {
                         entries.add(ModItems.KEYBOX_ITEM);
                         entries.add(ModItems.BIRCH_BOX_CABINET_ITEM);
                         entries.add(ModItems.BATANIC_TABLE_ITEM);
+                        entries.add(ModItems.GLASS_DECOR_DOOR_ITEM);
+                        entries.add(ModItems.BIRCH_GARDEN_TRELLIS_ITEM);
                     })
                     .build());
 

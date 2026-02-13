@@ -34,7 +34,8 @@ public static final BlockEntityType<DoorDecorEntity> DOOR_BLOCK_ENTITY_TYPE = Re
         DoorDecorEntity::new, 
         ModArchitecturalBlocks.OAK_DECOR_DOOR, 
         ModArchitecturalBlocks.METAL_DECOR_DOOR, 
-        ModArchitecturalBlocks.BIRCH_DECOR_DOOR).build()
+        ModArchitecturalBlocks.BIRCH_DECOR_DOOR,
+        ModArchitecturalBlocks.GLASS_DECOR_DOOR).build()
 );
 
 public static final  BlockEntityType<KeyBoxBlockEntity> KEY_BOX_ENTITY_TYPE = Registry.register(
