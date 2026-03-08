@@ -38,6 +38,8 @@ public class ModItemGroups {
                         entries.add(ModItems.BATANIC_TABLE_ITEM);
                         entries.add(ModItems.GLASS_DECOR_DOOR_ITEM);
                         entries.add(ModItems.BIRCH_GARDEN_TRELLIS_ITEM);
+                        entries.add(ModItems.BIRCH_DECORATIVE_STRIP_1_ITEM);
+                        entries.add(ModItems.BIRCH_DECORATIVE_STRIP_2_ITEM);
                     })
                     .build());
 

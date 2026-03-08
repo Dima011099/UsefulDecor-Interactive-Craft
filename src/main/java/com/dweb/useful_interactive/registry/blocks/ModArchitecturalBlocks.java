@@ -60,6 +60,17 @@ public class ModArchitecturalBlocks {
             Identifier.of(UsefulDecorMod.MOD_ID, "birch_garden_trellis")
     );
 
+    public static final RegistryKey<Block> BIRCH_DECORATIVE_STRIP_1_KEY = RegistryKey.of(
+            RegistryKeys.BLOCK,
+            Identifier.of(UsefulDecorMod.MOD_ID, "birch_decorative_strip_1")
+    );
+
+    public static final RegistryKey<Block> BIRCH_DECORATIVE_STRIP_2_KEY = RegistryKey.of(
+            RegistryKeys.BLOCK,
+            Identifier.of(UsefulDecorMod.MOD_ID, "birch_decorative_strip_2")
+    );
+
+
 
 
     // Блок дверей
@@ -151,6 +162,22 @@ public class ModArchitecturalBlocks {
         .strength(2.0f) // Прочность как у стекла
         .sounds(BlockSoundGroup.WOOD)),
         BIRCH_GARDEN_TRELLIS_KEY
+    );
+
+    public static final Block BIRCH_DECORATIVE_STRIP_1_BLOCK = ModBlocks.registerBlock(
+        new HorizontalPaneBlock(AbstractBlock.Settings.create().registryKey(BIRCH_DECORATIVE_STRIP_1_KEY)
+        .nonOpaque() // Делает блок прозрачным
+        .strength(2.0f) // Прочность как у стекла
+        .sounds(BlockSoundGroup.WOOD)),
+        BIRCH_DECORATIVE_STRIP_1_KEY
+    );
+
+    public static final Block BIRCH_DECORATIVE_STRIP_2_BLOCK = ModBlocks.registerBlock(
+        new HorizontalPaneBlock(AbstractBlock.Settings.create().registryKey(BIRCH_DECORATIVE_STRIP_2_KEY)
+        .nonOpaque() // Делает блок прозрачным
+        .strength(2.0f) // Прочность как у стекла
+        .sounds(BlockSoundGroup.WOOD)),
+        BIRCH_DECORATIVE_STRIP_2_KEY
     );
 
     public static void register() {}

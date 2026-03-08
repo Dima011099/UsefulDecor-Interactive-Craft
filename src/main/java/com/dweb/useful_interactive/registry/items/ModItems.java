@@ -84,6 +84,16 @@ public class ModItems {
         Identifier.of(UsefulDecorMod.MOD_ID, "birch_garden_trellis")
     );
 
+    public static final RegistryKey<Item> BIRCH_DECORATIVE_STRIP_1_ITEM_KEY = RegistryKey.of(
+        RegistryKeys.ITEM,
+        Identifier.of(UsefulDecorMod.MOD_ID, "birch_decorative_strip_1")
+    );
+
+    public static final RegistryKey<Item> BIRCH_DECORATIVE_STRIP_2_ITEM_KEY = RegistryKey.of(
+        RegistryKeys.ITEM,
+        Identifier.of(UsefulDecorMod.MOD_ID, "birch_decorative_strip_2")
+    );
+
 
     //Для функциональных блоков
     
@@ -117,6 +127,9 @@ public class ModItems {
     public static final Item BIRCH_IRON_GLASS_PANE_ITEM = registerBlockItem(ModArchitecturalBlocks.BIRCH_IRON_GLASS_PANE, BIRCH_IRON_GLASS_PANE_ITEM_KEY);
 
     public static final Item BIRCH_GARDEN_TRELLIS_ITEM = registerBlockItem(ModArchitecturalBlocks.BIRCH_GARDEN_TRELLIS_BLOCK, BIRCH_GARDEN_TRELLIS_ITEM_KEY);
+    public static final Item BIRCH_DECORATIVE_STRIP_1_ITEM = registerBlockItem(ModArchitecturalBlocks.BIRCH_DECORATIVE_STRIP_1_BLOCK, BIRCH_DECORATIVE_STRIP_1_ITEM_KEY);
+    public static final Item BIRCH_DECORATIVE_STRIP_2_ITEM = registerBlockItem(ModArchitecturalBlocks.BIRCH_DECORATIVE_STRIP_2_BLOCK, BIRCH_DECORATIVE_STRIP_2_ITEM_KEY);
+
     // функциональные блоки
 
     
