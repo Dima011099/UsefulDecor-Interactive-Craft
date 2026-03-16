@@ -2,6 +2,7 @@ package com.dweb.useful_interactive.registry.blocks;
 
 import com.dweb.useful_interactive.UsefulDecorMod;
 import com.dweb.useful_interactive.block.door.DoorDecor;
+import com.dweb.useful_interactive.block.window.HorizontalDecorativePaneBlock;
 import com.dweb.useful_interactive.block.window.HorizontalPaneBlock;
 
 import net.minecraft.block.AbstractBlock;
@@ -157,7 +158,7 @@ public class ModArchitecturalBlocks {
 
     //birch_garden_trellis
     public static final Block BIRCH_GARDEN_TRELLIS_BLOCK = ModBlocks.registerBlock(
-        new HorizontalPaneBlock(AbstractBlock.Settings.create().registryKey(BIRCH_GARDEN_TRELLIS_KEY)
+        new HorizontalDecorativePaneBlock(AbstractBlock.Settings.create().registryKey(BIRCH_GARDEN_TRELLIS_KEY)
         .nonOpaque() // Делает блок прозрачным
         .strength(2.0f) // Прочность как у стекла
         .sounds(BlockSoundGroup.WOOD)),
@@ -165,7 +166,7 @@ public class ModArchitecturalBlocks {
     );
 
     public static final Block BIRCH_DECORATIVE_STRIP_1_BLOCK = ModBlocks.registerBlock(
-        new HorizontalPaneBlock(AbstractBlock.Settings.create().registryKey(BIRCH_DECORATIVE_STRIP_1_KEY)
+        new HorizontalDecorativePaneBlock(AbstractBlock.Settings.create().registryKey(BIRCH_DECORATIVE_STRIP_1_KEY)
         .nonOpaque() // Делает блок прозрачным
         .strength(2.0f) // Прочность как у стекла
         .sounds(BlockSoundGroup.WOOD)),
@@ -173,7 +174,7 @@ public class ModArchitecturalBlocks {
     );
 
     public static final Block BIRCH_DECORATIVE_STRIP_2_BLOCK = ModBlocks.registerBlock(
-        new HorizontalPaneBlock(AbstractBlock.Settings.create().registryKey(BIRCH_DECORATIVE_STRIP_2_KEY)
+        new HorizontalDecorativePaneBlock(AbstractBlock.Settings.create().registryKey(BIRCH_DECORATIVE_STRIP_2_KEY)
         .nonOpaque() // Делает блок прозрачным
         .strength(2.0f) // Прочность как у стекла
         .sounds(BlockSoundGroup.WOOD)),
