@@ -1,13 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_plans": {
+    "has_chest": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:oak_planks",
-              "useful_interactive:key_item"
+              "minecraft:birch_planks"
             ]
           }
         ]
@@ -17,10 +16,9 @@
   },
   "rewards": {
     "recipes": [
-      "useful_interactive:oak_decor_door",
-      "useful_interactive:metal_decor_door",
-      "useful_interactive:birch_decor_door",
-      "useful_interactive:glass_decor_door"
+      "useful_interactive:birch_garden_trellis",
+      "useful_interactive:birch_decorative_strip_1",
+      "useful_interactive:birch_decorative_strip_2"
     ]
   }
 }

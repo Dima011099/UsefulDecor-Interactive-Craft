@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "garden_trellis",
+  "category": "building",
+  "pattern": [
+    "P P",
+    " P ",
+    "P P"
+  ],
+  "key": {
+    "P": [
+      "minecraft:birch_planks"
+    ]
+  },
+  "result": {
+    "id": "useful_interactive:birch_garden_trellis",
+    "count": 4
+  }
+}

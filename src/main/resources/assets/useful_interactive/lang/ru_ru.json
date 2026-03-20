@@ -27,12 +27,23 @@
     "block.useful_interactive.oak_street_lamp": "Дубовый уличный фонарь",
     "item.useful_interactive.oak_street_lamp": "Дубовый уличный фонарь",
 
-    "block.useful_interactive.aok_decor_door": "Декоративная дубовая дверь",
-    "item.useful_interactive.aok_decor_door": "Декоративная дубовая дверь",
+    "block.useful_interactive.oak_decor_door": "Декоративная дубовая дверь",
+    "item.useful_interactive.oak_decor_door": "Декоративная дубовая дверь",
+    "block.useful_interactive.glass_decor_door": "Декоративная стеклянная дверь",
+    "item.useful_interactive.glass_decor_door": "Декоративная стеклянная дверь",
+
+
     "block.useful_interactive.metal_decor_door": "Декоративная железная дверь",
     "item.useful_interactive.metal_decor_door": "Декоративная железная дверь",
     "item.useful_interactive.oak_glass_pane": "Дубовое окно",
     "itemGroup.useful_interactive.useful_group": "Useful Interactive",
+
+    "block.useful_interactive.birch_garden_trellis": "Березовая садовая решетка",
+    "item.useful_interactive.birch_garden_trellis": "Березовая садовая решетка",
+    "block.useful_interactive.birch_decorative_strip_1": "Березовая реечная перегородка 1",
+    "item.useful_interactive.birch_decorative_strip_1": "Березовая реечная перегородка 1",
+    "block.useful_interactive.birch_decorative_strip_2": "Березовая реечная перегородка 2",
+    "item.useful_interactive.birch_decorative_strip_2": "Березовая реечная перегородка 2",
 
 
     "message.useful_interactive.key_damaged": "Ключ повреждён!",

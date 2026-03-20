@@ -27,12 +27,24 @@
     "block.useful_interactive.oak_street_lamp": "Oak Street Lamp",
     "item.useful_interactive.oak_street_lamp": "Oak Street Lamp",
 
-    "block.useful_interactive.aok_decor_door": "Decorative Oak Door",
-    "item.useful_interactive.aok_decor_door": "Decorative Oak Door",
+    "block.useful_interactive.oak_decor_door": "Decorative Oak Door",
+    "item.useful_interactive.oak_decor_door": "Decorative Oak Door",
+    "block.useful_interactive.glass_decor_door": "Decorative Glass Door",
+    "item.useful_interactive.glass_decor_door": "Decorative Glass Door",
+
+
     "block.useful_interactive.metal_decor_door": "Decorative Iron Door",
     "item.useful_interactive.metal_decor_door": "Decorative Iron Door",
+
     "item.useful_interactive.oak_glass_pane": "Oak Window",
     "itemGroup.useful_interactive.useful_group": "Useful Interactive",
+
+    "block.useful_interactive.birch_garden_trellis": "Birch Garden Trellis",
+    "item.useful_interactive.birch_garden_trellis": "Birch Garden Trellis",
+    "block.useful_interactive.birch_decorative_strip_1": "Birch Slatted Wall 1",
+    "item.useful_interactive.birch_decorative_strip_1": "Birch Slatted Wall 1",
+    "block.useful_interactive.birch_decorative_strip_2": "Birch Slatted Wall 2",
+    "item.useful_interactive.birch_decorative_strip_2": "Birch Slatted Wall 2",
 
 
     "message.useful_interactive.key_damaged": "Key is damaged!",
