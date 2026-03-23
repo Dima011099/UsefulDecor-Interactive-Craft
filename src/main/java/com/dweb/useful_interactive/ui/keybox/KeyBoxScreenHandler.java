@@ -10,53 +10,53 @@ import com.dweb.useful_interactive.registry.ModComponentType;
 import com.dweb.useful_interactive.registry.items.KeyItem;
 import com.dweb.useful_interactive.ui.ModScreenHandlers;
 
-import net.minecraft.inventory.CraftingInventory;
-import net.minecraft.inventory.CraftingResultInventory;
-import net.minecraft.inventory.Inventory;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.SimpleInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.network.packet.s2c.play.ScreenHandlerSlotUpdateS2CPacket;
-import net.minecraft.recipe.RecipeEntry;
-import net.minecraft.recipe.input.RecipeInput;
-import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.ScreenHandlerContext;
-import net.minecraft.screen.slot.CraftingResultSlot;
-import net.minecraft.screen.slot.Slot;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.server.world.ServerWorld;
+import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Container;
+import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.inventory.ResultContainer;
+import net.minecraft.world.inventory.ResultSlot;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.inventory.TransientCraftingContainer;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeInput;
 
-public class KeyBoxScreenHandler extends ScreenHandler {
-    private final CraftingInventory inputInventory = new CraftingInventory(this, 4, 1); 
-    private final CraftingResultInventory resultInventory = new CraftingResultInventory();
-    private final ScreenHandlerContext context;
+public class KeyBoxScreenHandler extends AbstractContainerMenu {
+    private final TransientCraftingContainer inputInventory = new TransientCraftingContainer(this, 4, 1); //CraftingInventory
+    private final ResultContainer resultInventory = new ResultContainer(); //CraftingResultInventory
+    private final ContainerLevelAccess context; //ScreenHandlerContext -> ContainerLevelAccess
     private RecipeInput input;
     private boolean isCrafting = false;
     private List<ItemStack> lastInputSnapshot;
-    private PlayerEntity player;
+    private Player player;
 
-    public KeyBoxScreenHandler(int syncId, PlayerInventory playerInventory) {
-        this(syncId, playerInventory, new SimpleInventory(4), ScreenHandlerContext.EMPTY);
+    public KeyBoxScreenHandler(int syncId, Inventory playerInventory) {
+        this(syncId, playerInventory, new SimpleContainer(4), ContainerLevelAccess.NULL); //ScreenHandlerContext
     }
 
-    public KeyBoxScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory, ScreenHandlerContext context) {
+    public KeyBoxScreenHandler(int syncId, Inventory playerInventory, Container inventory, ContainerLevelAccess context) {//ScreenHandlerContext
         super(ModScreenHandlers.KEY_CABINET, syncId);
         this.context = context;
         this.player = playerInventory.player;
-        inventory.onOpen(playerInventory.player);
+        inventory.startOpen(playerInventory.player); //onOpen
         lastInputSnapshot = createInputSnapshot();
 
-        this.addSlot(new CraftingResultSlot(playerInventory.player, inputInventory, resultInventory, 0, 134, 47){
+        this.addSlot(new ResultSlot(playerInventory.player, inputInventory, resultInventory, 0, 134, 47){
             @Override
-            public void onTakeItem(PlayerEntity player, ItemStack stack) {
-                ItemStack itemStack = inputInventory.getStack(0).copy();
+            public void onTake(Player player, ItemStack stack) {//onTakeItem
+                ItemStack itemStack = inputInventory.getItem(0).copy();
 
                 consumeIngredients(input);
-                stack.getItem().onCraft(stack, player.getEntityWorld());
+                stack.getItem().onCraftedBy(stack, player); //getEntityWorld -> level onCraft
 
-                inputInventory.setStack(0, itemStack);
-                if(itemStack != ItemStack.EMPTY && itemStack.getItem() == KeyItem.MY_ITEM)
+                inputInventory.setItem(0, itemStack); //setStack
+                if(itemStack != ItemStack.EMPTY && itemStack.is(KeyItem.MY_ITEM))//itemStack.getItem() == KeyItem.MY_ITEM
                     stack.set(ModComponentType.KEY_F_CLOSE, itemStack.get(ModComponentType.KEY_F_CLOSE));
             }
         });
@@ -78,33 +78,33 @@ public class KeyBoxScreenHandler extends ScreenHandler {
     }
 
     @Override
-    public ItemStack quickMove(PlayerEntity player, int invSlot) {
+    public ItemStack quickMoveStack(Player player, int invSlot) {//quickMove
         return ItemStack.EMPTY; 
     }
 
     @Override
-    public void onClosed(PlayerEntity player) {
-        super.onClosed(player);
+    public void removed(Player player) { //onClosed
+        super.removed(player);
     
-        if (!player.getEntityWorld().isClient()) {
-            this.dropInventory(player, this.inputInventory);  
-            this.resultInventory.clear();
+        if (!player.level().isClientSide()) { //getEntityWorld -> level isClient
+            this.clearContainer(player, this.inputInventory);  //dropInventory
+            this.resultInventory.clearContent(); //clear
         }
     }
 
     @Override
-    public boolean canUse(PlayerEntity player) {
+    public boolean stillValid(Player player) {//stillValid
         return true;
     }
 
     @Override
-    public void onContentChanged(Inventory inventory) {
-        super.onContentChanged(inventory);
+    public void slotsChanged(Container inventory) {//onContentChanged
+        super.slotsChanged(inventory);
     
         if (isCrafting) return;
     
-        this.context.run((world, pos) -> {
-            if (!(world instanceof ServerWorld serverWorld)) return;
+        this.context.execute((world, pos) -> { //run -> execute
+            if (!(world instanceof ServerLevel serverWorld)) return;
      
             List<ItemStack> currentInput = createInputSnapshot();
 
@@ -114,14 +114,14 @@ public class KeyBoxScreenHandler extends ScreenHandler {
         
 
             input = new RecipeInput() {
-                public int size() { return inputInventory.size(); }
+                public int size() { return inputInventory.getContainerSize(); } //size
                 @Override
-                public ItemStack getStackInSlot(int slot) {
-                    return inputInventory.getStack(slot);
+                public ItemStack getItem(int slot) {//getStackInSlot
+                    return inputInventory.getItem(slot);//getStack
                 }
             };
 
-            Optional<RecipeEntry<KeyBoxRecipe>> match = serverWorld.getRecipeManager()
+            Optional<RecipeHolder<KeyBoxRecipe>> match = serverWorld.getRecipeManager()//RecipeEntry
                 .getFirstMatch(ModRecipeTypes.KEY_CABINET, input, serverWorld);
 
             ItemStack result = ItemStack.EMPTY;
@@ -134,15 +134,15 @@ public class KeyBoxScreenHandler extends ScreenHandler {
             isCrafting = false; 
         
 
-            resultInventory.setStack(0, result);
+            resultInventory.setItem(0, result); //setStack
             
-            inputInventory.markDirty();
-            resultInventory.markDirty();  
+            inputInventory.setChanged(); //markDirty -> setChanged
+            resultInventory.setChanged();  
        
-            if (player instanceof ServerPlayerEntity serverPlayer) {
-                    serverPlayer.networkHandler.sendPacket(new ScreenHandlerSlotUpdateS2CPacket(
-                    this.syncId, 
-                    this.nextRevision(), 
+            if (player instanceof ServerPlayer serverPlayer) { //ServerPlayerEntity -> ServerPlayer
+                    serverPlayer.connection.send(new ClientboundContainerSetSlotPacket(//networkHandler.sendPacket ScreenHandlerSlotUpdateS2CPacket
+                    this.containerId,  //syncId
+                    this.incrementStateId(), //nextRevision
                 0,
                     result
                 ));
@@ -154,7 +154,7 @@ public class KeyBoxScreenHandler extends ScreenHandler {
         if (a.size() != b.size()) return false;
 
         for (int i = 0; i < a.size(); i++) {
-            if (!ItemStack.areEqual(a.get(i), b.get(i))) {
+            if (!ItemStack.matches(a.get(i), b.get(i))) {//areEqual
                 return false;
             }
         }
@@ -164,8 +164,8 @@ public class KeyBoxScreenHandler extends ScreenHandler {
     private List<ItemStack> createInputSnapshot() {
         List<ItemStack> snapshot = new ArrayList<>();
 
-        for (int i = 0; i < inputInventory.size(); i++) {
-            snapshot.add(inputInventory.getStack(i).copy());
+        for (int i = 0; i < inputInventory.getContainerSize(); i++) {//size
+            snapshot.add(inputInventory.getItem(i).copy());//getStack
         }
 
         return snapshot;
@@ -173,27 +173,31 @@ public class KeyBoxScreenHandler extends ScreenHandler {
 
     private void consumeIngredients(RecipeInput input) {
         for (int i = 0; i < input.size(); i++) {
-            ItemStack stack = input.getStackInSlot(i);
+            ItemStack stack = input.getItem(i);//getStackInSlot
             if (!stack.isEmpty()) {
-                stack.decrement(1);
+                stack.shrink(1);//decrement
             }
         }
    } 
    
     @Override
-    public boolean canInsertIntoSlot(ItemStack stack, Slot slot) {
-        return slot.inventory == this.inputInventory && slot.getIndex() < 4;
+    public boolean canTakeItemForPickAll(ItemStack stack, Slot slot) {//canInsertIntoSlot
+        return slot.container == this.inputInventory && slot.getContainerSlot() < 4;//inventory getIndex
     }
    
 }
 
 class SpecificItemSlot extends Slot {
-    public SpecificItemSlot(Inventory inventory, int index, int x, int y) {
+    public SpecificItemSlot(Container inventory, int index, int x, int y) {
         super(inventory, index, x, y);
     }
-
+/* 
     @Override
     public boolean canInsert(ItemStack stack) {
         return stack.getItem() == KeyItem.MY_ITEM;
-    }
+    }*/
+   @Override
+   public boolean mayPlace(ItemStack stack) {
+        return stack.getItem() == KeyItem.MY_ITEM;
+   }
 }

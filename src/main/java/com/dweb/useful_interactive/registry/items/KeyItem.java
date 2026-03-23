@@ -4,12 +4,12 @@ package com.dweb.useful_interactive.registry.items;
 
 import com.dweb.useful_interactive.UsefulDecorMod;
 
-import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.item.Item;
 
 public class KeyItem {
     

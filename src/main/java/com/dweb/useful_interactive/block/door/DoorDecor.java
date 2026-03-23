@@ -1,37 +1,41 @@
 package com.dweb.useful_interactive.block.door;
 
+import javax.swing.text.html.BlockView;
+
 import com.dweb.useful_interactive.core.lock.ILockableManager;
 import com.dweb.useful_interactive.domain.lock.LockableManager;
 
-import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.enums.DoubleBlockHalf;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.text.Text;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.DoorBlock;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.phys.BlockHitResult;
 
-public class DoorDecor extends DoorBlock implements BlockEntityProvider {
 
-    public DoorDecor(BlockSetType blockSetType, Settings settings) {
+
+public class DoorDecor extends DoorBlock implements EntityBlock { //BlockEntityProvider
+
+    public DoorDecor(BlockSetType blockSetType, BlockBehaviour.Properties settings) {
         super(blockSetType, settings);
     }
 
+     // В EntityBlock метод называется newBlockEntity, а не createBlockEntity
     @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return state.get(HALF) == DoubleBlockHalf.LOWER
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return state.getValue(HALF) == DoubleBlockHalf.LOWER //get -> getValue
             ? new DoorDecorEntity(pos, state)
             : null;
     }
 
     @Override
-    public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
+    protected RenderShape getRenderShape(BlockState state) { // getRenderType -> getRenderShape public -> protected
+        return RenderShape.MODEL; // BlockRenderType -> RenderShape
     }
 
     @Override

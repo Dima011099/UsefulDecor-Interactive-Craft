@@ -5,70 +5,71 @@ import com.dweb.useful_interactive.block.door.DoorDecor;
 import com.dweb.useful_interactive.block.window.HorizontalDecorativePaneBlock;
 import com.dweb.useful_interactive.block.window.HorizontalPaneBlock;
 
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockSetType;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.material.MapColor;
+
 
 public class ModArchitecturalBlocks {
      // Для дверей Ключи (Keys)
-    public static final RegistryKey<Block> OAK_DECOR_DOOR_KEY = RegistryKey.of(
-        RegistryKeys.BLOCK,
-        Identifier.of(UsefulDecorMod.MOD_ID, "oak_decor_door")
+    public static final ResourceKey<Block> OAK_DECOR_DOOR_KEY = ResourceKey.create(//ResourceKey.create(
+        Registries.BLOCK,
+        Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "oak_decor_door")//of
     );
 
-    public static final RegistryKey<Block> METAL_DECOR_DOOR_KEY = RegistryKey.of(
-        RegistryKeys.BLOCK,
-        Identifier.of(UsefulDecorMod.MOD_ID, "metal_decor_door")
+    public static final ResourceKey<Block> METAL_DECOR_DOOR_KEY = ResourceKey.create(
+        Registries.BLOCK,
+        Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "metal_decor_door")//of
     );
 
-    public static final RegistryKey<Block> BIRCH_DECOR_DOOR_KEY = RegistryKey.of(
-        RegistryKeys.BLOCK,
-        Identifier.of(UsefulDecorMod.MOD_ID, "birch_decor_door")
+    public static final ResourceKey<Block> BIRCH_DECOR_DOOR_KEY = ResourceKey.create(
+        Registries.BLOCK,
+        Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "birch_decor_door")//of
     );
 
-    public static final RegistryKey<Block> GLASS_DECOR_DOOR_KEY = RegistryKey.of(
-        RegistryKeys.BLOCK,
-        Identifier.of(UsefulDecorMod.MOD_ID, "glass_decor_door")
+    public static final ResourceKey<Block> GLASS_DECOR_DOOR_KEY = ResourceKey.create(
+        Registries.BLOCK,
+        Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "glass_decor_door")//of
     );
 
     // Ключи стеклянной панели
-    public static final RegistryKey<Block> OAK_GLASS_PANE_KEY = RegistryKey.of(
-            RegistryKeys.BLOCK,
-            Identifier.of(UsefulDecorMod.MOD_ID, "oak_glass_pane")
+    public static final ResourceKey<Block> OAK_GLASS_PANE_KEY = ResourceKey.create(
+            Registries.BLOCK,
+            Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "oak_glass_pane")//of
     );
 
-    public static final RegistryKey<Block> OAK_IRON_GLASS_PANE_KEY = RegistryKey.of(
-            RegistryKeys.BLOCK,
-            Identifier.of(UsefulDecorMod.MOD_ID, "oak_iron_glass_pane")
+    public static final ResourceKey<Block> OAK_IRON_GLASS_PANE_KEY = ResourceKey.create(
+            Registries.BLOCK,
+            Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "oak_iron_glass_pane")//of
     );
 
-    public static final RegistryKey<Block> IRON_GLASS_PANE_KEY = RegistryKey.of(
-            RegistryKeys.BLOCK,
-            Identifier.of(UsefulDecorMod.MOD_ID, "iron_glass_pane")
+    public static final ResourceKey<Block> IRON_GLASS_PANE_KEY = ResourceKey.create(
+            Registries.BLOCK,
+            Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "iron_glass_pane")//of
     );
 
-    public static final RegistryKey<Block> BIRCH_IRON_GLASS_PANE_KEY = RegistryKey.of(
-            RegistryKeys.BLOCK,
-            Identifier.of(UsefulDecorMod.MOD_ID, "birch_iron_glass_pane")
+    public static final ResourceKey<Block> BIRCH_IRON_GLASS_PANE_KEY = ResourceKey.create(
+            Registries.BLOCK,
+            Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "birch_iron_glass_pane")//of
     );
 
-    public static final RegistryKey<Block> BIRCH_GARDEN_TRELLIS_KEY = RegistryKey.of(
-            RegistryKeys.BLOCK,
-            Identifier.of(UsefulDecorMod.MOD_ID, "birch_garden_trellis")
+    public static final ResourceKey<Block> BIRCH_GARDEN_TRELLIS_KEY = ResourceKey.create(
+            Registries.BLOCK,
+            Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "birch_garden_trellis")//of
     );
 
-    public static final RegistryKey<Block> BIRCH_DECORATIVE_STRIP_1_KEY = RegistryKey.of(
-            RegistryKeys.BLOCK,
-            Identifier.of(UsefulDecorMod.MOD_ID, "birch_decorative_strip_1")
+    public static final ResourceKey<Block> BIRCH_DECORATIVE_STRIP_1_KEY = ResourceKey.create(
+            Registries.BLOCK,
+            Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "birch_decorative_strip_1")//of
     );
 
-    public static final RegistryKey<Block> BIRCH_DECORATIVE_STRIP_2_KEY = RegistryKey.of(
-            RegistryKeys.BLOCK,
-            Identifier.of(UsefulDecorMod.MOD_ID, "birch_decorative_strip_2")
+    public static final ResourceKey<Block> BIRCH_DECORATIVE_STRIP_2_KEY = ResourceKey.create(
+            Registries.BLOCK,
+            Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "birch_decorative_strip_2")//of
     );
 
 
@@ -78,10 +79,11 @@ public class ModArchitecturalBlocks {
     public static final Block OAK_DECOR_DOOR = ModBlocks.registerBlock(
         new DoorDecor(
                 BlockSetType.OAK, 
-                AbstractBlock.Settings.create()
-                        .registryKey(OAK_DECOR_DOOR_KEY)
+                BlockBehaviour.Properties.of()
+                        .mapColor(MapColor.WOOD)
+                        .setId(OAK_DECOR_DOOR_KEY)
                         .strength(1.5f)
-                        .nonOpaque() // Двери имеют прозрачные части
+                        .noOcclusion() // Двери имеют прозрачные части
         ),
         OAK_DECOR_DOOR_KEY
     );
@@ -89,10 +91,11 @@ public class ModArchitecturalBlocks {
     public static final Block METAL_DECOR_DOOR = ModBlocks.registerBlock(
         new DoorDecor(
                 BlockSetType.OAK, 
-                AbstractBlock.Settings.create()
-                        .registryKey(METAL_DECOR_DOOR_KEY)
+                BlockBehaviour.Properties.of() // BlockBehaviour.Properties.of()
+                        .mapColor(MapColor.WOOD)
+                        .setId(METAL_DECOR_DOOR_KEY) //setId
                         .strength(2.0f)
-                        .nonOpaque() // Двери имеют прозрачные части
+                        .noOcclusion() // Двери имеют прозрачные части noOcclusion
         ),
         METAL_DECOR_DOOR_KEY
     );
@@ -100,10 +103,10 @@ public class ModArchitecturalBlocks {
     public static final Block BIRCH_DECOR_DOOR = ModBlocks.registerBlock(
         new DoorDecor(
                 BlockSetType.BIRCH, 
-                AbstractBlock.Settings.create()
-                        .registryKey(BIRCH_DECOR_DOOR_KEY)
+                BlockBehaviour.Properties.of()
+                        .setId(BIRCH_DECOR_DOOR_KEY)
                         .strength(1.5f)
-                        .nonOpaque() // Двери имеют прозрачные части
+                        .noOcclusion() // Двери имеют прозрачные части
         ),
         BIRCH_DECOR_DOOR_KEY
     );
@@ -111,10 +114,10 @@ public class ModArchitecturalBlocks {
     public static final Block GLASS_DECOR_DOOR = ModBlocks.registerBlock(
         new DoorDecor(
                 BlockSetType.BIRCH, 
-                AbstractBlock.Settings.create()
-                        .registryKey(GLASS_DECOR_DOOR_KEY)
+                BlockBehaviour.Properties.of()
+                        .setId(GLASS_DECOR_DOOR_KEY)
                         .strength(1.5f)
-                        .nonOpaque() // Двери имеют прозрачные части
+                        .noOcclusion() // Двери имеют прозрачные части
         ),
         GLASS_DECOR_DOOR_KEY
     );
@@ -124,32 +127,32 @@ public class ModArchitecturalBlocks {
     // Блок стеклянной панели
     // Регистрация блока панели
     public static final Block OAK_GLASS_PANE = ModBlocks.registerBlock(
-        new HorizontalPaneBlock(AbstractBlock.Settings.create().registryKey(OAK_GLASS_PANE_KEY)
-        .nonOpaque() // Делает блок прозрачным
+        new HorizontalPaneBlock(BlockBehaviour.Properties.of().setId(OAK_GLASS_PANE_KEY)
+        .noOcclusion() // Делает блок прозрачным
         .strength(2.0f) // Прочность как у стекла
         .sounds(BlockSoundGroup.GLASS)),
         OAK_GLASS_PANE_KEY
     );
 
     public static final Block OAK_IRON_GLASS_PANE = ModBlocks.registerBlock(
-        new HorizontalPaneBlock(AbstractBlock.Settings.create().registryKey(OAK_IRON_GLASS_PANE_KEY)
-        .nonOpaque() // Делает блок прозрачным
+        new HorizontalPaneBlock(BlockBehaviour.Properties.of().setId(OAK_IRON_GLASS_PANE_KEY)
+        .noOcclusion() // Делает блок прозрачным
         .strength(2.0f) // Прочность как у стекла
         .sounds(BlockSoundGroup.GLASS)),
         OAK_IRON_GLASS_PANE_KEY
     );
 
     public static final Block IRON_GLASS_PANE = ModBlocks.registerBlock(
-        new HorizontalPaneBlock(AbstractBlock.Settings.create().registryKey(IRON_GLASS_PANE_KEY)
-        .nonOpaque() // Делает блок прозрачным
+        new HorizontalPaneBlock(BlockBehaviour.Properties.of().setId(IRON_GLASS_PANE_KEY)
+        .noOcclusion() // Делает блок прозрачным
         .strength(2.0f) // Прочность как у стекла
         .sounds(BlockSoundGroup.GLASS)),
         IRON_GLASS_PANE_KEY
     );
 
     public static final Block BIRCH_IRON_GLASS_PANE = ModBlocks.registerBlock(
-        new HorizontalPaneBlock(AbstractBlock.Settings.create().registryKey(BIRCH_IRON_GLASS_PANE_KEY)
-        .nonOpaque() // Делает блок прозрачным
+        new HorizontalPaneBlock(BlockBehaviour.Properties.of().setId(BIRCH_IRON_GLASS_PANE_KEY)
+        .noOcclusion() // Делает блок прозрачным
         .strength(2.0f) // Прочность как у стекла
         .sounds(BlockSoundGroup.GLASS)),
         BIRCH_IRON_GLASS_PANE_KEY
@@ -158,24 +161,24 @@ public class ModArchitecturalBlocks {
 
     //birch_garden_trellis
     public static final Block BIRCH_GARDEN_TRELLIS_BLOCK = ModBlocks.registerBlock(
-        new HorizontalDecorativePaneBlock(AbstractBlock.Settings.create().registryKey(BIRCH_GARDEN_TRELLIS_KEY)
-        .nonOpaque() // Делает блок прозрачным
+        new HorizontalDecorativePaneBlock(BlockBehaviour.Properties.of().setId(BIRCH_GARDEN_TRELLIS_KEY)
+        .noOcclusion() // Делает блок прозрачным
         .strength(2.0f) // Прочность как у стекла
         .sounds(BlockSoundGroup.WOOD)),
         BIRCH_GARDEN_TRELLIS_KEY
     );
 
     public static final Block BIRCH_DECORATIVE_STRIP_1_BLOCK = ModBlocks.registerBlock(
-        new HorizontalDecorativePaneBlock(AbstractBlock.Settings.create().registryKey(BIRCH_DECORATIVE_STRIP_1_KEY)
-        .nonOpaque() // Делает блок прозрачным
+        new HorizontalDecorativePaneBlock(BlockBehaviour.Properties.of().setId(BIRCH_DECORATIVE_STRIP_1_KEY)
+        .noOcclusion() // Делает блок прозрачным
         .strength(2.0f) // Прочность как у стекла
         .sounds(BlockSoundGroup.WOOD)),
         BIRCH_DECORATIVE_STRIP_1_KEY
     );
 
     public static final Block BIRCH_DECORATIVE_STRIP_2_BLOCK = ModBlocks.registerBlock(
-        new HorizontalDecorativePaneBlock(AbstractBlock.Settings.create().registryKey(BIRCH_DECORATIVE_STRIP_2_KEY)
-        .nonOpaque() // Делает блок прозрачным
+        new HorizontalDecorativePaneBlock(BlockBehaviour.Properties.of().setId(BIRCH_DECORATIVE_STRIP_2_KEY)
+        .noOcclusion() // Делает блок прозрачным
         .strength(2.0f) // Прочность как у стекла
         .sounds(BlockSoundGroup.WOOD)),
         BIRCH_DECORATIVE_STRIP_2_KEY

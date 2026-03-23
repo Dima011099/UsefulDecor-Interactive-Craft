@@ -1,29 +1,30 @@
 package com.dweb.useful_interactive.block.window;
 
-import net.minecraft.block.BlockState;
 
-import net.minecraft.world.BlockView;
+import javax.swing.text.html.BlockView;
 
+import com.jcraft.jorbis.Block;
 import com.mojang.serialization.MapCodec;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.state.StateManager;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.block.HorizontalFacingBlock;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class HorizontalPaneBlock extends HorizontalFacingBlock {
+
+
+public class HorizontalPaneBlock extends HorizontalDirectionalBlock {//HorizontalFacingBlock
     public static final MapCodec<HorizontalPaneBlock> CODEC = createCodec(HorizontalPaneBlock::new);
 
     protected static final VoxelShape NORTH_SOUTH_SHAPE = Block.createCuboidShape(0.0, 0.0, 7.5, 16.0, 16.0, 8.5);//7-5 8-10
     protected static final VoxelShape EAST_WEST_SHAPE = Block.createCuboidShape(7.5, 0.0, 0.0, 8.5, 16.0, 16.0);
 
-    public HorizontalPaneBlock(Settings settings) {
+    public HorizontalPaneBlock(BlockBehaviour.Properties settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));
+        //setDefaultState
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));//this.stateManager.getDefaultState() with -> setValue
     }
 
     @Override
