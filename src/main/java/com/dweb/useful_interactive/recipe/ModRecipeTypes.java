@@ -3,6 +3,8 @@ package com.dweb.useful_interactive.recipe;
 import com.dweb.useful_interactive.UsefulDecorMod;
 import com.dweb.useful_interactive.recipe.keybox.KeyBoxRecipe;
 
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -14,14 +16,14 @@ public class ModRecipeTypes {
     public static final RecipeSerializer<KeyBoxRecipe> KEY_CABINET_SERIALIZER = registerSerializer();
 
     private static RecipeType<KeyBoxRecipe> registerType(String id) {
-        return Registry.register(Registries.RECIPE_TYPE, Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, id), new RecipeType<>() {});
+        return Registry.register(BuiltInRegistries.RECIPE_TYPE, Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, id), new RecipeType<>() {});
     }
 
     private static RecipeSerializer<KeyBoxRecipe> registerSerializer() {
         return Registry.register(
-                Registries.RECIPE_SERIALIZER,
+                BuiltInRegistries.RECIPE_SERIALIZER,
                 Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "key_box_craft"), //Identifier.of
-                new KeyBoxRecipe.Serializer()
+                (RecipeSerializer<KeyBoxRecipe>) new KeyBoxRecipe.Serializer()
         );
     }
 

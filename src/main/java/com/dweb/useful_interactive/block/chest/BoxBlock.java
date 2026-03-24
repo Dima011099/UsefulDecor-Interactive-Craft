@@ -3,83 +3,90 @@ package com.dweb.useful_interactive.block.chest;
 import com.dweb.useful_interactive.domain.lock.LockableManager;
 import com.mojang.serialization.MapCodec;
 
-import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.item.ItemStack;
-import net.minecraft.screen.NamedScreenHandlerFactory;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.state.StateManager.Builder;
-import net.minecraft.state.property.EnumProperty;
-import net.minecraft.text.Text;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.ItemScatterer;
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.Container;
+import net.minecraft.world.Containers;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.phys.BlockHitResult;
+
+import javax.swing.text.html.BlockView;
 
 import org.jetbrains.annotations.Nullable;
 
-public class BoxBlock extends BlockWithEntity {
-    public static final MapCodec<BoxBlock> CODEC = createCodec(BoxBlock::new);
-       public static final EnumProperty<Direction> FACING = FacingBlock.FACING;
+public class BoxBlock extends BaseEntityBlock {//BlockWithEntity
+    public static final MapCodec<BoxBlock> CODEC = simpleCodec(BoxBlock::new);
+       public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
 
     @Override
-    public MapCodec<? extends BoxBlock> getCodec() {
+    public MapCodec<? extends BoxBlock> codec() {
         return CODEC;
     }
 
-    public BoxBlock(Settings settings) {
+    public BoxBlock(Properties settings) {
         super(settings);
-         this.setDefaultState(this.stateManager.getDefaultState().with(FacingBlock.FACING, Direction.NORTH));
+         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));// HorizontalDirectionalBlock.FACING
     }
 
     @Override
-    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-        if (world.isClient()) return ActionResult.SUCCESS;
+    protected InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
+        if (world.isClientSide()) return InteractionResult.SUCCESS;
 
         BlockEntity be = world.getBlockEntity(pos);
         if (!(be instanceof BoxBlockEntity chest)) 
-            return ActionResult.CONSUME;
+            return InteractionResult.CONSUME;
 
-        ItemStack stack = player.getStackInHand(Hand.MAIN_HAND);
+        ItemStack stack = player.getItemInHand(InteractionHand.MAIN_HAND);
         
         if (LockableManager.handleKeyUse(player, stack, chest)){
-            chest.markDirty();
-            world.updateListeners(pos, state, state, Block.NOTIFY_LISTENERS);
-            return ActionResult.CONSUME;
+            chest.setChanged();
+            world.sendBlockUpdated(pos, state, state, Block.UPDATE_ALL);
+            return InteractionResult.CONSUME;
         }
 
         if (chest.isLocked()) {
-            player.sendMessage(Text.translatable("message.useful_interactive.needs_key"), true);
-            return ActionResult.CONSUME;
+            player.sendOverlayMessage(Component.translatable("message.useful_interactive.needs_key"));
+            return InteractionResult.CONSUME;
         }
 
-        NamedScreenHandlerFactory screenHandlerFactory = state.createScreenHandlerFactory(world, pos);
+        MenuProvider screenHandlerFactory = state.getMenuProvider(world, pos);
         if (screenHandlerFactory != null) {
-            player.openHandledScreen(screenHandlerFactory);
+            player.openMenu(screenHandlerFactory);
         }
-        return ActionResult.CONSUME;
+        return InteractionResult.CONSUME;
     }
 
     @Nullable
     @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new BoxBlockEntity(pos, state);
     }
 
     @Override
-    public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
+    public RenderShape getRenderShape(BlockState state) {
+        return RenderShape.MODEL;
     }
 
     @Override
-    protected float calcBlockBreakingDelta(BlockState state, PlayerEntity player, BlockView world, BlockPos pos) {
-        float defaultDelta = super.calcBlockBreakingDelta(state, player, world, pos);
+    protected float getDestroyProgress(BlockState state, Player player, BlockGetter world, BlockPos pos) {
+        float defaultDelta = super.getDestroyProgress(state, player, world, pos);
         
         BoxBlockEntity chest = (BoxBlockEntity) world.getBlockEntity(pos);
         if(chest.isLocked()){
@@ -89,24 +96,27 @@ public class BoxBlock extends BlockWithEntity {
     }
 
     @Override
-    protected void onStateReplaced(BlockState state, ServerWorld world, BlockPos pos, boolean moved) {
+    protected void onStateReplaced(BlockState state, Level world, BlockPos pos, boolean moved) {//onStateReplaced
         BlockEntity blockEntity = world.getBlockEntity(pos);
     
         if (blockEntity instanceof BoxBlockEntity boxEntity) {
-            ItemScatterer.spawn(world, pos, boxEntity);
-            world.updateComparators(pos, state.getBlock());
+            Containers.dropContents(world, pos, boxEntity);//ItemScatterer
+            world.updateNeighborsAt(pos, state.getBlock());//updateComparators
         }
         super.onStateReplaced(state, world, pos, moved);
     }
 
+
+    
+
     @Override
-    protected void appendProperties(Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING);
-        super.appendProperties(builder);
+        super.createBlockStateDefinition(builder);
     }
 
     @Override
-    public @org.jspecify.annotations.Nullable BlockState getPlacementState(ItemPlacementContext ctx) {
-        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
+    public @org.jspecify.annotations.Nullable BlockState getStateForPlacement(BlockPlaceContext ctx) {
+        return this.defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite());
     }
 }

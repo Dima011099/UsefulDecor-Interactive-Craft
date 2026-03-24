@@ -5,32 +5,28 @@ import com.dweb.useful_interactive.domain.lock.LockComponent;
 import com.dweb.useful_interactive.registry.blockentites.ModBlockEntites;
 import com.mojang.serialization.Codec;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.LootableContainerBlockEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.network.listener.ClientPlayPacketListener;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.screen.GenericContainerScreenHandler;
-import net.minecraft.screen.ScreenHandler;
-import net.minecraft.storage.ReadView;
-import net.minecraft.storage.WriteView;
-import net.minecraft.text.Text;
-import net.minecraft.util.collection.DefaultedList;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.NonNullList;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ChestMenu;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 
 
-public class BoxBlockEntity extends LootableContainerBlockEntity implements ILockableManager {
-    private DefaultedList<ItemStack> inventory = DefaultedList.ofSize(27, ItemStack.EMPTY);
+
+public class BoxBlockEntity extends RandomizableContainerBlockEntity implements ILockableManager {
+    private NonNullList<ItemStack> inventory = NonNullList.withSize(27, ItemStack.EMPTY);
     private final LockComponent lock = new LockComponent();
 
-    private static final Codec<DefaultedList<ItemStack>> INVENTORY_CODEC = 
+    private static final Codec<NonNullList<ItemStack>> INVENTORY_CODEC = 
         ItemStack.OPTIONAL_CODEC.listOf().xmap(
             list -> {
-                DefaultedList<ItemStack> defaultedList = DefaultedList.ofSize(27, ItemStack.EMPTY);
+                NonNullList<ItemStack> defaultedList = NonNullList.withSize(27, ItemStack.EMPTY);
                 for (int i = 0; i < Math.min(list.size(), 27); i++) {
                     defaultedList.set(i, list.get(i));
                 }
@@ -65,39 +61,39 @@ public class BoxBlockEntity extends LootableContainerBlockEntity implements ILoc
     }
 
     @Override
-    protected Text getContainerName() {
-        return Text.translatable("container.useful_interactive.box");
+    protected Component getDefaultName() {
+        return Component.translatable("container.useful_interactive.box");
     }
 
     @Override
-    protected DefaultedList<ItemStack> getHeldStacks() {
+    protected NonNullList<ItemStack> getItems() {
         return this.inventory;
     }
 
     @Override
-    protected void setHeldStacks(DefaultedList<ItemStack> inventory) {
+    protected void setItems(NonNullList<ItemStack> inventory) {
         this.inventory = inventory;
-        markDirty();
+        setChanged();
     }
 
     @Override
-    protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
-        return GenericContainerScreenHandler.createGeneric9x3(syncId, playerInventory, this);
+    protected AbstractContainerMenu createMenu(int syncId, Inventory playerInventory) {
+        return ChestMenu.threeRows(syncId, playerInventory, this);
     }
 
     @Override
-    public int size() {
+    public int getContainerSize() {
         return 27;
     }
 
     @Override
-    protected void writeData(WriteView view) {
-        super.writeData(view);
+    protected void saveAdditional(ValueOutput view) {
+        super.saveAdditional(view);
         if(lock.hasKey())
-            view.put("BoxKey", Codec.STRING, lock.getKey());
+            view.putString("BoxKey", lock.getKey());
 
-        view.put("Inventory", INVENTORY_CODEC, this.inventory);
-        view.put("closed", Codec.BOOL, lock.isLocked());
+        view.store("Inventory", INVENTORY_CODEC, this.inventory);
+        view.putBoolean("closed", lock.isLocked());
     }
 
     @Override
@@ -111,12 +107,12 @@ public class BoxBlockEntity extends LootableContainerBlockEntity implements ILoc
     }
 
     @Override
-    protected void readData(ReadView view) {
+    protected void loadAdditional(ValueInput view) {
         lock.bindKey(view.read("BoxKey", Codec.STRING).orElse(null));
         lock.setLocked(view.read("closed", Codec.BOOL).orElse(false));
 
         this.inventory = view.read("Inventory", INVENTORY_CODEC)
                          .orElse(DefaultedList.ofSize(27, ItemStack.EMPTY));
-        super.readData(view);
+        super.loadAdditional(view);
     }
 }

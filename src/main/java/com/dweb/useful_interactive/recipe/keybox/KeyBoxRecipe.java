@@ -5,10 +5,19 @@ import java.util.Map;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
+import net.minecraft.world.item.crafting.RecipeSerializer;
+
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.PlacementInfo;
 import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeBookCategory;
 import net.minecraft.world.item.crafting.RecipeInput;
+import net.minecraft.world.item.crafting.RecipeSerializers;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.Level;
 
 import com.dweb.useful_interactive.recipe.ModRecipeTypes;
 import com.mojang.serialization.Codec;
@@ -28,12 +37,12 @@ public class KeyBoxRecipe implements Recipe<RecipeInput> {
     }
 
     @Override
-    public boolean matches(RecipeInput input, World world) {
+    public boolean matches(RecipeInput input, Level world) {
         String row = pattern[0]; 
     
         for (int x = 0; x < row.length(); x++) {
             char c = row.charAt(x);
-            ItemStack stack = input.getStackInSlot(x); 
+            ItemStack stack = input.getItem(x); //getStackInSlot(x)
         
             if (c == ' ') {
                 if (!stack.isEmpty()) return false;
@@ -43,21 +52,36 @@ public class KeyBoxRecipe implements Recipe<RecipeInput> {
             }
         }
         for (int i = row.length(); i < input.size(); i++) {
-            if (!input.getStackInSlot(i).isEmpty()) return false;
+            if (!input.getItem(i).isEmpty()) return false; //getStackInSlot(i)
         }
 
         return true;
     }
 
     @Override
-    public ItemStack craft(RecipeInput input, RegistryWrapper.WrapperLookup lookup) {
+    public ItemStack assemble(RecipeInput input) { //craft(RegistryWrapper.WrapperLookup )
         return this.output.copy();
     }
 
     @Override
+public String group() {
+    return ""; // Группа рецепта в книге (пустая строка по дефолту)
+}
+
+@Override
+public boolean showNotification() {
+    return true; // Показывать ли уведомление о разблокировке рецепта
+}
+/* *
+    @Override
     public RecipeSerializer<? extends Recipe<RecipeInput>> getSerializer() {
         return ModRecipeTypes.KEY_CABINET_SERIALIZER;
     }
+*/
+    @Override
+public RecipeSerializer<KeyBoxRecipe> getSerializer() { // Убери wildcard <? extends ...>
+    return ModRecipeTypes.KEY_CABINET_SERIALIZER; 
+}
 
     @Override
     public RecipeType<? extends Recipe<RecipeInput>> getType() {
@@ -65,18 +89,18 @@ public class KeyBoxRecipe implements Recipe<RecipeInput> {
     }
 
     @Override
-    public IngredientPlacement getIngredientPlacement() {
-        return IngredientPlacement.NONE;
+    public PlacementInfo placementInfo() { //placementInfo
+        return PlacementInfo.NOT_PLACEABLE;
     }
 
     @Override
-    public RecipeBookCategory getRecipeBookCategory() {
+    public RecipeBookCategory recipeBookCategory() {//getRecipeBookCategory
         return null;
     }
 
 
-    public DefaultedList<Ingredient> getIngredients() {
-        DefaultedList<Ingredient> ingredients = DefaultedList.ofSize(pattern.length * pattern[0].length(), Ingredient.ofItems());
+    public NonNullList<Ingredient> getIngredients() {// DefaultedList
+        NonNullList<Ingredient> ingredients = NonNullList.withSize(pattern.length * pattern[0].length(), Ingredient.of());//Ingredient.ofItems()
 
         for (int y = 0; y < pattern.length; y++) {
             String row = pattern[y];
@@ -85,7 +109,7 @@ public class KeyBoxRecipe implements Recipe<RecipeInput> {
                 int index = y * row.length() + x;
 
                 if (c == ' ') {
-                    ingredients.set(index, Ingredient.ofItems());
+                    ingredients.set(index, Ingredient.of());
                 } else {
                     ingredients.set(index, key.get(c)); // key.get(c) → Ingredient
                 }
@@ -98,12 +122,13 @@ public class KeyBoxRecipe implements Recipe<RecipeInput> {
     public boolean fits(int width, int height) {
         return true;
     }
+    
 
-    public ItemStack getResult(RegistryWrapper.WrapperLookup registries) {
+    public ItemStack getResult(HolderLookup.Provider registries) {//RegistryWrapper.WrapperLookup
         return output;
     }
 
-    public static class Serializer implements RecipeSerializer<KeyBoxRecipe> {
+    public static class Serializer /*implements RecipeSerializer<KeyBoxRecipe>*/ {
         private static final Codec<Map<Character, Ingredient>> KEY_CODEC = Codec.unboundedMap(
             Codec.string(1, 1).xmap(s -> s.charAt(0), String::valueOf),
             Ingredient.CODEC

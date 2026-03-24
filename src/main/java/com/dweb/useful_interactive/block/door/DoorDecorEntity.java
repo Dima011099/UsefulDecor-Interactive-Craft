@@ -5,16 +5,16 @@ import com.dweb.useful_interactive.domain.lock.LockComponent;
 import com.dweb.useful_interactive.registry.blockentites.ModBlockEntites;
 import com.mojang.serialization.Codec;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.network.listener.ClientPlayPacketListener;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.storage.ReadView;
-import net.minecraft.storage.WriteView;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 
 public class DoorDecorEntity extends BlockEntity implements ILockableManager {
     private final LockComponent lock = new LockComponent();
@@ -44,32 +44,36 @@ public class DoorDecorEntity extends BlockEntity implements ILockableManager {
     }
 
      @Override
-    protected void writeData(WriteView view) {
-        super.writeData(view);
+    protected void saveAdditional(ValueOutput view) {//writeData(null);
+        super.saveAdditional(view);
         if(lock.hasKey())
-            view.put("locked_key", Codec.STRING, lock.getKey());
+            view.putString("locked_key", lock.getKey());
 
-        view.put("is_locked", Codec.BOOL, lock.isLocked());
+        view.putBoolean("is_locked", lock.isLocked());
     }
 
     @Override
-    public Packet<ClientPlayPacketListener> toUpdatePacket() {
-        return BlockEntityUpdateS2CPacket.create(this, (be, registries) -> {
-        NbtCompound nbt = new NbtCompound();
+    public Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this, (be, registries) -> {
+        CompoundTag nbt = new CompoundTag();
         nbt.putBoolean("is_locked", ((DoorDecorEntity)be).isLocked());
         return nbt;
     });
     }
 
     @Override
-    public NbtCompound toInitialChunkDataNbt(RegistryWrapper.WrapperLookup registries) {
-        return createNbt(registries);
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        //return createNbt(registries);
+        CompoundTag tag = new CompoundTag();
+        tag.putBoolean("is_locked", this.isLocked());
+        tag.putString("locked_key", lock.getKey());
+        return tag;
     }
 
     @Override
-    protected void readData(ReadView view) {
+    protected void loadAdditional(ValueInput view) {//readData
         lock.bindKey(view.read("locked_key", Codec.STRING).orElse(null));
         lock.setLocked(view.read("is_locked", Codec.BOOL).orElse(false));
-        super.readData(view);
+        super.loadAdditional(view);
     }
 }

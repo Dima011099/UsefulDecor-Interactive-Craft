@@ -3,12 +3,16 @@ package com.dweb.useful_interactive.registry.blockentites;
 import com.dweb.useful_interactive.registry.blocks.ModArchitecturalBlocks;
 import com.dweb.useful_interactive.registry.blocks.ModStorageBlocks;
 import com.dweb.useful_interactive.registry.blocks.ModUtilityBlocks;
+
+import java.rmi.registry.Registry;
+
 import com.dweb.useful_interactive.UsefulDecorMod;
 import com.dweb.useful_interactive.block.chest.BoxBlockEntity;
 import com.dweb.useful_interactive.block.door.DoorDecorEntity;
 import com.dweb.useful_interactive.block.keybox.KeyBoxBlockEntity;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -17,7 +21,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 public class ModBlockEntites {
     public static final BlockEntityType<BoxBlockEntity> BOX_BLOCK_ENTITY_TYPE = Registry.register(
     Registries.BLOCK_ENTITY_TYPE,
-    Identifier.of(UsefulDecorMod.MOD_ID, "box_be"),
+    Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "box_be"),
     FabricBlockEntityTypeBuilder.create(
         BoxBlockEntity::new, 
         ModStorageBlocks.BOX_BLOCK, 
@@ -28,7 +32,7 @@ public class ModBlockEntites {
 );
 
 public static final BlockEntityType<DoorDecorEntity> DOOR_BLOCK_ENTITY_TYPE = Registry.register(
-    Registries.BLOCK_ENTITY_TYPE,
+    BuiltInRegistries.BLOCK_ENTITY_TYPE,
     Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "door_be"), //of
     FabricBlockEntityTypeBuilder.create(
         DoorDecorEntity::new, 
