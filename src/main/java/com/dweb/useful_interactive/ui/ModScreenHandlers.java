@@ -18,8 +18,8 @@ import net.minecraft.world.inventory.MenuType;
 public class ModScreenHandlers {
     public static final MenuType<KeyBoxScreenHandler> KEY_CABINET = Registry.register(
             BuiltInRegistries.MENU, 
-            Identifier.of("useful_interactive", "key_cabinet"), 
-            new MenuType<>(KeyBoxScreenHandler::new, FeatureFlags.VANILLA)
+            Identifier.fromNamespaceAndPath("useful_interactive", "key_cabinet"), //Identifier.of
+            new MenuType<>(KeyBoxScreenHandler::new, FeatureFlags.VANILLA_SET)
     );
 
     public static void registerScreenHandlers() {}

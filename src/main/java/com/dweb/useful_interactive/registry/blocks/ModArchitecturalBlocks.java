@@ -9,6 +9,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.material.MapColor;
@@ -130,7 +131,7 @@ public class ModArchitecturalBlocks {
         new HorizontalPaneBlock(BlockBehaviour.Properties.of().setId(OAK_GLASS_PANE_KEY)
         .noOcclusion() // Делает блок прозрачным
         .strength(2.0f) // Прочность как у стекла
-        .sounds(BlockSoundGroup.GLASS)),
+        .sound(SoundType.GLASS)), //SoundType
         OAK_GLASS_PANE_KEY
     );
 
@@ -138,7 +139,8 @@ public class ModArchitecturalBlocks {
         new HorizontalPaneBlock(BlockBehaviour.Properties.of().setId(OAK_IRON_GLASS_PANE_KEY)
         .noOcclusion() // Делает блок прозрачным
         .strength(2.0f) // Прочность как у стекла
-        .sounds(BlockSoundGroup.GLASS)),
+        // SoundType -> SoundType
+        .sound(SoundType.GLASS)),
         OAK_IRON_GLASS_PANE_KEY
     );
 
@@ -146,7 +148,7 @@ public class ModArchitecturalBlocks {
         new HorizontalPaneBlock(BlockBehaviour.Properties.of().setId(IRON_GLASS_PANE_KEY)
         .noOcclusion() // Делает блок прозрачным
         .strength(2.0f) // Прочность как у стекла
-        .sounds(BlockSoundGroup.GLASS)),
+        .sound(SoundType.GLASS)),
         IRON_GLASS_PANE_KEY
     );
 
@@ -154,7 +156,7 @@ public class ModArchitecturalBlocks {
         new HorizontalPaneBlock(BlockBehaviour.Properties.of().setId(BIRCH_IRON_GLASS_PANE_KEY)
         .noOcclusion() // Делает блок прозрачным
         .strength(2.0f) // Прочность как у стекла
-        .sounds(BlockSoundGroup.GLASS)),
+        .sound(SoundType.GLASS)),
         BIRCH_IRON_GLASS_PANE_KEY
     );
 
@@ -164,7 +166,7 @@ public class ModArchitecturalBlocks {
         new HorizontalDecorativePaneBlock(BlockBehaviour.Properties.of().setId(BIRCH_GARDEN_TRELLIS_KEY)
         .noOcclusion() // Делает блок прозрачным
         .strength(2.0f) // Прочность как у стекла
-        .sounds(BlockSoundGroup.WOOD)),
+        .sound(SoundType.WOOD)),
         BIRCH_GARDEN_TRELLIS_KEY
     );
 
@@ -172,7 +174,7 @@ public class ModArchitecturalBlocks {
         new HorizontalDecorativePaneBlock(BlockBehaviour.Properties.of().setId(BIRCH_DECORATIVE_STRIP_1_KEY)
         .noOcclusion() // Делает блок прозрачным
         .strength(2.0f) // Прочность как у стекла
-        .sounds(BlockSoundGroup.WOOD)),
+        .sound(SoundType.WOOD)),
         BIRCH_DECORATIVE_STRIP_1_KEY
     );
 
@@ -180,7 +182,7 @@ public class ModArchitecturalBlocks {
         new HorizontalDecorativePaneBlock(BlockBehaviour.Properties.of().setId(BIRCH_DECORATIVE_STRIP_2_KEY)
         .noOcclusion() // Делает блок прозрачным
         .strength(2.0f) // Прочность как у стекла
-        .sounds(BlockSoundGroup.WOOD)),
+        .sound(SoundType.WOOD)),
         BIRCH_DECORATIVE_STRIP_2_KEY
     );
 

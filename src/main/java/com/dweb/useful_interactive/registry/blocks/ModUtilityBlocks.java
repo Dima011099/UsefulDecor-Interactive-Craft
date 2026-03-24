@@ -3,23 +3,24 @@ package com.dweb.useful_interactive.registry.blocks;
 import com.dweb.useful_interactive.UsefulDecorMod;
 import com.dweb.useful_interactive.block.keybox.KeyBoxBlock;
 
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.block.Block;
+
+
 
 public class ModUtilityBlocks {
         //Ключи функциональных блоков
         
-    public static final RegistryKey<Block> BATANIC_TABLE_KEY = RegistryKey.of(
-            RegistryKeys.BLOCK,
-            Identifier.of(UsefulDecorMod.MOD_ID, "batanic_table")
+    public static final ResourceKey<Block> BATANIC_TABLE_KEY = ResourceKey.create(
+            Registries.BLOCK,
+            Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "batanic_table")
     );
     
-    public static final RegistryKey<Block> KEYBOX_KEY = RegistryKey.of(
-            RegistryKeys.BLOCK,
-            Identifier.of(UsefulDecorMod.MOD_ID, "keybox")
+    public static final ResourceKey<Block> KEYBOX_KEY = ResourceKey.create(
+            Registries.BLOCK,
+            Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "keybox")
     );
 
 

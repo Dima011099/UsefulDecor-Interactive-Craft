@@ -6,105 +6,105 @@ import com.dweb.useful_interactive.registry.blocks.ModArchitecturalBlocks;
 import com.dweb.useful_interactive.registry.blocks.ModStorageBlocks;
 import com.dweb.useful_interactive.registry.blocks.ModUtilityBlocks;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 
 public class ModItems {
      // Регистрируем ключи предметов блока
-    public static final RegistryKey<Item> BOX_ITEM_KEY = RegistryKey.of(
-            RegistryKeys.ITEM,
-            Identifier.of(UsefulDecorMod.MOD_ID, "box")
+    public static final ResourceKey<Item> BOX_ITEM_KEY = ResourceKey.create(
+            Registries.ITEM,
+            Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "box")
     );
 
-    public static final RegistryKey<Item> OAK_BOX_ITEM_KEY = RegistryKey.of(
-            RegistryKeys.ITEM,
-            Identifier.of(UsefulDecorMod.MOD_ID, "oak_box")
+    public static final ResourceKey<Item> OAK_BOX_ITEM_KEY = ResourceKey.create(
+            Registries.ITEM,
+            Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "oak_box")
     );
 
-    public static final RegistryKey<Item> BIRCH_BOX_ITEM_KEY = RegistryKey.of(
-        RegistryKeys.ITEM,
-        Identifier.of(UsefulDecorMod.MOD_ID, "birch_box")
+    public static final ResourceKey<Item> BIRCH_BOX_ITEM_KEY = ResourceKey.create(
+        Registries.ITEM,
+        Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "birch_box")
     );
 
     // Для дверей предметы блока
-    public static final RegistryKey<Item> OAK_DECOR_DOOR_ITEM_KEY = RegistryKey.of(
-        RegistryKeys.ITEM,
-        Identifier.of(UsefulDecorMod.MOD_ID, "oak_decor_door")
+    public static final ResourceKey<Item> OAK_DECOR_DOOR_ITEM_KEY = ResourceKey.create(
+        Registries.ITEM,
+        Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "oak_decor_door")
     );
 
-    public static final RegistryKey<Item> METAL_DECOR_DOOR_ITEM_KEY = RegistryKey.of(
-        RegistryKeys.ITEM,
-        Identifier.of(UsefulDecorMod.MOD_ID, "metal_decor_door")
+    public static final ResourceKey<Item> METAL_DECOR_DOOR_ITEM_KEY = ResourceKey.create(
+        Registries.ITEM,
+        Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "metal_decor_door")
     );
 
-    public static final RegistryKey<Item> BIRCH_DECOR_DOOR_ITEM_KEY = RegistryKey.of(
-        RegistryKeys.ITEM,
-        Identifier.of(UsefulDecorMod.MOD_ID, "birch_decor_door")
+    public static final ResourceKey<Item> BIRCH_DECOR_DOOR_ITEM_KEY = ResourceKey.create(
+        Registries.ITEM,
+        Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "birch_decor_door")
     );
 
-    public static final RegistryKey<Item> GLASS_DECOR_DOOR_ITEM_KEY = RegistryKey.of(
-        RegistryKeys.ITEM,
-        Identifier.of(UsefulDecorMod.MOD_ID, "glass_decor_door")
+    public static final ResourceKey<Item> GLASS_DECOR_DOOR_ITEM_KEY = ResourceKey.create(
+        Registries.ITEM,
+        Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "glass_decor_door")
     );
 
     //Для стеклянной понели
-    public static final RegistryKey<Item> OAK_GLASS_PANE_ITEM_KEY = RegistryKey.of(
-        RegistryKeys.ITEM,
-        Identifier.of(UsefulDecorMod.MOD_ID, "oak_glass_pane")
+    public static final ResourceKey<Item> OAK_GLASS_PANE_ITEM_KEY = ResourceKey.create(
+        Registries.ITEM,
+        Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "oak_glass_pane")
     );
 
-    public static final RegistryKey<Item> OAK_IRON_GLASS_PANE_ITEM_KEY = RegistryKey.of(
-        RegistryKeys.ITEM,
-        Identifier.of(UsefulDecorMod.MOD_ID, "oak_iron_glass_pane")
+    public static final ResourceKey<Item> OAK_IRON_GLASS_PANE_ITEM_KEY = ResourceKey.create(
+        Registries.ITEM,
+        Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "oak_iron_glass_pane")
     );
 
-    public static final RegistryKey<Item> IRON_GLASS_PANE_ITEM_KEY = RegistryKey.of(
-        RegistryKeys.ITEM,
-        Identifier.of(UsefulDecorMod.MOD_ID, "iron_glass_pane")
+    public static final ResourceKey<Item> IRON_GLASS_PANE_ITEM_KEY = ResourceKey.create(
+        Registries.ITEM,
+        Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "iron_glass_pane")
     );
 
-    public static final RegistryKey<Item> BIRCH_IRON_GLASS_PANE_ITEM_KEY = RegistryKey.of(
-        RegistryKeys.ITEM,
-        Identifier.of(UsefulDecorMod.MOD_ID, "birch_iron_glass_pane")
+    public static final ResourceKey<Item> BIRCH_IRON_GLASS_PANE_ITEM_KEY = ResourceKey.create(
+        Registries.ITEM,
+        Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "birch_iron_glass_pane")
     );
 
-    public static final RegistryKey<Item> BIRCH_BOX_CABINET_ITEM_KEY = RegistryKey.of(
-        RegistryKeys.ITEM,
-        Identifier.of(UsefulDecorMod.MOD_ID, "birch_box_cabinet")
+    public static final ResourceKey<Item> BIRCH_BOX_CABINET_ITEM_KEY = ResourceKey.create(
+        Registries.ITEM,
+        Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "birch_box_cabinet")
     );
 
-    public static final RegistryKey<Item> BIRCH_GARDEN_TRELLIS_ITEM_KEY = RegistryKey.of(
-        RegistryKeys.ITEM,
-        Identifier.of(UsefulDecorMod.MOD_ID, "birch_garden_trellis")
+    public static final ResourceKey<Item> BIRCH_GARDEN_TRELLIS_ITEM_KEY = ResourceKey.create(
+        Registries.ITEM,
+        Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "birch_garden_trellis")
     );
 
-    public static final RegistryKey<Item> BIRCH_DECORATIVE_STRIP_1_ITEM_KEY = RegistryKey.of(
-        RegistryKeys.ITEM,
-        Identifier.of(UsefulDecorMod.MOD_ID, "birch_decorative_strip_1")
+    public static final ResourceKey<Item> BIRCH_DECORATIVE_STRIP_1_ITEM_KEY = ResourceKey.create(
+        Registries.ITEM,
+        Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "birch_decorative_strip_1")
     );
 
-    public static final RegistryKey<Item> BIRCH_DECORATIVE_STRIP_2_ITEM_KEY = RegistryKey.of(
-        RegistryKeys.ITEM,
-        Identifier.of(UsefulDecorMod.MOD_ID, "birch_decorative_strip_2")
+    public static final ResourceKey<Item> BIRCH_DECORATIVE_STRIP_2_ITEM_KEY = ResourceKey.create(
+        Registries.ITEM,
+        Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "birch_decorative_strip_2")
     );
 
 
     //Для функциональных блоков
     
-    public static final RegistryKey<Item> BATANIC_TABLE_ITEM_KEY = RegistryKey.of(
-        RegistryKeys.ITEM,
-        Identifier.of(UsefulDecorMod.MOD_ID, "batanic_table")
+    public static final ResourceKey<Item> BATANIC_TABLE_ITEM_KEY = ResourceKey.create(
+        Registries.ITEM,
+        Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "batanic_table")
     );
 
-    public static final RegistryKey<Item> KEYBOX_ITEM_KEY = RegistryKey.of(
-        RegistryKeys.ITEM,
-        Identifier.of(UsefulDecorMod.MOD_ID, "keybox")
+    public static final ResourceKey<Item> KEYBOX_ITEM_KEY = ResourceKey.create(
+        Registries.ITEM,
+        Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "keybox")
     );
 
 
@@ -138,8 +138,8 @@ public class ModItems {
     public static final Item BATANIC_TABLE_ITEM = registerBlockItem(ModUtilityBlocks.BATANIC_TABLE_BLOCK, BATANIC_TABLE_ITEM_KEY);
 
 
-    private static Item registerBlockItem(Block block, RegistryKey<Item> key) {
-        return Registry.register(Registries.ITEM, key, new BlockItem(block, new Item.Settings().registryKey(key)));
+    private static Item registerBlockItem(Block block, ResourceKey<Item> key) {
+        return Registry.register(BuiltInRegistries.ITEM, key, new BlockItem(block, new Item.Properties().setId(key)));
     }
 
     public static void register() {

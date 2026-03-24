@@ -4,32 +4,32 @@ import com.dweb.useful_interactive.UsefulDecorMod;
 import com.dweb.useful_interactive.block.cabinet.BoxCabinetBlock;
 import com.dweb.useful_interactive.block.chest.BoxBlock;
 
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.block.Block;
+
 
 public class ModStorageBlocks {
     // Registry Keys for storage blocks
-    public static final RegistryKey<Block> BOX_KEY = RegistryKey.of(
-            RegistryKeys.BLOCK,
-            Identifier.of(UsefulDecorMod.MOD_ID, "box")
+    public static final ResourceKey<Block> BOX_KEY = ResourceKey.create(
+            Registries.BLOCK,
+            Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "box")
     );
 
-    public static final RegistryKey<Block> OAK_BOX_KEY = RegistryKey.of(
-            RegistryKeys.BLOCK,
-            Identifier.of(UsefulDecorMod.MOD_ID, "oak_box")
+    public static final ResourceKey<Block> OAK_BOX_KEY = ResourceKey.create(
+            Registries.BLOCK,
+            Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "oak_box")
     );
 
-    public static final RegistryKey<Block> BIRCH_BOX_KEY = RegistryKey.of(
-        RegistryKeys.BLOCK,
-        Identifier.of(UsefulDecorMod.MOD_ID, "birch_box")
+    public static final ResourceKey<Block> BIRCH_BOX_KEY = ResourceKey.create(
+        Registries.BLOCK,
+        Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "birch_box")
     );
 
-    public static final RegistryKey<Block> BIRCH_BOX_CABINET_KEY = RegistryKey.of(
-        RegistryKeys.BLOCK,
-        Identifier.of(UsefulDecorMod.MOD_ID, "birch_box_cabinet")
+    public static final ResourceKey<Block> BIRCH_BOX_CABINET_KEY = ResourceKey.create(
+        Registries.BLOCK,
+        Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "birch_box_cabinet")
     );
 
     //Регистрируем сам блок
