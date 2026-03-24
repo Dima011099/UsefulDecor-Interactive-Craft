@@ -7,6 +7,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 
 
 
@@ -28,12 +29,12 @@ public class ModUtilityBlocks {
     
     //функциональные блоки
     public static final Block BATANIC_TABLE_BLOCK = ModBlocks.registerBlock(
-            new KeyBoxBlock(AbstractBlock.Settings.create().registryKey(BATANIC_TABLE_KEY).strength(2.0f, 50.0f)), 
+            new KeyBoxBlock(BlockBehaviour.Properties.of().setId(BATANIC_TABLE_KEY).strength(2.0f, 50.0f)), 
             BATANIC_TABLE_KEY
     );
 
     public static final Block KEYBOX_BLOCK = ModBlocks.registerBlock(
-            new KeyBoxBlock(AbstractBlock.Settings.create().registryKey(KEYBOX_KEY).strength(4.0f, 50.0f)), 
+            new KeyBoxBlock(BlockBehaviour.Properties.of().setId(KEYBOX_KEY).strength(4.0f, 50.0f)), 
             KEYBOX_KEY
     );
 

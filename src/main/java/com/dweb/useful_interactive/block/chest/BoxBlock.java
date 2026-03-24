@@ -94,7 +94,7 @@ public class BoxBlock extends BaseEntityBlock {//BlockWithEntity
         }
         return defaultDelta;
     }
-
+/* 
     @Override
     protected void onStateReplaced(BlockState state, Level world, BlockPos pos, boolean moved) {//onStateReplaced
         BlockEntity blockEntity = world.getBlockEntity(pos);
@@ -104,7 +104,7 @@ public class BoxBlock extends BaseEntityBlock {//BlockWithEntity
             world.updateNeighborsAt(pos, state.getBlock());//updateComparators
         }
         super.onStateReplaced(state, world, pos, moved);
-    }
+    }*/
 
 
     

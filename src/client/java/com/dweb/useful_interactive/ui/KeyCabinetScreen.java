@@ -1,38 +1,48 @@
 package com.dweb.useful_interactive.ui;
 
 
+import net.minecraft.network.chat.Component;
+
 import com.dweb.useful_interactive.UsefulDecorMod;
 import com.dweb.useful_interactive.ui.keybox.KeyBoxScreenHandler;
+import com.mojang.blaze3d.vertex.PoseStack;
 
-import net.minecraft.client.gl.RenderPipelines;
-import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.gui.screen.ingame.HandledScreen;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.util.Identifier;
-import net.minecraft.text.Text;
-
-
-
-public class KeyCabinetScreen extends HandledScreen<KeyBoxScreenHandler>{
-    private static final Identifier TEXTURE = Identifier.of(UsefulDecorMod.MOD_ID, "textures/gui/keybox.png");
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 
 
-    public KeyCabinetScreen(KeyBoxScreenHandler handler, PlayerInventory inventory, Text title) {
+
+
+
+public class KeyCabinetScreen extends AbstractContainerScreen<KeyBoxScreenHandler>{
+    private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "textures/gui/keybox.png");
+
+
+    public KeyCabinetScreen(KeyBoxScreenHandler handler, Inventory inventory, Component title) {
         super(handler, inventory, title);
     }
 
     @Override
-    protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
-        context.drawTexture(
+    protected void renderBg(Graphics context, float delta, int mouseX, int mouseY) {
+        int x = (this.width - this.imageWidth) / 2;
+        int y = (this.height - this.imageHeight) / 2;
+
+        context.blit(
             RenderPipelines.GUI_TEXTURED,
             TEXTURE,
             x, y, 
             0.0f, 0.0f, 
-            this.backgroundWidth, 
-            this.backgroundHeight, 
+            this.imageWidth, 
+            this.imageHeight, 
     256, 256
         );
     }
+
+    
+   
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
@@ -40,4 +50,5 @@ public class KeyCabinetScreen extends HandledScreen<KeyBoxScreenHandler>{
         super.render(context, mouseX, mouseY, delta);
         drawMouseoverTooltip(context, mouseX, mouseY);
     }
+   
 }

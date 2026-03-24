@@ -1,13 +1,19 @@
 package com.dweb.useful_interactive.block.chest;
 
+import com.dweb.useful_interactive.block.door.DoorDecorEntity;
 import com.dweb.useful_interactive.core.lock.ILockableManager;
 import com.dweb.useful_interactive.domain.lock.LockComponent;
 import com.dweb.useful_interactive.registry.blockentites.ModBlockEntites;
 import com.mojang.serialization.Codec;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ChestMenu;
@@ -97,13 +103,23 @@ public class BoxBlockEntity extends RandomizableContainerBlockEntity implements 
     }
 
     @Override
-    public Packet<ClientPlayPacketListener> toUpdatePacket() {
-        return BlockEntityUpdateS2CPacket.create(this);
+    public Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this, (be, registries) -> {
+        CompoundTag nbt = new CompoundTag();
+        nbt.putBoolean("closed", ((BoxBlockEntity)be).isLocked());
+        nbt.putString("BoxKey", lock.getKey());
+        nbt.store("Inventory",INVENTORY_CODEC, inventory);
+        return nbt;
+    });
     }
 
     @Override
-    public NbtCompound toInitialChunkDataNbt(RegistryWrapper.WrapperLookup registries) {
-        return createNbt(registries);
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        CompoundTag tag = new CompoundTag();
+        tag.putBoolean("is_locked", this.isLocked());
+        tag.putString("locked_key", lock.getKey());
+        tag.store("Inventory",INVENTORY_CODEC,  inventory);
+        return tag;
     }
 
     @Override
@@ -112,7 +128,7 @@ public class BoxBlockEntity extends RandomizableContainerBlockEntity implements 
         lock.setLocked(view.read("closed", Codec.BOOL).orElse(false));
 
         this.inventory = view.read("Inventory", INVENTORY_CODEC)
-                         .orElse(DefaultedList.ofSize(27, ItemStack.EMPTY));
+                         .orElse(NonNullList.withSize(27, ItemStack.EMPTY));
         super.loadAdditional(view);
     }
 }

@@ -121,14 +121,14 @@ public class KeyBoxScreenHandler extends AbstractContainerMenu {
                 }
             };
 
-            Optional<RecipeHolder<KeyBoxRecipe>> match = serverWorld.getRecipeManager()//RecipeEntry
-                .getFirstMatch(ModRecipeTypes.KEY_CABINET, input, serverWorld);
+            Optional<RecipeHolder<KeyBoxRecipe>> match = serverWorld.recipeAccess()//serverWorld.getRecipeManager()//RecipeEntry
+                .getRecipeFor(ModRecipeTypes.KEY_CABINET, input, serverWorld);//getFirstMatch
 
             ItemStack result = ItemStack.EMPTY;
            
             isCrafting = true; 
             if (match.isPresent())
-                result = match.get().value().craft(input, serverWorld.getRegistryManager());
+                result = match.get().value().assemble(input);
  
             lastInputSnapshot = createInputSnapshot();
             isCrafting = false; 
