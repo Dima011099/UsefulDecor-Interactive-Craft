@@ -1,6 +1,5 @@
 package com.dweb.useful_interactive.block.door;
 
-import javax.swing.text.html.BlockView;
 
 import com.dweb.useful_interactive.core.lock.ILockableManager;
 import com.dweb.useful_interactive.domain.lock.LockableManager;
@@ -31,7 +30,7 @@ public class DoorDecor extends DoorBlock implements EntityBlock { //BlockEntityP
     public DoorDecor(BlockSetType blockSetType, BlockBehaviour.Properties settings) {
         super(blockSetType, settings);
     }
-
+@SuppressWarnings("null")
      // В EntityBlock метод называется newBlockEntity, а не createBlockEntity
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
@@ -39,12 +38,12 @@ public class DoorDecor extends DoorBlock implements EntityBlock { //BlockEntityP
             ? new DoorDecorEntity(pos, state)
             : null;
     }
-
+@SuppressWarnings("null")
     @Override
     protected RenderShape getRenderShape(BlockState state) { // getRenderType -> getRenderShape public -> protected
         return RenderShape.MODEL; // BlockRenderType -> RenderShape
     }
-
+@SuppressWarnings("null")
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
         if (world.isClientSide()) return InteractionResult.SUCCESS;
@@ -75,13 +74,13 @@ public class DoorDecor extends DoorBlock implements EntityBlock { //BlockEntityP
 
         return result;
     }
-
+@SuppressWarnings("null")
     private DoorDecorEntity getLowerEntity(Level world, BlockPos pos, BlockState state) {
         BlockPos lower = state.getValue(HALF) == DoubleBlockHalf.LOWER ? pos : pos.below();
         BlockEntity be = world.getBlockEntity(lower);
         return be instanceof DoorDecorEntity e ? e : null;
     }
- 
+ @SuppressWarnings("null")
     private void syncOpenState(Level world, BlockPos pos, BlockState state) {
         BlockPos lower = state.getValue(HALF) == DoubleBlockHalf.LOWER ? pos : pos.below();
         BlockPos upper = lower.above();
@@ -90,7 +89,7 @@ public class DoorDecor extends DoorBlock implements EntityBlock { //BlockEntityP
 
         world.setBlock(upper, world.getBlockState(upper).setValue(OPEN, open), Block.UPDATE_CLIENTS);
     }
-
+@SuppressWarnings("null")
     @Override
     protected float getDestroyProgress(BlockState state, Player player, BlockGetter world, BlockPos pos) {
         float base = super.getDestroyProgress(state, player, world, pos);

@@ -12,7 +12,7 @@ import net.minecraft.core.component.DataComponentType;
 
 
 public class ModComponentType {
-
+    @SuppressWarnings("null")
     public static final DataComponentType<String> KEY_F_CLOSE = Registry.register( // Registry.register
         BuiltInRegistries.DATA_COMPONENT_TYPE,
         Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "key_f_close"), //of

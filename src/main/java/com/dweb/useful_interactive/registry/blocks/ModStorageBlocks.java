@@ -34,22 +34,25 @@ public class ModStorageBlocks {
     );
 
     //Регистрируем сам блок
-
+@SuppressWarnings("null")
     public static final Block BOX_BLOCK = ModBlocks.registerBlock(
             new BoxBlock(BlockBehaviour.Properties.of().setId(BOX_KEY).strength(2.0f, 50.0f)), 
             BOX_KEY
     );
    
+    @SuppressWarnings("null")
     public static final Block OAK_BOX_BLOCK = ModBlocks.registerBlock(
             new BoxBlock(BlockBehaviour.Properties.of().setId(OAK_BOX_KEY).strength(4.0f, 50.0f)), 
             OAK_BOX_KEY
     );
 
+    @SuppressWarnings("null")
     public static final Block  BIRCH_BOX_BLOCK = ModBlocks.registerBlock(
         new BoxBlock(BlockBehaviour.Properties.of().setId(BIRCH_BOX_KEY).strength(3.0f, 50.0f)), 
         BIRCH_BOX_KEY
     );
 
+    @SuppressWarnings("null")
      public static final Block BIRCH_BOX_CABINET_BLOCK = ModBlocks.registerBlock(
         new BoxCabinetBlock(BlockBehaviour.Properties.of().setId(BIRCH_BOX_CABINET_KEY).strength(3.0f, 50.0f)), 
         BIRCH_BOX_CABINET_KEY

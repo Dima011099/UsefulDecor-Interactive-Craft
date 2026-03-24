@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.Block;
 
 public class ModBlocks {
 
+    @SuppressWarnings("null")
     public static Block registerBlock(Block block, ResourceKey<Block> key) {//RegistryKey
         return Registry.register(BuiltInRegistries.BLOCK, key, block);
     }

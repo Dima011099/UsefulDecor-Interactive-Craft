@@ -13,11 +13,10 @@ import com.dweb.useful_interactive.block.keybox.KeyBoxBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
-
+@SuppressWarnings("null")
 public class ModBlockEntites {
     public static final BlockEntityType<BoxBlockEntity> BOX_BLOCK_ENTITY_TYPE = Registry.register(
     BuiltInRegistries.BLOCK_ENTITY_TYPE,
@@ -30,7 +29,7 @@ public class ModBlockEntites {
         ModStorageBlocks.BIRCH_BOX_CABINET_BLOCK/*, 
     ModUtilityBlocks.BATANIC_TABLE_BLOCK*/).build()
 );
-
+@SuppressWarnings("null")
 public static final BlockEntityType<DoorDecorEntity> DOOR_BLOCK_ENTITY_TYPE = Registry.register(
     BuiltInRegistries.BLOCK_ENTITY_TYPE,
     Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "door_be"), //of

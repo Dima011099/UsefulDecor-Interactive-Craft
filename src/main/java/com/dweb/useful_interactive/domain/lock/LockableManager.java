@@ -3,17 +3,13 @@ package com.dweb.useful_interactive.domain.lock;
 import com.dweb.useful_interactive.core.lock.ILockableManager;
 import com.dweb.useful_interactive.registry.ModComponentType;
 import com.dweb.useful_interactive.registry.items.KeyItem;
-/*
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.text.Text;*/
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
 public class LockableManager {
-    
+    @SuppressWarnings("null")
     public static boolean handleKeyUse(Player player, ItemStack stack, ILockableManager lockable) {
         if (!stack.is(KeyItem.MY_ITEM)) return false; //isOf -> is
 

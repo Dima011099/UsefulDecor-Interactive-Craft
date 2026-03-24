@@ -11,7 +11,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-
+@SuppressWarnings("null")
 public class KeyBoxBlockEntity extends BlockEntity implements MenuProvider {//import net.minecraft.screen.NamedScreenHandlerFactory;
     public KeyBoxBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntites.KEY_BOX_ENTITY_TYPE, pos, state);

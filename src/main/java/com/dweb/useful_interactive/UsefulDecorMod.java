@@ -21,12 +21,14 @@ public class UsefulDecorMod implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModComponentType.register();
-		ModRecipeTypes.register();
 		KeyItem.register();
-		ModBlocks.register();
 		ModItems.register();
+		ModBlocks.register();
+
 		ModBlockEntites.register();
 		ModScreenHandlers.registerScreenHandlers();
 		ModItemGroups.registerItemGroups();
+		
+		ModRecipeTypes.register();
 	}
 }

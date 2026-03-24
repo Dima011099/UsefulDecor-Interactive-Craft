@@ -20,11 +20,13 @@ public class KeyItem {
     );
 
     // 2. Передаем ключ в Settings через .registryKey(MY_ITEM_KEY)
+    @SuppressWarnings("null")
     public static final Item MY_ITEM = registerItem(
             new MKeyItem(new Item.Properties().setId(MY_ITEM_KEY)), MY_ITEM_KEY
     );
 
     // Исправленный метод регистрации
+    @SuppressWarnings("null")
     private static Item registerItem(Item item, ResourceKey<Item> key) {
         return Registry.register(BuiltInRegistries.ITEM, key, item);
     }

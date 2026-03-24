@@ -14,6 +14,7 @@ public class MKeyItem extends Item {
     {
         super(settings);
     }
+    @SuppressWarnings("null")
     @Override
     public void onCraftedBy(ItemStack stack, Player player) {
         if(!player.level().isClientSide()){

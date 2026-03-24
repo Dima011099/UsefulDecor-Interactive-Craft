@@ -1,7 +1,7 @@
 package com.dweb.useful_interactive.block.window;
 
 
-import javax.swing.text.html.BlockView;
+
 
 import com.mojang.serialization.MapCodec;
 
@@ -18,7 +18,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 
-
+@SuppressWarnings("null")
 public class HorizontalPaneBlock extends HorizontalDirectionalBlock {//HorizontalFacingBlock
     public static final MapCodec<HorizontalPaneBlock> CODEC = simpleCodec(HorizontalPaneBlock::new); //createCodec
 

@@ -40,6 +40,7 @@ public class KeyBoxScreenHandler extends AbstractContainerMenu {
         this(syncId, playerInventory, new SimpleContainer(4), ContainerLevelAccess.NULL); //ScreenHandlerContext
     }
 
+    @SuppressWarnings("null")
     public KeyBoxScreenHandler(int syncId, Inventory playerInventory, Container inventory, ContainerLevelAccess context) {//ScreenHandlerContext
         super(ModScreenHandlers.KEY_CABINET, syncId);
         this.context = context;
@@ -77,11 +78,13 @@ public class KeyBoxScreenHandler extends AbstractContainerMenu {
         }
     }
 
+    @SuppressWarnings("null")
     @Override
     public ItemStack quickMoveStack(Player player, int invSlot) {//quickMove
         return ItemStack.EMPTY; 
     }
 
+    @SuppressWarnings("null")
     @Override
     public void removed(Player player) { //onClosed
         super.removed(player);
@@ -92,13 +95,15 @@ public class KeyBoxScreenHandler extends AbstractContainerMenu {
         }
     }
 
+    @SuppressWarnings("null")
     @Override
     public boolean stillValid(Player player) {//stillValid
         return true;
     }
 
+    @SuppressWarnings("null")
     @Override
-    public void slotsChanged(Container inventory) {//onContentChanged
+    public void slotsChanged(Container inventory) {
         super.slotsChanged(inventory);
     
         if (isCrafting) return;
@@ -147,9 +152,12 @@ public class KeyBoxScreenHandler extends AbstractContainerMenu {
                     result
                 ));
             }
+             this.broadcastChanges();
         });
     }
 
+
+    @SuppressWarnings("null")
     private boolean inputsEqual(List<ItemStack> a, List<ItemStack> b) {
         if (a.size() != b.size()) return false;
 
@@ -180,13 +188,14 @@ public class KeyBoxScreenHandler extends AbstractContainerMenu {
         }
    } 
    
+   @SuppressWarnings("null")
     @Override
     public boolean canTakeItemForPickAll(ItemStack stack, Slot slot) {//canInsertIntoSlot
         return slot.container == this.inputInventory && slot.getContainerSlot() < 4;//inventory getIndex
     }
    
 }
-
+@SuppressWarnings("null")
 class SpecificItemSlot extends Slot {
     public SpecificItemSlot(Container inventory, int index, int x, int y) {
         super(inventory, index, x, y);

@@ -1,14 +1,10 @@
 package com.dweb.useful_interactive;
 
-import com.dweb.useful_interactive.registry.blocks.ModArchitecturalBlocks;
 import com.dweb.useful_interactive.ui.KeyCabinetScreen;
 import com.dweb.useful_interactive.ui.ModScreenHandlers;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.minecraft.client.renderer.entity.layers.RenderLayer;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-
+import net.minecraft.client.gui.screens.MenuScreens;
 
 public class UsefulDecorModClient implements ClientModInitializer {
 	@Override
@@ -26,6 +22,9 @@ public class UsefulDecorModClient implements ClientModInitializer {
 			BlockRenderLayerMap.putBlock(ModArchitecturalBlocks.BIRCH_DECORATIVE_STRIP_2_BLOCK, BlockRenderLayer.CUTOUT);
 
 			HandledScreens.register(ModScreenHandlers.KEY_CABINET, KeyCabinetScreen::new);*/
+			// В твоем Client-инициализаторе
+			MenuScreens.register(ModScreenHandlers.KEY_CABINET, KeyCabinetScreen::new);
+
 
 	}
 }

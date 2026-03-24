@@ -3,10 +3,8 @@ package com.dweb.useful_interactive.registry;
 import com.dweb.useful_interactive.registry.items.KeyItem;
 import com.dweb.useful_interactive.registry.items.ModItems;
 
-import net.fabricmc.fabric.api.item.v1.FabricItem;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.CreativeModeTab;
@@ -16,6 +14,7 @@ import net.minecraft.world.item.ItemStack;
 
 public class ModItemGroups {
     // Создаем ключ для группы ItemGroup
+    @SuppressWarnings("null")
     public static final CreativeModeTab USEFUL_GROUP = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB,
             Identifier.fromNamespaceAndPath("useful_interactive", "useful_group"), 
             CreativeModeTab.builder(CreativeModeTab.Row.TOP, 0)// FabricItemGroup.builder()

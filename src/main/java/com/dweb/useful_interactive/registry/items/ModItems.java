@@ -137,7 +137,7 @@ public class ModItems {
     public static final Item KEYBOX_ITEM = registerBlockItem(ModUtilityBlocks.KEYBOX_BLOCK, KEYBOX_ITEM_KEY);
     public static final Item BATANIC_TABLE_ITEM = registerBlockItem(ModUtilityBlocks.BATANIC_TABLE_BLOCK, BATANIC_TABLE_ITEM_KEY);
 
-
+@SuppressWarnings("null")
     private static Item registerBlockItem(Block block, ResourceKey<Item> key) {
         return Registry.register(BuiltInRegistries.ITEM, key, new BlockItem(block, new Item.Properties().setId(key)));
     }

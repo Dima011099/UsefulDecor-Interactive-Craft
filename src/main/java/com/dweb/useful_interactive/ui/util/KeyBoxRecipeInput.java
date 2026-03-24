@@ -5,6 +5,7 @@ import net.minecraft.world.item.crafting.RecipeInput;
 
 public record KeyBoxRecipeInput(ItemStack slot1, ItemStack slot2, ItemStack slot3, ItemStack slot4) implements RecipeInput {
     @Override
+    @SuppressWarnings("null")
     public ItemStack getItem(int index) {
         return switch (index) {
             case 0 -> slot1;

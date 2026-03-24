@@ -6,9 +6,6 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.Container;
-import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
@@ -27,24 +24,23 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 
-import javax.swing.text.html.BlockView;
 
 import org.jetbrains.annotations.Nullable;
 
 public class BoxBlock extends BaseEntityBlock {//BlockWithEntity
     public static final MapCodec<BoxBlock> CODEC = simpleCodec(BoxBlock::new);
        public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-
+@SuppressWarnings("null")
     @Override
     public MapCodec<? extends BoxBlock> codec() {
         return CODEC;
     }
-
+@SuppressWarnings("null")
     public BoxBlock(Properties settings) {
         super(settings);
          this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));// HorizontalDirectionalBlock.FACING
     }
-
+@SuppressWarnings("null")
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
         if (world.isClientSide()) return InteractionResult.SUCCESS;
@@ -74,16 +70,17 @@ public class BoxBlock extends BaseEntityBlock {//BlockWithEntity
     }
 
     @Nullable
+    @SuppressWarnings("null")
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new BoxBlockEntity(pos, state);
     }
-
+@SuppressWarnings("null")
     @Override
     public RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
     }
-
+@SuppressWarnings("null")
     @Override
     protected float getDestroyProgress(BlockState state, Player player, BlockGetter world, BlockPos pos) {
         float defaultDelta = super.getDestroyProgress(state, player, world, pos);
@@ -108,13 +105,13 @@ public class BoxBlock extends BaseEntityBlock {//BlockWithEntity
 
 
     
-
+@SuppressWarnings("null")
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING);
         super.createBlockStateDefinition(builder);
     }
-
+@SuppressWarnings("null")
     @Override
     public @org.jspecify.annotations.Nullable BlockState getStateForPlacement(BlockPlaceContext ctx) {
         return this.defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite());

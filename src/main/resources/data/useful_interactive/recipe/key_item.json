@@ -2,16 +2,16 @@
   "type": "useful_interactive:key_box_craft",
   "group": "lock_key",
   "category": "equipment",
-  "pattern": [
-    " NIN"
-  ],
+  "pattern": 
+    [" NIN"]
+  ,
   "key": {
-    "N": [
+    "N": 
       "minecraft:iron_nugget"
-    ],
-    "I": [
+    ,
+    "I": 
       "minecraft:iron_ingot"
-    ]
+    
   },
   "result": {
     "id": "useful_interactive:key_item",

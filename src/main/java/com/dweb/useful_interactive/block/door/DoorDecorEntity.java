@@ -15,7 +15,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
-
+@SuppressWarnings("null")
 public class DoorDecorEntity extends BlockEntity implements ILockableManager {
     private final LockComponent lock = new LockComponent();
 
@@ -51,12 +51,14 @@ public class DoorDecorEntity extends BlockEntity implements ILockableManager {
 
         view.putBoolean("is_locked", lock.isLocked());
     }
-
+    
     @Override
     public Packet<ClientGamePacketListener> getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this, (be, registries) -> {
         CompoundTag nbt = new CompoundTag();
         nbt.putBoolean("is_locked", ((DoorDecorEntity)be).isLocked());
+        if(lock.hasKey())
+        nbt.putString("locked_key", lock.getKey());
         return nbt;
     });
     }
@@ -66,6 +68,7 @@ public class DoorDecorEntity extends BlockEntity implements ILockableManager {
         //return createNbt(registries);
         CompoundTag tag = new CompoundTag();
         tag.putBoolean("is_locked", this.isLocked());
+        if(lock.hasKey())
         tag.putString("locked_key", lock.getKey());
         return tag;
     }
