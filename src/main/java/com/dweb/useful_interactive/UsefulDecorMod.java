@@ -20,6 +20,8 @@ public class UsefulDecorMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ModRecipeTypes.register();
+		
 		ModComponentType.register();
 		KeyItem.register();
 		ModItems.register();
@@ -28,7 +30,5 @@ public class UsefulDecorMod implements ModInitializer {
 		ModBlockEntites.register();
 		ModScreenHandlers.registerScreenHandlers();
 		ModItemGroups.registerItemGroups();
-		
-		ModRecipeTypes.register();
 	}
 }

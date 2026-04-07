@@ -6,6 +6,8 @@ import com.dweb.useful_interactive.recipe.keybox.KeyBoxRecipe;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 
@@ -31,6 +33,7 @@ public class ModRecipeTypes {
         UsefulDecorMod.LOGGER.info("Registering Custom Recipes for " + UsefulDecorMod.MOD_ID);
     }
 }*/
+
 public class ModRecipeTypes {
 
     public static final RecipeType<KeyBoxRecipe> KEY_CABINET = Registry.register(
@@ -46,7 +49,7 @@ public class ModRecipeTypes {
             BuiltInRegistries.RECIPE_SERIALIZER,
             Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "key_box_craft"),
        
-            new RecipeSerializer<>(KeyBoxRecipe.CODEC, KeyBoxRecipe.STREAM_CODEC)
+           new RecipeSerializer<>(KeyBoxRecipe.CODEC, KeyBoxRecipe.STREAM_CODEC)
     );
 
     public static void register() {

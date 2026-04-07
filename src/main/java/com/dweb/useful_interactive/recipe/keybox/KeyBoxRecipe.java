@@ -32,15 +32,18 @@ import com.dweb.useful_interactive.recipe.ModRecipeTypes;
 import com.mojang.serialization.Codec;
 
 public class KeyBoxRecipe implements Recipe<RecipeInput> {
-    private final ItemStack output;
+   // private final ItemStack output;
+     private final Item result;
     private final String[] pattern;
     private final Map<Character, Ingredient> key;
 
-    public KeyBoxRecipe(String[] pattern, Map<Character, Ingredient> key, ItemStack output) {
+    public KeyBoxRecipe(String[] pattern, Map<Character, Ingredient> key, Item result /*ItemStack output*/) {
         this.key = key;
-        this.output = output;
+      //  this.output = output;
+      this.result = result;
         this.pattern = pattern;
     }
+
 @SuppressWarnings("null")
     @Override
     public boolean matches(RecipeInput input, Level world) {
@@ -66,7 +69,8 @@ public class KeyBoxRecipe implements Recipe<RecipeInput> {
 @SuppressWarnings("null")
     @Override
     public ItemStack assemble(RecipeInput input) { 
-        return this.output.copy();
+       // return this.output.copy();
+       return new ItemStack(result);
     }
 @SuppressWarnings("null")
     @Override
@@ -127,102 +131,92 @@ public RecipeSerializer<? extends Recipe<RecipeInput>>  getSerializer() {
     
 
     public ItemStack getResult(HolderLookup.Provider registries) {//RegistryWrapper.WrapperLookup
-        return output;
+        //return output;
+        return new ItemStack(result);
     }
-    
-public static final MapCodec<KeyBoxRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
-    Codec.STRING.listOf().fieldOf("pattern").forGetter(r -> java.util.Arrays.asList(r.pattern)),
-    Codec.unboundedMap(Codec.STRING, Ingredient.CODEC).fieldOf("key").forGetter(r -> {
-        Map<String, Ingredient> map = new java.util.HashMap<>();
-        r.key.forEach((k, v) -> map.put(String.valueOf(k), v));
-        return map;
-    }),
-    //ItemStack.CODEC.fieldOf("result").forGetter(r -> r.output)
-    // Замените ItemStack.OPTIONAL_CODEC на этот вариант:
-ItemStack.OPTIONAL_CODEC.fieldOf("result").forGetter(r -> r.output)
-).apply(inst, (patternList, keyMap, result) -> {
-    Map<Character, Ingredient> charMap = new java.util.HashMap<>();
-    keyMap.forEach((k, v) -> charMap.put(k.charAt(0), v));
-             
-    return new KeyBoxRecipe(patternList.toArray(new String[0]), charMap, result);
-}));
-/* 
-public static final MapCodec<KeyBoxRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
-    Codec.STRING.listOf().fieldOf("pattern").forGetter(r -> java.util.Arrays.asList(r.pattern)),
-    Codec.unboundedMap(Codec.STRING, Ingredient.CODEC).fieldOf("key").forGetter(r -> {
-        Map<String, Ingredient> map = new java.util.HashMap<>();
-        r.key.forEach((k, v) -> map.put(String.valueOf(k), v));
-        return map;
-    }),
-    // Используем кодек РЕЕСТРА предметов — он ищет только по ID и не трогает компоненты
-    BuiltInRegistries.ITEM.byNameCodec().fieldOf("result").xmap(
-        (Item item) -> new ItemStack(item), // Создаем стек из предмета
-        (ItemStack stack) -> stack.getItem() // Возвращаем предмет из стека
-    ).forGetter(r -> r.output)
-).apply(inst, (patternList, keyMap, resultStack) -> {
-    Map<Character, Ingredient> charMap = new java.util.HashMap<>();
-    keyMap.forEach((k, v) -> charMap.put(k.charAt(0), v));
-    return new KeyBoxRecipe(patternList.toArray(new String[0]), charMap, resultStack);
-}));
-*//* 
-public static final MapCodec<KeyBoxRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
-    Codec.STRING.listOf().fieldOf("pattern").forGetter(r -> java.util.Arrays.asList(r.pattern)),
-    Codec.unboundedMap(Codec.STRING, Ingredient.CODEC).fieldOf("key").forGetter(r -> {
-        Map<String, Ingredient> map = new java.util.HashMap<>();
-        r.key.forEach((k, v) -> map.put(String.valueOf(k), v));
-        return map;
-    }),
-    // ИСПОЛЬЗУЙ ЭТО: Читаем Item и превращаем в ItemStack вручную
-    BuiltInRegistries.ITEM.byNameCodec().fieldOf("result").xmap(ItemStack::new, ItemStack::getItem).forGetter(r -> r.output)
-).apply(inst, (patternList, keyMap, resultStack) -> {
-    Map<Character, Ingredient> charMap = new java.util.HashMap<>();
-    keyMap.forEach((k, v) -> charMap.put(k.charAt(0), v));
-    return new KeyBoxRecipe(patternList.toArray(new String[0]), charMap, resultStack);
-}));*/
+@SuppressWarnings("null")
+public static final MapCodec<KeyBoxRecipe> CODEC =
+    RecordCodecBuilder.mapCodec(inst -> inst.group(
 
+        // pattern
+        Codec.STRING.listOf()
+            .fieldOf("pattern")
+            .forGetter(r -> java.util.Arrays.asList(r.pattern)),
 
-/*@SuppressWarnings("null")
-public static final @NonNull StreamCodec<RegistryFriendlyByteBuf, KeyBoxRecipe> STREAM_CODEC = StreamCodec.composite(
+        // key (String -> Ingredient → Character -> Ingredient)
+        Codec.unboundedMap(Codec.STRING, Ingredient.CODEC)
+            .fieldOf("key")
+            .xmap(
+                map -> {
+                    Map<Character, Ingredient> result = new java.util.HashMap<>();
+                    map.forEach((k, v) -> result.put(k.charAt(0), v));
+                    return result;
+                },
+                map -> {
+                    Map<String, Ingredient> result = new java.util.HashMap<>();
+                    map.forEach((k, v) -> result.put(String.valueOf(k), v));
+                    return result;
+                }
+            )
+            .forGetter(r -> r.key),
 
-    ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()).<RegistryFriendlyByteBuf>cast(), 
-    recipe -> java.util.Arrays.asList(recipe.pattern),
+        // ✅ ВАЖНО: ТОЛЬКО Item, НЕ ItemStack
+        BuiltInRegistries.ITEM.byNameCodec()
+            .fieldOf("result")
+            .forGetter(r -> r.result)
 
-    ByteBufCodecs.map(
-        java.util.HashMap::new, 
-        ByteBufCodecs.STRING_UTF8.map(s -> s.charAt(0), String::valueOf), 
-        Ingredient.CONTENTS_STREAM_CODEC
-    ), 
-    recipe -> recipe.key,
+    ).apply(inst, (patternList, key, item) ->
+        new KeyBoxRecipe(
+            patternList.toArray(new String[0]),
+            key,
+            item // теперь это Item
+        )
+    ));
+@SuppressWarnings("null")/*
+public static final StreamCodec<RegistryFriendlyByteBuf, KeyBoxRecipe> STREAM_CODEC =
+    StreamCodec.composite(
 
-    ItemStack.STREAM_CODEC, 
-    recipe -> recipe.output,
+        ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()),
+        r -> java.util.Arrays.asList(r.pattern),
 
-    (patternList, keyMap, resultStack) -> 
-        new KeyBoxRecipe(patternList.toArray(String[]::new), keyMap, resultStack)
-);
-}*/
-@SuppressWarnings({"null"})
-public static final StreamCodec<RegistryFriendlyByteBuf, KeyBoxRecipe> STREAM_CODEC = StreamCodec.composite(
-    // 1. Кодек для паттерна (список строк)
-    ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()), 
-    recipe -> java.util.Arrays.asList(recipe.pattern),
+        ByteBufCodecs.map(
+            java.util.HashMap::new,
+            ByteBufCodecs.STRING_UTF8.map(s -> s.charAt(0), String::valueOf),
+            Ingredient.CONTENTS_STREAM_CODEC
+        ),
+        r -> r.key,
 
-    // 2. Кодек для карты ингредиентов
-    ByteBufCodecs.map(
-        java.util.HashMap::new, 
-        ByteBufCodecs.STRING_UTF8.map(s -> s.charAt(0), String::valueOf), 
-        Ingredient.CONTENTS_STREAM_CODEC // Используем стандартный пакетный кодек ингредиента
-    ), 
-    recipe -> recipe.key,
+        ItemStack.STREAM_CODEC,
+        r -> r.output,
 
-    // 3. Кодек для результата (ItemStack)
-    ItemStack.STREAM_CODEC, 
-    recipe -> recipe.output,
+        (pattern, key, result) ->
+            new KeyBoxRecipe(pattern.toArray(String[]::new), key, result)
+    );*/
+    public static final StreamCodec<RegistryFriendlyByteBuf, KeyBoxRecipe> STREAM_CODEC =
+    StreamCodec.composite(
 
-    // Финальная сборка
-    (patternList, keyMap, resultStack) -> 
-        new KeyBoxRecipe(patternList.toArray(String[]::new), keyMap, resultStack)
-);}
+        // pattern
+        ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()),
+        r -> java.util.Arrays.asList(r.pattern),
+
+        // key
+        ByteBufCodecs.map(
+            java.util.HashMap::new,
+            ByteBufCodecs.STRING_UTF8.map(s -> s.charAt(0), String::valueOf),
+            Ingredient.CONTENTS_STREAM_CODEC
+        ),
+        r -> r.key,
+
+        // result → теперь Item, а не ItemStack
+        ByteBufCodecs.registry(Registries.ITEM),
+        r -> r.result,
+
+        // сборка
+        (pattern, key, item) ->
+            new KeyBoxRecipe(pattern.toArray(String[]::new), key, item)
+    );
+
+}
 
 /*
     public static final MapCodec<KeyBoxRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(

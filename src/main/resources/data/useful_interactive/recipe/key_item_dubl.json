@@ -3,7 +3,7 @@
   "group": "lock_key",
   "category": "equipment",
   "pattern": 
-   [ "KNIN"]
+    ["KNIN"]
   ,
   "key": {
     "N": 
@@ -16,8 +16,5 @@
       "useful_interactive:key_item"
     
   },
-    "result": {
-    "id": "useful_interactive:key_item",
-    "count": 1
-  }
+    "result": "useful_interactive:key_item"
 }

@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 
 public class KeyItem {
-    
+     
     // 1. Сначала создаем ключ (RegistryKey)
     public static final ResourceKey<Item> MY_ITEM_KEY = ResourceKey.create(
             Registries.ITEM, 
@@ -31,11 +31,22 @@ public class KeyItem {
         return Registry.register(BuiltInRegistries.ITEM, key, item);
     }
 
+
+  /*   public static final Item MY_ITEM = register("key_item", new MKeyItem(new Item.Properties()));
+
+    private static Item register(String name, Item item) {
+        // Создаем ключ идентификатора
+        Identifier id = Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "key_item");
+        // Создаем ResourceKey для предмета
+        ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, id);
+        
+        // ВАЖНО: В 1.21.1 нужно привязывать ключ к настройкам предмета ПЕРЕД регистрацией, 
+        // если вы используете кастомные классы предметов.
+        // Но проще всего регистрировать так:
+        return Registry.register(BuiltInRegistries.ITEM, key, item);
+    }
+*/
     public static void register() {
         UsefulDecorMod.LOGGER.debug("Регистрация предметов для " + UsefulDecorMod.MOD_ID);
-/* 
-    ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(content -> {
-        content.add(MY_ITEM);
-    });*/
     }
 }
