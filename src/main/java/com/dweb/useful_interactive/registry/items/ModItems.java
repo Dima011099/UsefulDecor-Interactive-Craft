@@ -107,6 +107,12 @@ public class ModItems {
         Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "keybox")
     );
 
+    //часы oak_clock
+    public static final ResourceKey<Item> OAK_CLOCK_ITEM_KEY = ResourceKey.create(
+        Registries.ITEM,
+        Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "oak_clock")
+    );
+
 
     // Регистрация Предмета для блоков
     public static final Item BOX_ITEM = registerBlockItem(ModStorageBlocks.BOX_BLOCK, BOX_ITEM_KEY);
@@ -129,6 +135,10 @@ public class ModItems {
     public static final Item BIRCH_GARDEN_TRELLIS_ITEM = registerBlockItem(ModArchitecturalBlocks.BIRCH_GARDEN_TRELLIS_BLOCK, BIRCH_GARDEN_TRELLIS_ITEM_KEY);
     public static final Item BIRCH_DECORATIVE_STRIP_1_ITEM = registerBlockItem(ModArchitecturalBlocks.BIRCH_DECORATIVE_STRIP_1_BLOCK, BIRCH_DECORATIVE_STRIP_1_ITEM_KEY);
     public static final Item BIRCH_DECORATIVE_STRIP_2_ITEM = registerBlockItem(ModArchitecturalBlocks.BIRCH_DECORATIVE_STRIP_2_BLOCK, BIRCH_DECORATIVE_STRIP_2_ITEM_KEY);
+
+
+    //часы
+    public static final Item OAK_CLOCK_ITEM = registerBlockItem(ModUtilityBlocks.OAK_CLOCK_BLOCK, OAK_CLOCK_ITEM_KEY);
 
     // функциональные блоки
 

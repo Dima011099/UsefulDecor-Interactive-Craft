@@ -7,6 +7,7 @@ import com.dweb.useful_interactive.registry.blocks.ModUtilityBlocks;
 
 import com.dweb.useful_interactive.UsefulDecorMod;
 import com.dweb.useful_interactive.block.chest.BoxBlockEntity;
+import com.dweb.useful_interactive.block.clock.WallClockBlockEntity;
 import com.dweb.useful_interactive.block.door.DoorDecorEntity;
 import com.dweb.useful_interactive.block.keybox.KeyBoxBlockEntity;
 
@@ -48,6 +49,15 @@ public static final  BlockEntityType<KeyBoxBlockEntity> KEY_BOX_ENTITY_TYPE = Re
         KeyBoxBlockEntity::new,
         ModUtilityBlocks.KEYBOX_BLOCK,
         ModUtilityBlocks.BATANIC_TABLE_BLOCK
+    ).build()
+);
+
+public static final  BlockEntityType<WallClockBlockEntity> WALL_CLOCK = Registry.register(
+    BuiltInRegistries.BLOCK_ENTITY_TYPE,
+    Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "wall_clock"),
+    FabricBlockEntityTypeBuilder.create(
+        WallClockBlockEntity::new,
+        ModUtilityBlocks.OAK_CLOCK_BLOCK
     ).build()
 );
 
