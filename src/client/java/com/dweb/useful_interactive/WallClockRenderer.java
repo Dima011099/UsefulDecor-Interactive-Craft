@@ -1,33 +1,54 @@
 package com.dweb.useful_interactive;
 
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
+import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
+
 import com.dweb.useful_interactive.block.clock.WallClockBlock;
 import com.dweb.useful_interactive.block.clock.WallClockBlockEntity;
-import com.ibm.icu.text.RelativeDateTimeFormatter.Direction;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 
-public class WallClockRenderer implements BlockEntityRenderer<WallClockBlockEntity> {
+import net.minecraft.core.Direction;
+
+
+class WallClockRenderState extends BlockEntityRenderState {
+    public float rotation;
+    public Direction facing;
+}
+
+public class WallClockRenderer /*implements BlockEntityRenderer<WallClockBlockEntity, WallClockRenderState> */{
+
+  /*   public WallClockRenderer(BlockEntityRendererProvider.Context context) {
+        // Здесь инициализируем модели, если они есть
+    }
+
     @Override
-    public void render(WallClockBlockEntity entity, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int combinedLight, int combinedOverlay) {
+    public WallClockRenderState createRenderState() {
+        return new WallClockRenderState();
+    }
+
+    @Override
+    public void extractRenderState(WallClockBlockEntity entity, WallClockRenderState state, float partialTicks) {
+        // Шаг 1: Копируем данные из сущности в state
+        state.facing = entity.getBlockState().getValue(WallClockBlock.FACING);
+        
+        float time = (entity.getLevel().getDayTime() + partialTicks) % 24000;
+        state.rotation = (time / 24000.0f) * 360.0f;
+    }
+
+    @Override
+    public void render(WallClockRenderState state, PoseStack poseStack, MultiBufferSource buffer, int combinedLight, int combinedOverlay) {
+        // Шаг 2: Только отрисовка на основе данных из state
         poseStack.pushPose();
         
-        // 1. Центрируем и поворачиваем под стену (FACING)
-        Direction dir = entity.getBlockState().getValue(WallClockBlock.FACING);
-        // ... (логика перемещения poseStack к центру блока)
-
-        // 2. Рассчитываем угол времени
-        float time = entity.getLevel().getDayTime() % 24000;
-        float rotation = (time / 24000.0f) * 360.0f;
-
-        // 3. Вращаем стрелку
-        poseStack.mulPose(Axis.ZP.rotationDegrees(rotation));
+        poseStack.translate(0.5f, 0.5f, 0.5f);
+        // Используем Axis.Z_POSITIVE (новое имя в 26.1)
+        poseStack.mulPose(Axis.Z_POSITIVE.rotationDegrees(state.rotation));
         
-        // 4. Отрисовываем модель стрелки (через VertexConsumer)
-        // ...
+        // Отрисовка вашей модели стрелки...
         
         poseStack.popPose();
-    }
+    }*/
 }

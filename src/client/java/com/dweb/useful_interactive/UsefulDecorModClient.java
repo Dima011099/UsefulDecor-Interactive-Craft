@@ -13,6 +13,6 @@ public class UsefulDecorModClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 			MenuScreens.register(ModScreenHandlers.KEY_CABINET, KeyCabinetScreen::new);
-			BlockEntityRendererRegistry.register(ModBlockEntites.WALL_CLOCK, WallClockRenderer::new);
+		//	BlockEntityRendererRegistry.register(ModBlockEntites.WALL_CLOCK, WallClockRenderer::new);
 	}
 }
