@@ -22,6 +22,11 @@ public class ModArchitecturalBlocks {
         Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "oak_decor_door")//of
     );
 
+    public static final ResourceKey<Block> OAK_GLASS_DECOR_DOOR_KEY = ResourceKey.create(
+        Registries.BLOCK,
+        Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "oak_glass_decor_door")
+    );
+
     public static final ResourceKey<Block> METAL_DECOR_DOOR_KEY = ResourceKey.create(
         Registries.BLOCK,
         Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "metal_decor_door")//of
@@ -89,6 +94,20 @@ public class ModArchitecturalBlocks {
         ),
         OAK_DECOR_DOOR_KEY
     );
+
+    @SuppressWarnings("null")
+    public static final Block OAK_GLASS_DECOR_DOOR = ModBlocks.registerBlock(
+        new DoorDecor(
+                BlockSetType.OAK, 
+                BlockBehaviour.Properties.of()
+                        .mapColor(MapColor.WOOD)
+                        .setId(OAK_GLASS_DECOR_DOOR_KEY)
+                        .strength(1.5f)
+                        .noOcclusion() // Двери имеют прозрачные части
+        ),
+        OAK_GLASS_DECOR_DOOR_KEY
+    );
+
 @SuppressWarnings("null")
     public static final Block METAL_DECOR_DOOR = ModBlocks.registerBlock(
         new DoorDecor(

@@ -43,6 +43,7 @@ public class ModItemGroups {
                         entries.accept(ModItems.BIRCH_DECORATIVE_STRIP_1_ITEM);
                         entries.accept(ModItems.BIRCH_DECORATIVE_STRIP_2_ITEM);
                         entries.accept(ModItems.OAK_CLOCK_ITEM);
+                        entries.accept(ModItems.OAK_GLASS_DECOR_DOOR_ITEM);
                     })
                     .build());
 

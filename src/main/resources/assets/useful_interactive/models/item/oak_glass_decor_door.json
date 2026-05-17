@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "useful_interactive:item/oak_glass_decor_door"
+  }
+}

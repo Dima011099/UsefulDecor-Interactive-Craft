@@ -38,6 +38,11 @@ public class ModItems {
         Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "oak_decor_door")
     );
 
+    public static final ResourceKey<Item> OAK_GLASS_DECOR_DOOR_ITEM_KEY = ResourceKey.create(
+        Registries.ITEM,
+        Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "oak_glass_decor_door")
+    );
+
     public static final ResourceKey<Item> METAL_DECOR_DOOR_ITEM_KEY = ResourceKey.create(
         Registries.ITEM,
         Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "metal_decor_door")
@@ -122,6 +127,8 @@ public class ModItems {
     public static final Item BIRCH_BOX_CABINET_ITEM = registerBlockItem(ModStorageBlocks.BIRCH_BOX_CABINET_BLOCK, BIRCH_BOX_CABINET_ITEM_KEY);
     //Двери
     public static final Item OAK_DECOR_DOOR_ITEM = registerBlockItem(ModArchitecturalBlocks.OAK_DECOR_DOOR, OAK_DECOR_DOOR_ITEM_KEY);
+    public static final Item OAK_GLASS_DECOR_DOOR_ITEM = registerBlockItem(ModArchitecturalBlocks.OAK_GLASS_DECOR_DOOR, OAK_GLASS_DECOR_DOOR_ITEM_KEY);
+
     public static final Item METAL_DECOR_DOOR_ITEM = registerBlockItem(ModArchitecturalBlocks.METAL_DECOR_DOOR, METAL_DECOR_DOOR_ITEM_KEY);
     public static final Item BIRCH_DECOR_DOOR_ITEM = registerBlockItem(ModArchitecturalBlocks.BIRCH_DECOR_DOOR, BIRCH_DECOR_DOOR_ITEM_KEY);
     public static final Item GLASS_DECOR_DOOR_ITEM = registerBlockItem(ModArchitecturalBlocks.GLASS_DECOR_DOOR, GLASS_DECOR_DOOR_ITEM_KEY);

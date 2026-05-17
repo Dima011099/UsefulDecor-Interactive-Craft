@@ -30,13 +30,14 @@ public class ModBlockEntites {
         ModStorageBlocks.BIRCH_BOX_CABINET_BLOCK/*, 
     ModUtilityBlocks.BATANIC_TABLE_BLOCK*/).build()
 );
-@SuppressWarnings("null")
+
 public static final BlockEntityType<DoorDecorEntity> DOOR_BLOCK_ENTITY_TYPE = Registry.register(
     BuiltInRegistries.BLOCK_ENTITY_TYPE,
     Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "door_be"), //of
     FabricBlockEntityTypeBuilder.create(
         DoorDecorEntity::new, 
-        ModArchitecturalBlocks.OAK_DECOR_DOOR, 
+        ModArchitecturalBlocks.OAK_DECOR_DOOR,
+        ModArchitecturalBlocks.OAK_GLASS_DECOR_DOOR, 
         ModArchitecturalBlocks.METAL_DECOR_DOOR, 
         ModArchitecturalBlocks.BIRCH_DECOR_DOOR,
         ModArchitecturalBlocks.GLASS_DECOR_DOOR).build()
