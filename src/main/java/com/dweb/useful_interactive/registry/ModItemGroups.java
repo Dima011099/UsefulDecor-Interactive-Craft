@@ -1,5 +1,9 @@
 package com.dweb.useful_interactive.registry;
 
+import com.dweb.useful_interactive.registry.blocks.ModArchitecturalBlocks;
+import com.dweb.useful_interactive.registry.blocks.ModBlocks;
+import com.dweb.useful_interactive.registry.blocks.ModStorageBlocks;
+import com.dweb.useful_interactive.registry.blocks.ModUtilityBlocks;
 import com.dweb.useful_interactive.registry.items.KeyItem;
 import com.dweb.useful_interactive.registry.items.ModItems;
 
@@ -19,31 +23,34 @@ public class ModItemGroups {
             Identifier.fromNamespaceAndPath("useful_interactive", "useful_group"), 
             CreativeModeTab.builder(CreativeModeTab.Row.TOP, 0)// FabricItemGroup.builder()
                     // Иконка вкладки (например, ваша коробка)
-                    .icon(() -> new ItemStack(ModItems.BOX_ITEM)) 
+                    .icon(() -> new ItemStack(ModStorageBlocks.BOX_BLOCK)) 
                     // Название вкладки (используйте перевод в lang файле)//displayName
                     .title(Component.translatable("itemGroup.useful_interactive.useful_group"))
                     // Добавляем предметы в группу
                     .displayItems((displayContext, entries) -> {
-                        entries.accept(ModItems.BOX_ITEM);
-                        entries.accept(ModItems.OAK_BOX_ITEM);
-                        entries.accept(ModItems.OAK_GLASS_PANE_ITEM);
-                        entries.accept(ModItems.METAL_DECOR_DOOR_ITEM);
-                        entries.accept(ModItems.OAK_DECOR_DOOR_ITEM);
                         entries.accept(KeyItem.MY_ITEM);
-                        entries.accept(ModItems.BIRCH_BOX_ITEM);
-                        entries.accept(ModItems.OAK_IRON_GLASS_PANE_ITEM);
-                        entries.accept(ModItems.IRON_GLASS_PANE_ITEM);
-                        entries.accept(ModItems.BIRCH_IRON_GLASS_PANE_ITEM);
-                        entries.accept(ModItems.BIRCH_DECOR_DOOR_ITEM);
-                        entries.accept(ModItems.KEYBOX_ITEM);
-                        entries.accept(ModItems.BIRCH_BOX_CABINET_ITEM);
-                       // entries.accept(ModItems.BATANIC_TABLE_ITEM);
-                        entries.accept(ModItems.GLASS_DECOR_DOOR_ITEM);
-                        entries.accept(ModItems.BIRCH_GARDEN_TRELLIS_ITEM);
-                        entries.accept(ModItems.BIRCH_DECORATIVE_STRIP_1_ITEM);
-                        entries.accept(ModItems.BIRCH_DECORATIVE_STRIP_2_ITEM);
-                        entries.accept(ModItems.OAK_CLOCK_ITEM);
-                        entries.accept(ModItems.OAK_GLASS_DECOR_DOOR_ITEM);
+
+                        entries.accept(ModStorageBlocks.BOX_BLOCK);
+                        entries.accept(ModStorageBlocks.OAK_BOX_BLOCK);
+                        entries.accept(ModStorageBlocks.BIRCH_BOX_BLOCK);
+                        entries.accept(ModStorageBlocks.BIRCH_BOX_CABINET_BLOCK);
+
+                        entries.accept(ModArchitecturalBlocks.OAK_GLASS_PANE);
+                        entries.accept(ModArchitecturalBlocks.METAL_DECOR_DOOR);
+                        entries.accept(ModArchitecturalBlocks.OAK_DECOR_DOOR);
+                        entries.accept(ModArchitecturalBlocks.OAK_IRON_GLASS_PANE);
+                        entries.accept(ModArchitecturalBlocks.IRON_GLASS_PANE);
+                        entries.accept(ModArchitecturalBlocks.BIRCH_IRON_GLASS_PANE);
+                        entries.accept(ModArchitecturalBlocks.BIRCH_DECOR_DOOR);
+                        entries.accept(ModArchitecturalBlocks.GLASS_DECOR_DOOR);
+                        entries.accept(ModArchitecturalBlocks.BIRCH_GARDEN_TRELLIS_BLOCK);
+                        entries.accept(ModArchitecturalBlocks.BIRCH_DECORATIVE_STRIP_1_BLOCK);
+                        entries.accept(ModArchitecturalBlocks.BIRCH_DECORATIVE_STRIP_2_BLOCK);
+                        entries.accept(ModArchitecturalBlocks.OAK_GLASS_DECOR_DOOR);
+
+                        entries.accept(ModUtilityBlocks.KEYBOX_BLOCK);
+                        entries.accept(ModUtilityBlocks.BATANIC_TABLE_BLOCK);
+                        entries.accept(ModUtilityBlocks.OAK_CLOCK_BLOCK);
                     })
                     .build());
 
