@@ -1,11 +1,9 @@
 package com.dweb.useful_interactive.registry;
 
 import com.dweb.useful_interactive.registry.blocks.ModArchitecturalBlocks;
-import com.dweb.useful_interactive.registry.blocks.ModBlocks;
 import com.dweb.useful_interactive.registry.blocks.ModStorageBlocks;
 import com.dweb.useful_interactive.registry.blocks.ModUtilityBlocks;
 import com.dweb.useful_interactive.registry.items.KeyItem;
-import com.dweb.useful_interactive.registry.items.ModItems;
 
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
