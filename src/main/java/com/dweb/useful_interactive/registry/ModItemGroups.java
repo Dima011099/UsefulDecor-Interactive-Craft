@@ -48,7 +48,11 @@ public class ModItemGroups {
 
                         entries.accept(ModUtilityBlocks.KEYBOX_BLOCK);
                         entries.accept(ModUtilityBlocks.BATANIC_TABLE_BLOCK);
+
                         entries.accept(ModUtilityBlocks.OAK_CLOCK_BLOCK);
+                        entries.accept(ModUtilityBlocks.METAL_CLOCK_BLOCK);
+                        entries.accept(ModUtilityBlocks.BIRCH_CLOCK_BLOCK);
+                        entries.accept(ModUtilityBlocks.OBSIDIAN_CLOCK_BLOCK);
                     })
                     .build());
 

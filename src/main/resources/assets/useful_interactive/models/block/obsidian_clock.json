@@ -1,0 +1,21 @@
+{
+	"textures": {
+		"face": "useful_interactive:block/obsidian_clock",
+		"side": "useful_interactive:block/oak_box_top",
+		"particle": "useful_interactive:block/obsidian_clock"
+	},
+	"elements": [
+		{
+			"from": [3, 3, 15.5],
+			"to": [13, 13, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#face"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#face"},
+				"up": {"uv": [0, 7.5, 16, 8.5], "texture": "#side"},
+				"down": {"uv": [0, 7.5, 16, 8.5], "texture": "#side"},
+				"east": {"uv": [7.5, 0, 8.5, 16], "texture": "#side"},
+				"west": {"uv": [7.5, 0, 8.5, 16], "texture": "#side"}
+			}
+		}
+	]
+}

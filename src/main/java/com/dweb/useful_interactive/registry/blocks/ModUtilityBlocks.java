@@ -18,7 +18,11 @@ public class ModUtilityBlocks {
 
         public static final ResourceKey<Block> BOTANIC_TABLE_KEY = ModBlocks.createBlockKey("botanic_table"); // Исправлена опечатка batanic -> botanic
         public static final ResourceKey<Block> KEYBOX_KEY = ModBlocks.createBlockKey("keybox");
+
         public static final ResourceKey<Block> OAK_CLOCK_KEY = ModBlocks.createBlockKey("oak_clock");
+        public static final ResourceKey<Block> METAL_CLOCK_KEY = ModBlocks.createBlockKey("metal_clock");
+        public static final ResourceKey<Block> BIRCH_CLOCK_KEY = ModBlocks.createBlockKey("birch_clock");
+        public static final ResourceKey<Block> OBSIDIAN_CLOCK_KEY = ModBlocks.createBlockKey("obsidian_clock");
 
         // --- Block Instances ---
 
@@ -37,6 +41,22 @@ public class ModUtilityBlocks {
                 new WallClockBlock(BlockBehaviour.Properties.of().setId(OAK_CLOCK_KEY).strength(4.0f, 50.0f)), 
                 OAK_CLOCK_KEY
         );
+
+        public static final Block METAL_CLOCK_BLOCK = ModBlocks.registerBlock(
+                new WallClockBlock(BlockBehaviour.Properties.of().setId(METAL_CLOCK_KEY).strength(4.0f, 50.0f)), 
+                METAL_CLOCK_KEY
+        );
+
+        public static final Block BIRCH_CLOCK_BLOCK = ModBlocks.registerBlock(
+                new WallClockBlock(BlockBehaviour.Properties.of().setId(BIRCH_CLOCK_KEY).strength(4.0f, 50.0f)), 
+                BIRCH_CLOCK_KEY
+        );
+
+        public static final Block OBSIDIAN_CLOCK_BLOCK = ModBlocks.registerBlock(
+                new WallClockBlock(BlockBehaviour.Properties.of().setId(OBSIDIAN_CLOCK_KEY).strength(4.0f, 50.0f)), 
+                OBSIDIAN_CLOCK_KEY
+        );
+
 
         /**
         * Initializes the utility blocks registry class.

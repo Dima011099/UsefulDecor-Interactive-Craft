@@ -58,7 +58,11 @@ public static final  BlockEntityType<WallClockBlockEntity> WALL_CLOCK = Registry
     Identifier.fromNamespaceAndPath(UsefulDecorMod.MOD_ID, "wall_clock"),
     FabricBlockEntityTypeBuilder.create(
         WallClockBlockEntity::new,
-        ModUtilityBlocks.OAK_CLOCK_BLOCK
+        ModUtilityBlocks.OAK_CLOCK_BLOCK,
+        ModUtilityBlocks.METAL_CLOCK_BLOCK,
+        ModUtilityBlocks.BIRCH_CLOCK_BLOCK,
+        ModUtilityBlocks.OBSIDIAN_CLOCK_BLOCK
+
     ).build()
 );
 
