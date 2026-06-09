@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "useful_clock",
+  "category": "redstone",
+  "pattern": [
+    "IWI",
+    "WRW",
+    "IWI"
+  ],
+  "key": {
+    "R": [
+      "minecraft:redstone_torch"
+    ],
+    "I": [
+      "minecraft:iron_nugget"
+    ],
+    "W" :
+      "minecraft:oak_log"
+  },
+  "result": {
+    "id": "useful_interactive:wooden_wall_clock",
+    "count": 1
+  }
+}

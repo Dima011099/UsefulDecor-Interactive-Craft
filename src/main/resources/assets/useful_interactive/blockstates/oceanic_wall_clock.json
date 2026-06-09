@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "useful_interactive:block/oceanic_wall_clock" },
+    "facing=south": { "model": "useful_interactive:block/oceanic_wall_clock", "y": 180 },
+    "facing=east": { "model": "useful_interactive:block/oceanic_wall_clock", "y": 90 },
+    "facing=west": { "model": "useful_interactive:block/oceanic_wall_clock", "y": 270 }
+  }
+}

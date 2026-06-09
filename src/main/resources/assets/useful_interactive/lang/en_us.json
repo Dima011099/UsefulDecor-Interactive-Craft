@@ -57,6 +57,11 @@
     "container.useful_interactive.keybox": "KeyBox",
     
     "block.useful_interactive.birch_box_cabinet": "Cabinet",
-    "item.useful_interactive.birch_box_cabinet": "Cabinet"
+    "item.useful_interactive.birch_box_cabinet": "Cabinet",
+
+    "item.useful_interactive.wooden_wall_clock": "Wooden Clock",
+    "item.useful_interactive.oceanic_wall_clock": "Oceanic Clock",
+    "item.useful_interactive.crimson_wall_clock": "Crimson Clock",
+    "item.useful_interactive.obsidian_wall_clock": "Obsidian Clock"
 
 }

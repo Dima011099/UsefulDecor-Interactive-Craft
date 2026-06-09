@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "useful_clock",
+  "category": "redstone",
+  "pattern": [
+    "IOI",
+    "ORO",
+    "IOI"
+  ],
+  "key": {
+    "I":["minecraft:iron_nugget"],
+    "O": ["minecraft:crying_obsidian"],
+    "R": ["minecraft:redstone_torch"]
+  },
+  "result": {
+    "id": "useful_interactive:obsidian_wall_clock",
+    "count": 1
+  }
+}

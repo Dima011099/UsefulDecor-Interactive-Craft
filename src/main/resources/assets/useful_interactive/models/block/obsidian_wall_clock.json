@@ -1,8 +1,8 @@
 {
 	"textures": {
-		"face": "useful_interactive:block/obsidian_clock",
+		"face": "useful_interactive:block/obsidian_wall_clock",
 		"side": "useful_interactive:block/oak_box_top",
-		"particle": "useful_interactive:block/obsidian_clock"
+		"particle": "useful_interactive:block/obsidian_wall_clock"
 	},
 	"elements": [
 		{

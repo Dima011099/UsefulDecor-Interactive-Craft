@@ -19,10 +19,10 @@ public class ModUtilityBlocks {
         public static final ResourceKey<Block> BOTANIC_TABLE_KEY = ModBlocks.createBlockKey("botanic_table"); // Исправлена опечатка batanic -> botanic
         public static final ResourceKey<Block> KEYBOX_KEY = ModBlocks.createBlockKey("keybox");
 
-        public static final ResourceKey<Block> OAK_CLOCK_KEY = ModBlocks.createBlockKey("oak_clock");
-        public static final ResourceKey<Block> METAL_CLOCK_KEY = ModBlocks.createBlockKey("metal_clock");
-        public static final ResourceKey<Block> BIRCH_CLOCK_KEY = ModBlocks.createBlockKey("birch_clock");
-        public static final ResourceKey<Block> OBSIDIAN_CLOCK_KEY = ModBlocks.createBlockKey("obsidian_clock");
+        public static final ResourceKey<Block> CRIMSON_WALL_CLOCK_KEY = ModBlocks.createBlockKey("crimson_wall_clock");
+        public static final ResourceKey<Block> OCEANIC_WALL_CLOCK_KEY = ModBlocks.createBlockKey("oceanic_wall_clock");
+        public static final ResourceKey<Block> WOODEN_WALL_CLOCK_KEY = ModBlocks.createBlockKey("wooden_wall_clock");
+        public static final ResourceKey<Block> OBSIDIAN_WALL_CLOCK_KEY = ModBlocks.createBlockKey("obsidian_wall_clock");
 
         // --- Block Instances ---
 
@@ -37,24 +37,24 @@ public class ModUtilityBlocks {
                 KEYBOX_KEY
         );
 
-        public static final Block OAK_CLOCK_BLOCK = ModBlocks.registerBlock(
-                new WallClockBlock(BlockBehaviour.Properties.of().setId(OAK_CLOCK_KEY).strength(4.0f, 50.0f)), 
-                OAK_CLOCK_KEY
+        public static final Block CRIMSON_WALL_CLOCK_BLOCK = ModBlocks.registerBlock(
+                new WallClockBlock(BlockBehaviour.Properties.of().setId(CRIMSON_WALL_CLOCK_KEY).strength(4.0f, 50.0f)), 
+                CRIMSON_WALL_CLOCK_KEY
         );
 
-        public static final Block METAL_CLOCK_BLOCK = ModBlocks.registerBlock(
-                new WallClockBlock(BlockBehaviour.Properties.of().setId(METAL_CLOCK_KEY).strength(4.0f, 50.0f)), 
-                METAL_CLOCK_KEY
+        public static final Block OCEANIC_WALL_CLOCK_BLOCK = ModBlocks.registerBlock(
+                new WallClockBlock(BlockBehaviour.Properties.of().setId(OCEANIC_WALL_CLOCK_KEY).strength(4.0f, 50.0f)), 
+                OCEANIC_WALL_CLOCK_KEY
         );
 
-        public static final Block BIRCH_CLOCK_BLOCK = ModBlocks.registerBlock(
-                new WallClockBlock(BlockBehaviour.Properties.of().setId(BIRCH_CLOCK_KEY).strength(4.0f, 50.0f)), 
-                BIRCH_CLOCK_KEY
+        public static final Block WOODEN_WALL_CLOCK_BLOCK = ModBlocks.registerBlock(
+                new WallClockBlock(BlockBehaviour.Properties.of().setId(WOODEN_WALL_CLOCK_KEY).strength(4.0f, 50.0f)), 
+                WOODEN_WALL_CLOCK_KEY
         );
 
-        public static final Block OBSIDIAN_CLOCK_BLOCK = ModBlocks.registerBlock(
-                new WallClockBlock(BlockBehaviour.Properties.of().setId(OBSIDIAN_CLOCK_KEY).strength(4.0f, 50.0f)), 
-                OBSIDIAN_CLOCK_KEY
+        public static final Block OBSIDIAN_WALL_CLOCK_BLOCK = ModBlocks.registerBlock(
+                new WallClockBlock(BlockBehaviour.Properties.of().setId(OBSIDIAN_WALL_CLOCK_KEY).strength(4.0f, 50.0f)), 
+                OBSIDIAN_WALL_CLOCK_KEY
         );
 
 

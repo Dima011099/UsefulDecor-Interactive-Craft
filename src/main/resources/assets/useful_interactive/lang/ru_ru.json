@@ -56,5 +56,10 @@
     "container.useful_interactive.keybox": "Ключница",
 
     "block.useful_interactive.birch_box_cabinet": "Шкаф",
-    "item.useful_interactive.birch_box_cabinet": "Шкаф"
+    "item.useful_interactive.birch_box_cabinet": "Шкаф",
+
+    "item.useful_interactive.wooden_wall_clock": "Бревенчатые часы",
+    "item.useful_interactive.oceanic_wall_clock": "Океанические часы",
+    "item.useful_interactive.crimson_wall_clock": "Багровые часы",
+    "item.useful_interactive.obsidian_wall_clock": "Обсидиановые часы"
 }
