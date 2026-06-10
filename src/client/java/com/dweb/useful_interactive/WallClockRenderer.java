@@ -28,7 +28,11 @@ import net.minecraft.world.phys.Vec3;
 public class WallClockRenderer implements BlockEntityRenderer<WallClockBlockEntity, WallClockRenderer.WallClockRenderState> {
 
     // Built-in vanilla white texture used for solid color shading directly through the vertex buffer
-    private static final Identifier PLAIN_WHITE = Identifier.fromNamespaceAndPath("minecraft", "textures/misc/white.png");
+    //private static final Identifier PLAIN_WHITE = Identifier.fromNamespaceAndPath("minecraft", "textures/misc/white.png");
+  // Указываем путь к вашей кастомной текстуре стрелки
+private static final Identifier PLAIN_WHITE = Identifier.fromNamespaceAndPath("useful_interactive", "textures/block/hour_hand.png");
+
+
 
     public WallClockRenderer(BlockEntityRendererProvider.Context context) {
         // Constructor is empty as geometry is built dynamically without heavy Java model parts
@@ -104,7 +108,7 @@ public class WallClockRenderer implements BlockEntityRenderer<WallClockBlockEnti
             poseStack.translate(0.0f, 0.0f, 0.42);
             poseStack.mulPose(Axis.ZP.rotationDegrees(state.hourRotation)); 
 
-            buildSafeQuad(poseStack, vertexConsumer, -0.015f, 0.015f, 0.0f, 0.16f, 0.0f, 140, 240, 0, 255);
+            buildSafeQuad(poseStack, vertexConsumer, -0.015f, 0.015f, 0.0f, 0.16f, 0.0f, 90, 90, 90, 255);
 
             poseStack.popPose();
 
@@ -120,7 +124,7 @@ public class WallClockRenderer implements BlockEntityRenderer<WallClockBlockEnti
             poseStack.translate(0.0f, 0.0f, 0.43f);
             poseStack.mulPose(Axis.ZP.rotationDegrees(state.minuteRotation));
             
-            buildSafeQuad(poseStack, vertexConsumer, -0.01f, 0.01f, 0.0f, 0.21f, 0.0f, 160, 255, 0, 255);
+            buildSafeQuad(poseStack, vertexConsumer, -0.01f, 0.01f, 0.0f, 0.21f, 0.0f, 110, 110, 110, 255);
 
             poseStack.popPose();
         });
@@ -150,9 +154,9 @@ public class WallClockRenderer implements BlockEntityRenderer<WallClockBlockEnti
     private void buildSafeQuad(PoseStack poseStack, VertexConsumer consumer, float minX, float maxX, float minY, float maxY, float z, int r, int g, int b, int a) {
         org.joml.Matrix4f matrix = poseStack.last().pose();
         
-        consumer.addVertex(matrix, minX, minY, z).setColor(r, g, b, a).setUv(0f, 0f).setOverlay(OverlayTexture.pack(0, 10)).setLight(LightCoordsUtil.FULL_SKY).setNormal(0f, 0f, 1f);
-        consumer.addVertex(matrix, minX, maxY, z).setColor(r, g, b, a).setUv(0f, 1f).setOverlay(OverlayTexture.pack(0, 10)).setLight(LightCoordsUtil.FULL_SKY).setNormal(0f, 0f, 1f);
-        consumer.addVertex(matrix, maxX, maxY, z).setColor(r, g, b, a).setUv(1f, 1f).setOverlay(OverlayTexture.pack(0, 10)).setLight(LightCoordsUtil.FULL_SKY).setNormal(0f, 0f, 1f);
-        consumer.addVertex(matrix, maxX, minY, z).setColor(r, g, b, a).setUv(1f, 0f).setOverlay(OverlayTexture.pack(0, 10)).setLight(LightCoordsUtil.FULL_SKY).setNormal(0f, 0f, 1f);
+        consumer.addVertex(matrix, minX, minY, z).setColor(r, g, b, a).setUv(0f, 1f).setOverlay(OverlayTexture.pack(0, 10)).setLight(LightCoordsUtil.FULL_SKY).setNormal(0f, 0f, 1f);
+        consumer.addVertex(matrix, minX, maxY, z).setColor(r, g, b, a).setUv(1f, 1f).setOverlay(OverlayTexture.pack(0, 10)).setLight(LightCoordsUtil.FULL_SKY).setNormal(0f, 0f, 1f);
+        consumer.addVertex(matrix, maxX, maxY, z).setColor(r, g, b, a).setUv(1f, 0f).setOverlay(OverlayTexture.pack(0, 10)).setLight(LightCoordsUtil.FULL_SKY).setNormal(0f, 0f, 1f);
+        consumer.addVertex(matrix, maxX, minY, z).setColor(r, g, b, a).setUv(0f, 0f).setOverlay(OverlayTexture.pack(0, 10)).setLight(LightCoordsUtil.FULL_SKY).setNormal(0f, 0f, 1f);
     }
 }

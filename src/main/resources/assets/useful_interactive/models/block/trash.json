@@ -1,0 +1,22 @@
+{
+  "textures": {
+    "particle": "useful_interactive:block/trash_side",
+    "top": "useful_interactive:block/trash_top",
+    "bottom": "useful_interactive:block/trash_bottom",
+    "side": "useful_interactive:block/trash_side"
+  },
+  "elements": [
+    {
+      "from": [3.0, 0.0, 3.0],
+      "to": [13.0, 16.0, 13.0],
+      "faces": {
+        "down":  {"uv": [3.0, 3.0, 13.0, 13.0], "texture": "#bottom", "cullface": "down"},
+        "up":    {"uv": [3.0, 3.0, 13.0, 13.0], "texture": "#top", "cullface": "up"},
+        "north": {"uv": [3.0, 0.0, 13.0, 16.0], "texture": "#side"},
+        "south": {"uv": [3.0, 0.0, 13.0, 16.0], "texture": "#side"},
+        "west":  {"uv": [3.0, 0.0, 13.0, 16.0], "texture": "#side"},
+        "east":  {"uv": [3.0, 0.0, 13.0, 16.0], "texture": "#side"}
+      }
+    }
+  ]
+}

@@ -3,6 +3,8 @@ package com.dweb.useful_interactive.registry.blocks;
 import com.dweb.useful_interactive.UsefulDecorMod;
 import com.dweb.useful_interactive.block.clock.WallClockBlock;
 import com.dweb.useful_interactive.block.keybox.KeyBoxBlock;
+import com.dweb.useful_interactive.block.trash.Trash;
+
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -23,6 +25,8 @@ public class ModUtilityBlocks {
         public static final ResourceKey<Block> OCEANIC_WALL_CLOCK_KEY = ModBlocks.createBlockKey("oceanic_wall_clock");
         public static final ResourceKey<Block> WOODEN_WALL_CLOCK_KEY = ModBlocks.createBlockKey("wooden_wall_clock");
         public static final ResourceKey<Block> OBSIDIAN_WALL_CLOCK_KEY = ModBlocks.createBlockKey("obsidian_wall_clock");
+
+        public static final ResourceKey<Block> TRASH_KEY = ModBlocks.createBlockKey("trash");
 
         // --- Block Instances ---
 
@@ -55,6 +59,12 @@ public class ModUtilityBlocks {
         public static final Block OBSIDIAN_WALL_CLOCK_BLOCK = ModBlocks.registerBlock(
                 new WallClockBlock(BlockBehaviour.Properties.of().setId(OBSIDIAN_WALL_CLOCK_KEY).strength(4.0f, 50.0f)), 
                 OBSIDIAN_WALL_CLOCK_KEY
+        );
+
+
+        public static final Block TRASH_BLOCK = ModBlocks.registerBlock(
+                new Trash(BlockBehaviour.Properties.of().setId(TRASH_KEY).strength(4.0f, 50.0f)), 
+                TRASH_KEY
         );
 
 
