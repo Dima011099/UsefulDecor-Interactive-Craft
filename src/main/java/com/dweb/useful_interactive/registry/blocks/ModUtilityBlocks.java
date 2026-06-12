@@ -18,7 +18,7 @@ public class ModUtilityBlocks {
 
         // --- Block Resource Keys ---
 
-        public static final ResourceKey<Block> BOTANIC_TABLE_KEY = ModBlocks.createBlockKey("botanic_table"); // Исправлена опечатка batanic -> botanic
+        public static final ResourceKey<Block> BOTANIC_TABLE_KEY = ModBlocks.createBlockKey("botanic_table");
         public static final ResourceKey<Block> KEYBOX_KEY = ModBlocks.createBlockKey("keybox");
 
         public static final ResourceKey<Block> CRIMSON_WALL_CLOCK_KEY = ModBlocks.createBlockKey("crimson_wall_clock");
