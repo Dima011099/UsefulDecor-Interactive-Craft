@@ -108,7 +108,7 @@ private static final Identifier PLAIN_WHITE = Identifier.fromNamespaceAndPath("u
             poseStack.translate(0.0f, 0.0f, 0.42);
             poseStack.mulPose(Axis.ZP.rotationDegrees(state.hourRotation)); 
 
-            buildSafeQuad(poseStack, vertexConsumer, -0.015f, 0.015f, 0.0f, 0.16f, 0.0f, 90, 90, 90, 255);
+            buildSafeQuad(poseStack, vertexConsumer, -0.015f, 0.015f, 0.0f, 0.16f, 0.0f, 255, 255, 255, 255);
 
             poseStack.popPose();
 
@@ -124,7 +124,7 @@ private static final Identifier PLAIN_WHITE = Identifier.fromNamespaceAndPath("u
             poseStack.translate(0.0f, 0.0f, 0.43f);
             poseStack.mulPose(Axis.ZP.rotationDegrees(state.minuteRotation));
             
-            buildSafeQuad(poseStack, vertexConsumer, -0.01f, 0.01f, 0.0f, 0.21f, 0.0f, 110, 110, 110, 255);
+            buildSafeQuad(poseStack, vertexConsumer, -0.01f, 0.01f, 0.0f, 0.21f, 0.0f, 255, 255, 255, 255);
 
             poseStack.popPose();
         });
