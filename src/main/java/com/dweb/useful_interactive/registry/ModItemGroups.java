@@ -47,7 +47,7 @@ public class ModItemGroups {
                         entries.accept(ModArchitecturalBlocks.OAK_GLASS_DECOR_DOOR);
 
                         entries.accept(ModUtilityBlocks.KEYBOX_BLOCK);
-                        entries.accept(ModUtilityBlocks.BATANIC_TABLE_BLOCK);
+                       // entries.accept(ModUtilityBlocks.BATANIC_TABLE_BLOCK);
 
                         entries.accept(ModUtilityBlocks.CRIMSON_WALL_CLOCK_BLOCK);
                         entries.accept(ModUtilityBlocks.OCEANIC_WALL_CLOCK_BLOCK);

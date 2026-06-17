@@ -62,6 +62,10 @@
     "item.useful_interactive.wooden_wall_clock": "Wooden Clock",
     "item.useful_interactive.oceanic_wall_clock": "Oceanic Clock",
     "item.useful_interactive.crimson_wall_clock": "Crimson Clock",
-    "item.useful_interactive.obsidian_wall_clock": "Obsidian Clock"
+    "item.useful_interactive.obsidian_wall_clock": "Obsidian Clock",
+
+  "item.useful_interactive.trash": "Trash Can",
+  "item.useful_interactive.oak_glass_decor_door": "Glazed Oak Door"
+
 
 }
