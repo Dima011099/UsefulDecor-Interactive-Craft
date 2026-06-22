@@ -8,13 +8,14 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
+@SuppressWarnings("null")
 public class MKeyItem extends Item {
 
     MKeyItem(Properties settings)
     {
         super(settings);
     }
-    @SuppressWarnings("null")
+  
     @Override
     public void onCraftedBy(ItemStack stack, Player player) {
         if(!player.level().isClientSide()){
@@ -22,7 +23,4 @@ public class MKeyItem extends Item {
             super.onCraftedBy(stack, player);
         }
     }
-
-
-
 }

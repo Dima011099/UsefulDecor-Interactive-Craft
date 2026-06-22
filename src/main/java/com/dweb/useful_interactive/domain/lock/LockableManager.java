@@ -1,5 +1,7 @@
 package com.dweb.useful_interactive.domain.lock;
 
+import java.util.UUID;
+
 import com.dweb.useful_interactive.core.lock.ILockableManager;
 import com.dweb.useful_interactive.registry.ModComponentType;
 import com.dweb.useful_interactive.registry.items.KeyItem;
@@ -8,10 +10,12 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
+ @SuppressWarnings("null")
 public class LockableManager {
-    @SuppressWarnings("null")
+   
     public static boolean handleKeyUse(Player player, ItemStack stack, ILockableManager lockable) {
-        if (!stack.is(KeyItem.MY_ITEM)) return false; //isOf -> is
+        if (!stack.is(KeyItem.MY_ITEM)) return false;
+        ensureKeyHasUuid(stack);
 
         var key = stack.get(ModComponentType.KEY_F_CLOSE);
         if (key == null) {
@@ -29,5 +33,17 @@ public class LockableManager {
         //sendMessage -> sendSystemMessage - Text.translatable -> Component.translatable
         player.sendOverlayMessage(Component.translatable(lockState));
         return true;
+    }
+
+    public static String ensureKeyHasUuid(ItemStack stack) {
+        String currentUuid = stack.get(ModComponentType.KEY_F_CLOSE);
+        
+        if (currentUuid == null || currentUuid.isEmpty()) {
+            String newUuid = UUID.randomUUID().toString().replace("-", "");
+            stack.set(ModComponentType.KEY_F_CLOSE, newUuid);
+            return newUuid;
+        }
+        
+        return currentUuid;
     }
 }
