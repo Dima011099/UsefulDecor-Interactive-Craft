@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "useful_clock",
+  "category": "redstone",
+  "pattern": [
+    "ILI",
+    "LCL",
+    "ILI"
+  ],
+  "key": {
+    "I": ["minecraft:iron_nugget"],
+    "L": ["minecraft:stripped_oak_log"],
+    "C": ["minecraft:clock"]
+  },
+  "result": {
+    "id": "useful_interactive:timber_ring_clock",
+    "count": 1
+  }
+}

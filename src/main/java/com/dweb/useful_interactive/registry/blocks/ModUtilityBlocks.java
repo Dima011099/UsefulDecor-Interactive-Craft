@@ -26,6 +26,9 @@ public class ModUtilityBlocks {
         public static final ResourceKey<Block> WOODEN_WALL_CLOCK_KEY = ModBlocks.createBlockKey("wooden_wall_clock");
         public static final ResourceKey<Block> OBSIDIAN_WALL_CLOCK_KEY = ModBlocks.createBlockKey("obsidian_wall_clock");
 
+        public static final ResourceKey<Block> TIMBER_RING_CLOCK_KEY = ModBlocks.createBlockKey("timber_ring_clock");
+        public static final ResourceKey<Block> BIRCH_ECO_CLOCK_KEY = ModBlocks.createBlockKey("birch_eco_clock");
+
         public static final ResourceKey<Block> TRASH_KEY = ModBlocks.createBlockKey("trash");
 
         // --- Block Instances ---
@@ -60,6 +63,17 @@ public class ModUtilityBlocks {
                 new WallClockBlock(BlockBehaviour.Properties.of().setId(OBSIDIAN_WALL_CLOCK_KEY).strength(4.0f, 50.0f)), 
                 OBSIDIAN_WALL_CLOCK_KEY
         );
+        
+        public static final Block BIRCH_ECO_CLOCK_BLOCK = ModBlocks.registerBlock(
+                new WallClockBlock(BlockBehaviour.Properties.of().setId(BIRCH_ECO_CLOCK_KEY).strength(4.0f, 50.0f)), 
+                BIRCH_ECO_CLOCK_KEY
+        );
+
+        public static final Block TIMBER_RING_CLOCK_BLOCK = ModBlocks.registerBlock(
+                new WallClockBlock(BlockBehaviour.Properties.of().setId(TIMBER_RING_CLOCK_KEY).strength(4.0f, 50.0f)), 
+                TIMBER_RING_CLOCK_KEY
+        );
+
 
 
         public static final Block TRASH_BLOCK = ModBlocks.registerBlock(

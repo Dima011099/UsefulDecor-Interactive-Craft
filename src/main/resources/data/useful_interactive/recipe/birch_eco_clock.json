@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "useful_clock",
+  "category": "redstone",
+  "pattern": [
+    "GBG",
+    "BCB",
+    "GBG"
+  ],
+  "key": {
+    "G": ["minecraft:gold_nugget"],
+    "B": ["minecraft:birch_planks"],
+    "C": ["minecraft:clock"]
+  },
+  "result": {
+    "id": "useful_interactive:birch_eco_clock",
+    "count": 1
+  }
+}

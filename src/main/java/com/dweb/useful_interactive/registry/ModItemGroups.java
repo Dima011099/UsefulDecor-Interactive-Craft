@@ -53,6 +53,8 @@ public class ModItemGroups {
                         entries.accept(ModUtilityBlocks.OCEANIC_WALL_CLOCK_BLOCK);
                         entries.accept(ModUtilityBlocks.WOODEN_WALL_CLOCK_BLOCK);
                         entries.accept(ModUtilityBlocks.OBSIDIAN_WALL_CLOCK_BLOCK);
+                        entries.accept(ModUtilityBlocks.TIMBER_RING_CLOCK_BLOCK);
+                        entries.accept(ModUtilityBlocks.BIRCH_ECO_CLOCK_BLOCK);
 
                         entries.accept(ModUtilityBlocks.TRASH_BLOCK);
                     })

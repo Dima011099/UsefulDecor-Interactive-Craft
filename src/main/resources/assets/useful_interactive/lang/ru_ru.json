@@ -52,6 +52,9 @@
     "message.useful_interactive.unlocked": "Отперто",
     "message.useful_interactive.needs_key": "Закрыто. Нужен ключ.",
 
+    "message.useful_interactive.alarm_disabled": "Будильник ПОЛНОСТЬЮ ОТКЛЮЧЕН!",
+    "message.useful_interactive.alarm_status": "Будильник:",
+
     "container.useful_interactive.box": "Сундук",
     "container.useful_interactive.keybox": "Ключница",
 
@@ -62,6 +65,10 @@
     "item.useful_interactive.oceanic_wall_clock": "Океанические часы",
     "item.useful_interactive.crimson_wall_clock": "Багровые часы",
     "item.useful_interactive.obsidian_wall_clock": "Обсидиановые часы",
+
+    "item.useful_interactive.timber_ring_clock": "Торцевые деревянные часы",
+    "item.useful_interactive.birch_eco_clock": "Берёзовые эко-часы",
+
 
   "item.useful_interactive.trash": "Урна",
   "item.useful_interactive.oak_glass_decor_door": "Застеклённая дубовая дверь"

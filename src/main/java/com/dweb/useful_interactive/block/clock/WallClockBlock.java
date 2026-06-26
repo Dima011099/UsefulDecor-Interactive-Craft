@@ -11,6 +11,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -92,13 +93,15 @@ protected InteractionResult useWithoutItem(BlockState state, Level level, BlockP
                 }
                 
                 level.playSound(null, pos, SoundEvents.STONE_BUTTON_CLICK_OFF, SoundSource.BLOCKS, 0.8F, 0.6F);
-                player.sendOverlayMessage(Component.literal("Будильник ПОЛНОСТЬЮ ОТКЛЮЧЕН!"));
+                player.sendOverlayMessage(Component.translatable("message.useful_interactive.alarm_disabled"));
                 return InteractionResult.SUCCESS;
             }else{
             clockEntity.incrementAlarmTime();
             
             int displayHour = (int) ((clockEntity.getAlarmTime() / 1000) + 6) % 24;
-            player.sendOverlayMessage(Component.literal("Будильник: " + displayHour + ":00"));
+           // player.sendOverlayMessage(Component.literal("Будильник: " + displayHour + ":00"));
+            player.sendOverlayMessage(Component.literal(Component.translatable("message.useful_interactive.alarm_status").getString() + " " + displayHour + ":00"));
+
             clockEntity.setIsAlarmSet(true);
             }
         }

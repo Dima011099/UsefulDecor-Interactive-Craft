@@ -52,6 +52,8 @@
     "message.useful_interactive.locked": "Locked",
     "message.useful_interactive.unlocked": "Unlocked",
     "message.useful_interactive.needs_key": "Locked. Requires a key.",
+    "message.useful_interactive.alarm_disabled": "The alarm is COMPLETELY DISABLED!",
+    "message.useful_interactive.alarm_status": "Alarm Clock:",
 
     "container.useful_interactive.box": "Chest",
     "container.useful_interactive.keybox": "KeyBox",
@@ -63,6 +65,9 @@
     "item.useful_interactive.oceanic_wall_clock": "Oceanic Clock",
     "item.useful_interactive.crimson_wall_clock": "Crimson Clock",
     "item.useful_interactive.obsidian_wall_clock": "Obsidian Clock",
+
+    "item.useful_interactive.timber_ring_clock": "Timber Ring Clock",
+    "item.useful_interactive.birch_eco_clock": "Birch Eco Clock",
 
   "item.useful_interactive.trash": "Trash Can",
   "item.useful_interactive.oak_glass_decor_door": "Glazed Oak Door"

@@ -19,7 +19,9 @@
       "useful_interactive:wooden_wall_clock",
       "useful_interactive:oceanic_wall_clock",
       "useful_interactive:crimson_wall_clock",
-      "useful_interactive:obsidian_wall_clock"
+      "useful_interactive:obsidian_wall_clock",
+      "useful_interactive:birch_eco_clock",
+      "useful_interactive:timber_ring_clock"
     ]
   }
 }
