@@ -55,13 +55,15 @@ public static void tick(Level world, BlockPos pos, BlockState state, WallClockBl
     if (blockEntity.getIsAlarmSet() && timePassed >= 0 && timePassed < 1000) {
         if (!state.getValue(WallClockBlock.POWERED)) {
             world.setBlock(pos, state.setValue(WallClockBlock.POWERED, true), Block.UPDATE_ALL);
-            world.playSound(null, pos, SoundEvents.NOTE_BLOCK_BELL.value(), SoundSource.BLOCKS,1.0F, 1.0F);
-        }else
-        {
-              if (state.getValue(WallClockBlock.POWERED)) {
-            world.setBlock(pos, state.setValue(WallClockBlock.POWERED, false), Block.UPDATE_ALL);
         }
+        if (worldTime % 10L == 0L) {
+            world.playSound(null, pos, SoundEvents.NOTE_BLOCK_BELL.value(), SoundSource.BLOCKS, 1.0F, 1.0F);
         }
+        
+    }else{
+            if (state.getValue(WallClockBlock.POWERED)) {
+                world.setBlock(pos, state.setValue(WallClockBlock.POWERED, false), Block.UPDATE_ALL);
+            }
     }
 }
 
