@@ -15,16 +15,22 @@ public class ModStorageBlocks {
     
     // --- Block Resource Keys ---
 
-    public static final ResourceKey<Block> BOX_KEY = ModBlocks.createBlockKey("box");
-    public static final ResourceKey<Block> OAK_BOX_KEY = ModBlocks.createBlockKey("oak_box");
-    public static final ResourceKey<Block> BIRCH_BOX_KEY = ModBlocks.createBlockKey("birch_box");
+        public static final ResourceKey<Block> BOX_KEY = ModBlocks.createBlockKey("box");
+        public static final ResourceKey<Block> OAK_BOX_KEY = ModBlocks.createBlockKey("oak_box");
+        public static final ResourceKey<Block> BIRCH_BOX_KEY = ModBlocks.createBlockKey("birch_box");
 
-    public static final ResourceKey<Block> VAMPIRE_CHEST_KEY = ModBlocks.createBlockKey("vampire_chest");
-    public static final ResourceKey<Block> DARK_CHEST_KEY = ModBlocks.createBlockKey("dark_chest");
-    public static final ResourceKey<Block> SPIDER_CHEST_KEY = ModBlocks.createBlockKey("spider_chest");
+        public static final ResourceKey<Block> VAMPIRE_CHEST_KEY = ModBlocks.createBlockKey("vampire_chest");
+        public static final ResourceKey<Block> DARK_CHEST_KEY = ModBlocks.createBlockKey("dark_chest");
+        public static final ResourceKey<Block> SPIDER_CHEST_KEY = ModBlocks.createBlockKey("spider_chest");
 
-    public static final ResourceKey<Block> BIRCH_BOX_CABINET_KEY = ModBlocks.createBlockKey("birch_box_cabinet");
-    public static final ResourceKey<Block> BROWN_CABINET_KEY = ModBlocks.createBlockKey("brown_cabinet");
+        public static final ResourceKey<Block> BIRCH_BOX_CABINET_KEY = ModBlocks.createBlockKey("birch_box_cabinet");
+        public static final ResourceKey<Block> BROWN_CABINET_KEY = ModBlocks.createBlockKey("brown_cabinet");
+
+        public static final ResourceKey<Block> DESERT_CABINET_KEY = ModBlocks.createBlockKey("desert_cabinet");
+        public static final ResourceKey<Block> GLASS_CABINET_KEY = ModBlocks.createBlockKey("glass_cabinet");
+        public static final ResourceKey<Block> NIGHT_CABINET_KEY = ModBlocks.createBlockKey("night_cabinet");
+        public static final ResourceKey<Block> SPIDER_CABINET_KEY = ModBlocks.createBlockKey("spider_cabinet");
+        public static final ResourceKey<Block> VAMPIERE_CABINET_KEY = ModBlocks.createBlockKey("vampire_cabinet");
 
 
     // --- Block Instances ---
@@ -71,6 +77,27 @@ public class ModStorageBlocks {
         new BoxCabinetBlock(BlockBehaviour.Properties.of().setId(BROWN_CABINET_KEY).strength(3.0f, 50.0f)), 
         BROWN_CABINET_KEY
     );
+
+        public static final Block DESERT_CABINET_BLOCK = ModBlocks.registerBlock(
+                new BoxCabinetBlock(BlockBehaviour.Properties.of().setId(DESERT_CABINET_KEY).strength(3.0f, 50.0f)), 
+                DESERT_CABINET_KEY
+        );
+        public static final Block GLASS_CABINET_BLOCK = ModBlocks.registerBlock(
+                new BoxCabinetBlock(BlockBehaviour.Properties.of().setId(GLASS_CABINET_KEY).strength(3.0f, 50.0f)), 
+                GLASS_CABINET_KEY
+        );
+        public static final Block NIGHT_CABINET_BLOCK = ModBlocks.registerBlock(
+                new BoxCabinetBlock(BlockBehaviour.Properties.of().setId(NIGHT_CABINET_KEY).strength(3.0f, 50.0f)), 
+                NIGHT_CABINET_KEY
+        );
+        public static final Block SPIDER_CABINET_BLOCK = ModBlocks.registerBlock(
+                new BoxCabinetBlock(BlockBehaviour.Properties.of().setId(SPIDER_CABINET_KEY).strength(3.0f, 50.0f)), 
+                SPIDER_CABINET_KEY
+        );
+        public static final Block VAMPIERE_CABINET_BLOCK = ModBlocks.registerBlock(
+                new BoxCabinetBlock(BlockBehaviour.Properties.of().setId(VAMPIERE_CABINET_KEY).strength(3.0f, 50.0f)), 
+                VAMPIERE_CABINET_KEY
+        );
     /**
     * Initializes the storage blocks registry class.
     * Invoked by the main ModBlocks class to guarantee correct loading order.

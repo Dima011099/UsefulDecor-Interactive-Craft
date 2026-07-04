@@ -1,0 +1,44 @@
+{
+  "textures": {
+    "particle": "useful_interactive:block/dark_trashcan_side",
+    "top": "useful_interactive:block/dark_trashcan_top",
+    "bottom": "useful_interactive:block/dark_trashcan_bottom",
+    "side": "useful_interactive:block/dark_trashcan_side"
+  },
+  "elements": [
+    {
+      "from": [3.0, 0.0, 3.0],
+      "to": [13.0, 16.0, 13.0],
+      "faces": {
+        "down":  {"uv": [3.0, 3.0, 13.0, 13.0], "texture": "#bottom", "cullface": "down"},
+        "up":    {"uv": [3.0, 3.0, 13.0, 13.0], "texture": "#top", "cullface": "up"},
+        "north": {"uv": [3.0, 0.0, 13.0, 16.0], "texture": "#side"},
+        "south": {"uv": [3.0, 0.0, 13.0, 16.0], "texture": "#side"},
+        "west":  {"uv": [3.0, 0.0, 13.0, 16.0], "texture": "#side"},
+        "east":  {"uv": [3.0, 0.0, 13.0, 16.0], "texture": "#side"}
+      }
+    }
+  ],
+  "display": {
+    "ground": {
+      "rotation": [ 0, 0, 0 ],
+      "translation": [ 0, 3, 0 ],
+      "scale": [ 0.25, 0.25, 0.25 ]
+    },
+    "gui": {
+      "rotation": [ 30, 225, 0 ],
+      "translation": [ 0, 0, 0 ],
+      "scale": [ 0.625, 0.625, 0.625 ]
+    },
+    "head": {
+      "rotation": [ 0, 0, 0 ],
+      "translation": [ 0, 0, 0 ],
+      "scale": [ 1, 1, 1 ]
+    },
+    "fixed": {
+        "rotation": [ 0, 0, 0 ],
+        "translation": [ 0, 0, 0 ],
+        "scale": [ 0.5, 0.5, 0.5 ]
+    }
+  }
+}

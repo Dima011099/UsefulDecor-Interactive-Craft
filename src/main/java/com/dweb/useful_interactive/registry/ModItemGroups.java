@@ -38,6 +38,11 @@ public class ModItemGroups {
                         /* Storage *** Cabinet */
                         entries.accept(ModStorageBlocks.BIRCH_BOX_CABINET_BLOCK);
                         entries.accept(ModStorageBlocks.BROWN_CABINET_BLOCK);
+                        entries.accept(ModStorageBlocks.DESERT_CABINET_BLOCK);
+                        entries.accept(ModStorageBlocks.GLASS_CABINET_BLOCK);
+                        entries.accept(ModStorageBlocks.NIGHT_CABINET_BLOCK);
+                        entries.accept(ModStorageBlocks.SPIDER_CABINET_BLOCK);
+                        entries.accept(ModStorageBlocks.VAMPIERE_CABINET_BLOCK);
 
                         /* Windows */
                         entries.accept(ModArchitecturalBlocks.OAK_GLASS_PANE);
