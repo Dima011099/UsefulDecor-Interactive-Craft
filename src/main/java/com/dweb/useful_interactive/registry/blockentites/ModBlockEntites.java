@@ -27,7 +27,12 @@ public class ModBlockEntites {
         ModStorageBlocks.BOX_BLOCK, 
         ModStorageBlocks.OAK_BOX_BLOCK, 
         ModStorageBlocks.BIRCH_BOX_BLOCK,
-        ModStorageBlocks.BIRCH_BOX_CABINET_BLOCK/*, 
+        ModStorageBlocks.VAMPIRE_CHEST_BLOCK,
+        ModStorageBlocks.DARK_CHEST_BLOCK,
+        ModStorageBlocks.SPIDER_CHEST_BLOCK,
+        ModStorageBlocks.BIRCH_BOX_CABINET_BLOCK,
+        ModStorageBlocks.BROWN_CABINET_BLOCK
+        /*, 
     ModUtilityBlocks.BATANIC_TABLE_BLOCK*/).build()
 );
 

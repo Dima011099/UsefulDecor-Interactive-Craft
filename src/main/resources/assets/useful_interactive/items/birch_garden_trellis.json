@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "useful_interactive:item/birch_garden_trellis"
+    "model": "useful_interactive:block/birch_garden_trellis"
   }
 }

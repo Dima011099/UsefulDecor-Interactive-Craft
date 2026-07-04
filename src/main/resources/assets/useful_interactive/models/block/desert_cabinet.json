@@ -1,0 +1,44 @@
+{
+	"textures": {
+		"particle": "useful_interactive:block/cabinet/desert_cabinet_front",
+		"front": "useful_interactive:block/cabinet/desert_cabinet_front",
+		"back": "useful_interactive:block/cabinet/desert_cabinet_back",
+    "side": "useful_interactive:block/cabinet/desert_cabinet_side"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 8],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#front"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#back"},
+				"west":  {"uv": [8, 0, 16, 16], "texture": "#side"},
+				"east":  {"uv": [0, 0, 8, 16],  "texture": "#side"},
+				"up":    {"uv": [0, 8, 16, 16], "texture": "#side"},
+				"down":  {"uv": [0, 0, 16, 8],  "texture": "#side"}
+			}
+		}
+	],
+	"display": {
+    "ground": {
+      "rotation": [ 0, 0, 0 ],
+      "translation": [ 0, 3, 0 ],
+      "scale": [ 0.25, 0.25, 0.25 ]
+    },
+    "gui": {
+      "rotation": [ 30, 225, 0 ],
+      "translation": [ 0, 0, 0 ],
+      "scale": [ 0.625, 0.625, 0.625 ]
+    },
+    "head": {
+      "rotation": [ 0, 0, 0 ],
+      "translation": [ 0, 0, 0 ],
+      "scale": [ 1, 1, 1 ]
+    },
+    "fixed": {
+        "rotation": [ 0, 0, 0 ],
+        "translation": [ 0, 0, 0 ],
+        "scale": [ 0.5, 0.5, 0.5 ]
+    }
+  }
+}

@@ -28,35 +28,40 @@ public class ModItemGroups {
                     .displayItems((displayContext, entries) -> {
                         entries.accept(KeyItem.MY_ITEM);
 
+                        /* Storage *** Chest */
                         entries.accept(ModStorageBlocks.BOX_BLOCK);
                         entries.accept(ModStorageBlocks.OAK_BOX_BLOCK);
                         entries.accept(ModStorageBlocks.BIRCH_BOX_BLOCK);
+                        entries.accept(ModStorageBlocks.VAMPIRE_CHEST_BLOCK);
+                        entries.accept(ModStorageBlocks.DARK_CHEST_BLOCK);
+                        entries.accept(ModStorageBlocks.SPIDER_CHEST_BLOCK);
+                        /* Storage *** Cabinet */
                         entries.accept(ModStorageBlocks.BIRCH_BOX_CABINET_BLOCK);
+                        entries.accept(ModStorageBlocks.BROWN_CABINET_BLOCK);
 
-        
-                        entries.accept(ModArchitecturalBlocks.METAL_DECOR_DOOR);
-                        entries.accept(ModArchitecturalBlocks.OAK_DECOR_DOOR);
-
+                        /* Windows */
                         entries.accept(ModArchitecturalBlocks.OAK_GLASS_PANE);
                         entries.accept(ModArchitecturalBlocks.OAK_IRON_GLASS_PANE);
                         entries.accept(ModArchitecturalBlocks.IRON_GLASS_PANE);
                         entries.accept(ModArchitecturalBlocks.BIRCH_IRON_GLASS_PANE);
-
                         entries.accept(ModArchitecturalBlocks.VAMPIRE_WINDOW);
                         entries.accept(ModArchitecturalBlocks.DARK_WINDOW);
                         entries.accept(ModArchitecturalBlocks.SPIDER_WINDOW_1);
                         entries.accept(ModArchitecturalBlocks.SPIDER_WINDOW_2);
 
-                        entries.accept(ModArchitecturalBlocks.BIRCH_DECOR_DOOR);
-                        entries.accept(ModArchitecturalBlocks.GLASS_DECOR_DOOR);
+                        /* Garden */
                         entries.accept(ModArchitecturalBlocks.BIRCH_GARDEN_TRELLIS_BLOCK);
                         entries.accept(ModArchitecturalBlocks.BIRCH_DECORATIVE_STRIP_1_BLOCK);
                         entries.accept(ModArchitecturalBlocks.BIRCH_DECORATIVE_STRIP_2_BLOCK);
+
+                        /* Doors */
+                        entries.accept(ModArchitecturalBlocks.BIRCH_DECOR_DOOR);
+                        entries.accept(ModArchitecturalBlocks.GLASS_DECOR_DOOR);
                         entries.accept(ModArchitecturalBlocks.OAK_GLASS_DECOR_DOOR);
+                        entries.accept(ModArchitecturalBlocks.METAL_DECOR_DOOR);
+                        entries.accept(ModArchitecturalBlocks.OAK_DECOR_DOOR);
 
-                        entries.accept(ModUtilityBlocks.KEYBOX_BLOCK);
-                       // entries.accept(ModUtilityBlocks.BATANIC_TABLE_BLOCK);
-
+                        /* Clock */
                         entries.accept(ModUtilityBlocks.CRIMSON_WALL_CLOCK_BLOCK);
                         entries.accept(ModUtilityBlocks.OCEANIC_WALL_CLOCK_BLOCK);
                         entries.accept(ModUtilityBlocks.WOODEN_WALL_CLOCK_BLOCK);
@@ -64,7 +69,12 @@ public class ModItemGroups {
                         entries.accept(ModUtilityBlocks.TIMBER_RING_CLOCK_BLOCK);
                         entries.accept(ModUtilityBlocks.BIRCH_ECO_CLOCK_BLOCK);
 
+                        /* Trash Can */
                         entries.accept(ModUtilityBlocks.TRASH_BLOCK);
+
+                        /* Craft Block */
+                        entries.accept(ModUtilityBlocks.KEYBOX_BLOCK);
+                     // entries.accept(ModUtilityBlocks.BATANIC_TABLE_BLOCK);
                     })
                     .build());
 
