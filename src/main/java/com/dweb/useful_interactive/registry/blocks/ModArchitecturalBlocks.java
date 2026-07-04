@@ -33,6 +33,11 @@ public class ModArchitecturalBlocks {
     public static final ResourceKey<Block> IRON_GLASS_PANE_KEY = ModBlocks.createBlockKey("iron_glass_pane");
     public static final ResourceKey<Block> BIRCH_IRON_GLASS_PANE_KEY = ModBlocks.createBlockKey("birch_iron_glass_pane");
 
+    public static final ResourceKey<Block> VAMPIRE_WINDOW_KEY = ModBlocks.createBlockKey("vampire_window");
+    public static final ResourceKey<Block> DARK_WINDOW_KEY = ModBlocks.createBlockKey("dark_window");
+    public static final ResourceKey<Block> SPIDER_WINDOW_1_KEY = ModBlocks.createBlockKey("spider_window1");
+    public static final ResourceKey<Block> SPIDER_WINDOW_2_KEY = ModBlocks.createBlockKey("spider_window2");
+
     public static final ResourceKey<Block> BIRCH_GARDEN_TRELLIS_KEY = ModBlocks.createBlockKey("birch_garden_trellis");
     public static final ResourceKey<Block> BIRCH_DECORATIVE_STRIP_1_KEY = ModBlocks.createBlockKey("birch_decorative_strip_1");
     public static final ResourceKey<Block> BIRCH_DECORATIVE_STRIP_2_KEY = ModBlocks.createBlockKey("birch_decorative_strip_2");
@@ -87,6 +92,24 @@ public class ModArchitecturalBlocks {
 
     public static final Block BIRCH_IRON_GLASS_PANE = ModBlocks.registerBlock(
             new HorizontalPaneBlock(createGlassPaneProps(BIRCH_IRON_GLASS_PANE_KEY)), BIRCH_IRON_GLASS_PANE_KEY
+    );
+
+
+
+        public static final Block VAMPIRE_WINDOW = ModBlocks.registerBlock(
+            new HorizontalPaneBlock(createGlassPaneProps(VAMPIRE_WINDOW_KEY)), VAMPIRE_WINDOW_KEY
+        );
+
+    public static final Block DARK_WINDOW = ModBlocks.registerBlock(
+            new HorizontalPaneBlock(createGlassPaneProps(DARK_WINDOW_KEY)), DARK_WINDOW_KEY
+    );
+
+    public static final Block SPIDER_WINDOW_1 = ModBlocks.registerBlock(
+            new HorizontalPaneBlock(createGlassPaneProps(SPIDER_WINDOW_1_KEY)), SPIDER_WINDOW_1_KEY
+    );
+
+    public static final Block SPIDER_WINDOW_2 = ModBlocks.registerBlock(
+            new HorizontalPaneBlock(createGlassPaneProps(SPIDER_WINDOW_2_KEY)), SPIDER_WINDOW_2_KEY
     );
 
     // --- Decorative Strips & Trellises ---

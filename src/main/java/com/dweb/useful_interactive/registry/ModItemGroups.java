@@ -33,12 +33,20 @@ public class ModItemGroups {
                         entries.accept(ModStorageBlocks.BIRCH_BOX_BLOCK);
                         entries.accept(ModStorageBlocks.BIRCH_BOX_CABINET_BLOCK);
 
-                        entries.accept(ModArchitecturalBlocks.OAK_GLASS_PANE);
+        
                         entries.accept(ModArchitecturalBlocks.METAL_DECOR_DOOR);
                         entries.accept(ModArchitecturalBlocks.OAK_DECOR_DOOR);
+
+                        entries.accept(ModArchitecturalBlocks.OAK_GLASS_PANE);
                         entries.accept(ModArchitecturalBlocks.OAK_IRON_GLASS_PANE);
                         entries.accept(ModArchitecturalBlocks.IRON_GLASS_PANE);
                         entries.accept(ModArchitecturalBlocks.BIRCH_IRON_GLASS_PANE);
+
+                        entries.accept(ModArchitecturalBlocks.VAMPIRE_WINDOW);
+                        entries.accept(ModArchitecturalBlocks.DARK_WINDOW);
+                        entries.accept(ModArchitecturalBlocks.SPIDER_WINDOW_1);
+                        entries.accept(ModArchitecturalBlocks.SPIDER_WINDOW_2);
+
                         entries.accept(ModArchitecturalBlocks.BIRCH_DECOR_DOOR);
                         entries.accept(ModArchitecturalBlocks.GLASS_DECOR_DOOR);
                         entries.accept(ModArchitecturalBlocks.BIRCH_GARDEN_TRELLIS_BLOCK);
