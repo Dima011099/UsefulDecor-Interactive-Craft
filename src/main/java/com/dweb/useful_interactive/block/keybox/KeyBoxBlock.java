@@ -26,7 +26,7 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 
 @SuppressWarnings("null")
-public class KeyBoxBlock extends BaseEntityBlock/*BlockWithEntity*/{
+public class KeyBoxBlock extends BaseEntityBlock{
     public static final MapCodec<BoxBlock> CODEC = simpleCodec(BoxBlock::new);
     public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
 
@@ -40,7 +40,7 @@ public class KeyBoxBlock extends BaseEntityBlock/*BlockWithEntity*/{
     }
 
     @Override
-    public BlockEntity newBlockEntity/*createBlockEntity*/(BlockPos pos, BlockState state) {
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new KeyBoxBlockEntity(pos, state);
     }
 

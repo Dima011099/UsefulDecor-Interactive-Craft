@@ -19,7 +19,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 
 @SuppressWarnings("null")
-public class HorizontalPaneBlock extends HorizontalDirectionalBlock {//HorizontalFacingBlock
+public class HorizontalPaneBlock extends HorizontalDirectionalBlock {
     public static final MapCodec<HorizontalPaneBlock> CODEC = simpleCodec(HorizontalPaneBlock::new); //createCodec
 
     protected static final VoxelShape NORTH_SOUTH_SHAPE = Block.box(0.0, 0.0, 7.5, 16.0, 16.0, 8.5);//7-5 8-10
@@ -27,34 +27,32 @@ public class HorizontalPaneBlock extends HorizontalDirectionalBlock {//Horizonta
 
     public HorizontalPaneBlock(BlockBehaviour.Properties settings) {
         super(settings);
-        //setDefaultState
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));//this.stateManager.getDefaultState() with -> setValue
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
     }
 
-    @Override //getOutlineShape
+    @Override
     protected VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-        Direction direction = state.getValue(FACING); //get -> getValue
+        Direction direction = state.getValue(FACING);
         return (direction == Direction.NORTH || direction == Direction.SOUTH) ? NORTH_SOUTH_SHAPE : EAST_WEST_SHAPE;
     }
 
     @Override //BlockView ShapeContext
     protected VoxelShape getCollisionShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-        return Block.box(0f, 0f, 0f, 16f, 16, 16f); //createCuboidShape -> box
+        return Block.box(0f, 0f, 0f, 16f, 16, 16f);
     }
   
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) { //appendProperties StateManager
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING);
     }
 
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext ctx) { //getPlacementState (ItemPlacementContext)
+    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
         return this.defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite()); 
-        //getDefaultState with getHorizontalPlayerFacing
     }
 
     @Override
-    protected MapCodec<? extends HorizontalDirectionalBlock> codec() {//getCodec
+    protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
         return CODEC;
     }
 }
