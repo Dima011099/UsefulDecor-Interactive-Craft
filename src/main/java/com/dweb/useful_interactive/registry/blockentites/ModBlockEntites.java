@@ -73,7 +73,18 @@ public static final  BlockEntityType<WallClockBlockEntity> WALL_CLOCK = Registry
         ModUtilityBlocks.WOODEN_WALL_CLOCK_BLOCK,
         ModUtilityBlocks.OBSIDIAN_WALL_CLOCK_BLOCK,
         ModUtilityBlocks.BIRCH_ECO_CLOCK_BLOCK,
-        ModUtilityBlocks.TIMBER_RING_CLOCK_BLOCK
+        ModUtilityBlocks.TIMBER_RING_CLOCK_BLOCK,
+        
+        ModUtilityBlocks.CLASSIC_WALL_CLOCK_BLOCK,
+        ModUtilityBlocks.DARK_WALL_CLOCK_BLOCK,
+        ModUtilityBlocks.DAY_WALL_CLOCK_BLOCK,
+        ModUtilityBlocks.DESERT_WALL_CLOCK_BLOCK,
+        ModUtilityBlocks.FOREST_WALL_CLOCK_BLOCK,
+        ModUtilityBlocks.NIGHT_WALL_CLOCK_BLOCK,
+        ModUtilityBlocks.SPACE_WALL_CLOCK_BLOCK,
+        ModUtilityBlocks.SPIDER_WALL_CLOCK_BLOCK,
+        ModUtilityBlocks.VAMPIRE_WALL_CLOCK_BLOCK,
+        ModUtilityBlocks.VINTAGE_WALL_CLOCK_BLOCK
 
     ).build()
 );

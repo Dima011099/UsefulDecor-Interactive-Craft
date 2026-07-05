@@ -1,8 +1,8 @@
 {
 	"textures": {
-		"face": "useful_interactive:block/vampire_well_clock",
-		"side": "useful_interactive:block/vampire_well_clock",
-		"particle": "useful_interactive:block/vampire_well_clock"
+		"face": "useful_interactive:block/clock/night_wall_clock",
+		"side": "useful_interactive:block/clock/night_wall_clock",
+		"particle": "useful_interactive:block/clock/night_wall_clock"
 	},
 	"elements": [
 		{

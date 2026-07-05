@@ -1,0 +1,6 @@
+{
+    "model":{
+        "type": "minecraft:model",
+        "model": "useful_interactive:block/classic_wall_clock"
+    }
+}

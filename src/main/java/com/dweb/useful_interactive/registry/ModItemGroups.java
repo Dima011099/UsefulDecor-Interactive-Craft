@@ -74,6 +74,17 @@ public class ModItemGroups {
                         entries.accept(ModUtilityBlocks.TIMBER_RING_CLOCK_BLOCK);
                         entries.accept(ModUtilityBlocks.BIRCH_ECO_CLOCK_BLOCK);
 
+                        entries.accept(ModUtilityBlocks.CLASSIC_WALL_CLOCK_BLOCK);
+                        entries.accept(ModUtilityBlocks.DARK_WALL_CLOCK_BLOCK);
+                        entries.accept(ModUtilityBlocks.DAY_WALL_CLOCK_BLOCK);
+                        entries.accept(ModUtilityBlocks.DESERT_WALL_CLOCK_BLOCK);
+                        entries.accept(ModUtilityBlocks.FOREST_WALL_CLOCK_BLOCK);
+                        entries.accept(ModUtilityBlocks.NIGHT_WALL_CLOCK_BLOCK);
+                        entries.accept(ModUtilityBlocks.SPACE_WALL_CLOCK_BLOCK);
+                        entries.accept(ModUtilityBlocks.SPIDER_WALL_CLOCK_BLOCK);
+                        entries.accept(ModUtilityBlocks.VAMPIRE_WALL_CLOCK_BLOCK);
+                        entries.accept(ModUtilityBlocks.VINTAGE_WALL_CLOCK_BLOCK);
+
                         /* Trash Can */
                         entries.accept(ModUtilityBlocks.TRASH_BLOCK);
 

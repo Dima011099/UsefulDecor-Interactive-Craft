@@ -1,8 +1,8 @@
 {
 	"textures": {
-		"face": "useful_interactive:block/forest_well_clock",
-		"side": "useful_interactive:block/forest_well_clock",
-		"particle": "useful_interactive:block/forest_well_clock"
+		"face": "useful_interactive:block/clock/dark_wall_clock",
+		"side": "useful_interactive:block/clock/dark_wall_clock",
+		"particle": "useful_interactive:block/clock/dark_wall_clock"
 	},
 	"elements": [
 		{

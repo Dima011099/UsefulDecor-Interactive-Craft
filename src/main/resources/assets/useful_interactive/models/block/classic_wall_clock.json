@@ -1,8 +1,8 @@
 {
 	"textures": {
-		"face": "useful_interactive:block/desert_well_clock",
-		"side": "useful_interactive:block/desert_well_clock",
-		"particle": "useful_interactive:block/desert_well_clock"
+		"face": "useful_interactive:block/clock/classic_wall_clock",
+		"side": "useful_interactive:block/clock/classic_wall_clock",
+		"particle": "useful_interactive:block/clock/classic_wall_clock"
 	},
 	"elements": [
 		{
