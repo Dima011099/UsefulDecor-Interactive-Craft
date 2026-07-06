@@ -28,6 +28,12 @@ public class ModArchitecturalBlocks {
     public static final ResourceKey<Block> BIRCH_DECOR_DOOR_KEY = ModBlocks.createBlockKey("birch_decor_door");
     public static final ResourceKey<Block> GLASS_DECOR_DOOR_KEY = ModBlocks.createBlockKey("glass_decor_door");
 
+    public static final ResourceKey<Block> DARK_DOOR_KEY = ModBlocks.createBlockKey("dark_door");
+    public static final ResourceKey<Block> FOREST_DOOR_KEY = ModBlocks.createBlockKey("forest_door");
+    public static final ResourceKey<Block> NIGHT_DOOR_KEY = ModBlocks.createBlockKey("night_door");
+    public static final ResourceKey<Block> SPIDER_DOOR_KEY = ModBlocks.createBlockKey("spider_door");
+    public static final ResourceKey<Block> VAMPIRE_DOOR_KEY = ModBlocks.createBlockKey("vampire_door");
+
     public static final ResourceKey<Block> OAK_GLASS_PANE_KEY = ModBlocks.createBlockKey("oak_glass_pane");
     public static final ResourceKey<Block> OAK_IRON_GLASS_PANE_KEY = ModBlocks.createBlockKey("oak_iron_glass_pane");
     public static final ResourceKey<Block> IRON_GLASS_PANE_KEY = ModBlocks.createBlockKey("iron_glass_pane");
@@ -75,6 +81,23 @@ public class ModArchitecturalBlocks {
     public static final Block GLASS_DECOR_DOOR = ModBlocks.registerBlock(
             new DoorDecor(BlockSetType.BIRCH, createWoodenDoorProps(GLASS_DECOR_DOOR_KEY).mapColor(MapColor.SAND)), GLASS_DECOR_DOOR_KEY
     );
+
+    public static final Block DARK_DOOR_BLOCK = ModBlocks.registerBlock(
+            new DoorDecor(BlockSetType.BIRCH, createWoodenDoorProps(DARK_DOOR_KEY).mapColor(MapColor.SAND)), DARK_DOOR_KEY
+    );
+    public static final Block FORSET_DOOR_BLOCK = ModBlocks.registerBlock(
+            new DoorDecor(BlockSetType.BIRCH, createWoodenDoorProps(FOREST_DOOR_KEY).mapColor(MapColor.SAND)), FOREST_DOOR_KEY
+    );
+    public static final Block NIGHT_DOOR_BLOCK = ModBlocks.registerBlock(
+            new DoorDecor(BlockSetType.BIRCH, createWoodenDoorProps(NIGHT_DOOR_KEY).mapColor(MapColor.SAND)), NIGHT_DOOR_KEY
+    );
+    public static final Block SPIDER_DOOR_BLOCK = ModBlocks.registerBlock(
+            new DoorDecor(BlockSetType.BIRCH, createWoodenDoorProps(SPIDER_DOOR_KEY).mapColor(MapColor.SAND)), SPIDER_DOOR_KEY
+    );
+    public static final Block VAMPIRE_DOOR_BLOCK = ModBlocks.registerBlock(
+            new DoorDecor(BlockSetType.BIRCH, createWoodenDoorProps(VAMPIRE_DOOR_KEY).mapColor(MapColor.SAND)), VAMPIRE_DOOR_KEY
+    );
+    
 
     // --- Glass Panes ---
 

@@ -99,6 +99,7 @@ protected InteractionResult useWithoutItem(BlockState state, Level level, BlockP
             
             int displayHour = (int) ((clockEntity.getAlarmTime() / 1000) + 6) % 24;
            // player.sendOverlayMessage(Component.literal("Будильник: " + displayHour + ":00"));
+            level.playSound(null, pos, SoundEvents.LEVER_CLICK, SoundSource.BLOCKS, 0.8F, 1.4F);
             player.sendOverlayMessage(Component.literal(Component.translatable("message.useful_interactive.alarm_status").getString() + " " + displayHour + ":00"));
 
             clockEntity.setIsAlarmSet(true);

@@ -40,6 +40,9 @@ public class ModUtilityBlocks {
         public static final ResourceKey<Block> VINTAGE_WALL_CLOCK_KEY = ModBlocks.createBlockKey("vintage_wall_clock");
 
         public static final ResourceKey<Block> TRASH_KEY = ModBlocks.createBlockKey("trash");
+        public static final ResourceKey<Block> DARK_TRASHCAN_KEY = ModBlocks.createBlockKey("dark_trashcan");
+        public static final ResourceKey<Block> SPIDER_TRASHCAN_KEY = ModBlocks.createBlockKey("spider_trashcan");
+        public static final ResourceKey<Block> VAMPIRE_TRASHCAN_KEY = ModBlocks.createBlockKey("vampire_trashcan");
 
         // --- Block Instances ---
 
@@ -133,6 +136,20 @@ public class ModUtilityBlocks {
         public static final Block TRASH_BLOCK = ModBlocks.registerBlock(
                 new Trash(BlockBehaviour.Properties.of().setId(TRASH_KEY).strength(4.0f, 50.0f)), 
                 TRASH_KEY
+        );
+
+
+        public static final Block DARK_TRASHCAN_BLOCK = ModBlocks.registerBlock(
+                new Trash(BlockBehaviour.Properties.of().setId(DARK_TRASHCAN_KEY).strength(4.0f, 50.0f)), 
+                DARK_TRASHCAN_KEY
+        );
+        public static final Block SPIDER_TRASHCAN_BLOCK = ModBlocks.registerBlock(
+                new Trash(BlockBehaviour.Properties.of().setId(SPIDER_TRASHCAN_KEY).strength(4.0f, 50.0f)), 
+                SPIDER_TRASHCAN_KEY
+        );
+        public static final Block VAMPIRE_TRASHCAN_BLOCK = ModBlocks.registerBlock(
+                new Trash(BlockBehaviour.Properties.of().setId(VAMPIRE_TRASHCAN_KEY).strength(4.0f, 50.0f)), 
+                VAMPIRE_TRASHCAN_KEY
         );
 
 

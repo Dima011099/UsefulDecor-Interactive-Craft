@@ -66,6 +66,12 @@ public class ModItemGroups {
                         entries.accept(ModArchitecturalBlocks.METAL_DECOR_DOOR);
                         entries.accept(ModArchitecturalBlocks.OAK_DECOR_DOOR);
 
+                        entries.accept(ModArchitecturalBlocks.DARK_DOOR_BLOCK);
+                        entries.accept(ModArchitecturalBlocks.FORSET_DOOR_BLOCK);
+                        entries.accept(ModArchitecturalBlocks.NIGHT_DOOR_BLOCK);
+                        entries.accept(ModArchitecturalBlocks.SPIDER_DOOR_BLOCK);
+                        entries.accept(ModArchitecturalBlocks.VAMPIRE_DOOR_BLOCK);
+
                         /* Clock */
                         entries.accept(ModUtilityBlocks.CRIMSON_WALL_CLOCK_BLOCK);
                         entries.accept(ModUtilityBlocks.OCEANIC_WALL_CLOCK_BLOCK);
@@ -87,6 +93,9 @@ public class ModItemGroups {
 
                         /* Trash Can */
                         entries.accept(ModUtilityBlocks.TRASH_BLOCK);
+                        entries.accept(ModUtilityBlocks.DARK_TRASHCAN_BLOCK);
+                        entries.accept(ModUtilityBlocks.SPIDER_TRASHCAN_BLOCK);
+                        entries.accept(ModUtilityBlocks.VAMPIRE_TRASHCAN_BLOCK);
 
                         /* Craft Block */
                         entries.accept(ModUtilityBlocks.KEYBOX_BLOCK);

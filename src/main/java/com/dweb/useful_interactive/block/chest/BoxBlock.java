@@ -6,6 +6,8 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
@@ -51,19 +53,21 @@ public class BoxBlock extends BaseEntityBlock {//BlockWithEntity
 
         ItemStack stack = player.getItemInHand(InteractionHand.MAIN_HAND);
         
-        if (LockableManager.handleKeyUse(player, stack, chest)){
+        if (LockableManager.handleKeyUse(player,world, stack, pos, chest)){
             chest.setChanged();
             world.sendBlockUpdated(pos, state, state, Block.UPDATE_ALL);
             return InteractionResult.CONSUME;
         }
 
         if (chest.isLocked()) {
-            player.sendOverlayMessage(Component.translatable("message.useful_interactive.needs_key"));
+            player.sendOverlayMessage(Component.translatable("message.useful_interactive.needs_key")); 
+            world.playSound(null, pos, SoundEvents.IRON_DOOR_CLOSE, SoundSource.BLOCKS, 0.5F, 1.5F); 
             return InteractionResult.CONSUME;
         }
 
         MenuProvider screenHandlerFactory = state.getMenuProvider(world, pos);
         if (screenHandlerFactory != null) {
+            world.playSound(null, pos, SoundEvents.CHEST_OPEN, SoundSource.BLOCKS, 1.0F, 1.0F);
             player.openMenu(screenHandlerFactory);
         }
         return InteractionResult.CONSUME;

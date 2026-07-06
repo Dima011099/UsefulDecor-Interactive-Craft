@@ -3,6 +3,8 @@ package com.dweb.useful_interactive.block.trash;
 import com.mojang.serialization.MapCodec;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -48,6 +50,7 @@ public class Trash extends Block {
             ItemStack stackInHand = player.getItemInHand(InteractionHand.MAIN_HAND);
             if(!stackInHand.isEmpty()){
                 player.setItemInHand(InteractionHand.MAIN_HAND, ItemStack.EMPTY);
+                level.playSound(null, pos, SoundEvents.SULFUR_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
                 return InteractionResult.SUCCESS;
             }
         }

@@ -6,6 +6,8 @@ import com.dweb.useful_interactive.domain.lock.LockableManager;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -24,26 +26,25 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.phys.BlockHitResult;
 
 
-
+@SuppressWarnings("null")
 public class DoorDecor extends DoorBlock implements EntityBlock { //BlockEntityProvider
 
     public DoorDecor(BlockSetType blockSetType, BlockBehaviour.Properties settings) {
         super(blockSetType, settings);
     }
-@SuppressWarnings("null")
-     // В EntityBlock метод называется newBlockEntity, а не createBlockEntity
+
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return state.getValue(HALF) == DoubleBlockHalf.LOWER //get -> getValue
+        return state.getValue(HALF) == DoubleBlockHalf.LOWER 
             ? new DoorDecorEntity(pos, state)
             : null;
     }
-@SuppressWarnings("null")
+
     @Override
-    protected RenderShape getRenderShape(BlockState state) { // getRenderType -> getRenderShape public -> protected
-        return RenderShape.MODEL; // BlockRenderType -> RenderShape
+    protected RenderShape getRenderShape(BlockState state) { 
+        return RenderShape.MODEL; 
     }
-@SuppressWarnings("null")
+
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
         if (world.isClientSide()) return InteractionResult.SUCCESS;
@@ -53,7 +54,7 @@ public class DoorDecor extends DoorBlock implements EntityBlock { //BlockEntityP
 
         ItemStack stack = player.getItemInHand(InteractionHand.MAIN_HAND);
 
-        if (LockableManager.handleKeyUse(player, stack, door)){
+        if (LockableManager.handleKeyUse(player, world, stack, pos, door)){
             door.setChanged();
             world.sendBlockUpdated(
                 door.getBlockPos(),
@@ -66,21 +67,26 @@ public class DoorDecor extends DoorBlock implements EntityBlock { //BlockEntityP
 
         if (door.isLocked()) {
             player.sendOverlayMessage(Component.translatable("message.useful_interactive.needs_key"));
+            world.playSound(null, pos, SoundEvents.IRON_DOOR_CLOSE, SoundSource.BLOCKS, 0.5F, 1.5F);
             return InteractionResult.CONSUME;
         }
 
         InteractionResult result = super.useWithoutItem(state, world, pos, player, hit);
         syncOpenState(world, pos, state);
+        if(isOpen(state))
+            world.playSound(null, pos, SoundEvents.WOODEN_DOOR_OPEN, SoundSource.BLOCKS, 1.0F, 1.0F);
+        else
+            world.playSound(null, pos, SoundEvents.WOODEN_DOOR_CLOSE, SoundSource.BLOCKS, 1.0F, 1.0F);
 
         return result;
     }
-@SuppressWarnings("null")
+
     private DoorDecorEntity getLowerEntity(Level world, BlockPos pos, BlockState state) {
         BlockPos lower = state.getValue(HALF) == DoubleBlockHalf.LOWER ? pos : pos.below();
         BlockEntity be = world.getBlockEntity(lower);
         return be instanceof DoorDecorEntity e ? e : null;
     }
- @SuppressWarnings("null")
+
     private void syncOpenState(Level world, BlockPos pos, BlockState state) {
         BlockPos lower = state.getValue(HALF) == DoubleBlockHalf.LOWER ? pos : pos.below();
         BlockPos upper = lower.above();
@@ -89,7 +95,7 @@ public class DoorDecor extends DoorBlock implements EntityBlock { //BlockEntityP
 
         world.setBlock(upper, world.getBlockState(upper).setValue(OPEN, open), Block.UPDATE_CLIENTS);
     }
-@SuppressWarnings("null")
+
     @Override
     protected float getDestroyProgress(BlockState state, Player player, BlockGetter world, BlockPos pos) {
         float base = super.getDestroyProgress(state, player, world, pos);

@@ -1,9 +1,9 @@
 {
   "textures": {
-    "particle": "useful_interactive:block/vampire_trashcan_side",
-    "top": "useful_interactive:block/dark_trashcan_top",
-    "bottom": "useful_interactive:block/dark_trashcan_bottom",
-    "side": "useful_interactive:block/vampire_trashcan_side"
+    "particle": "useful_interactive:block/trashcan/vampire_trashcan_side",
+    "top": "useful_interactive:block/trashcan/dark_trashcan_top",
+    "bottom": "useful_interactive:block/trashcan/dark_trashcan_bottom",
+    "side": "useful_interactive:block/trashcan/vampire_trashcan_side"
   },
   "elements": [
     {
