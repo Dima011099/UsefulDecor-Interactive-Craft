@@ -95,6 +95,7 @@ public class BoxBlock extends BaseEntityBlock {//BlockWithEntity
         }
         return defaultDelta;
     }
+
 /* 
     @Override
     protected void onStateReplaced(BlockState state, Level world, BlockPos pos, boolean moved) {//onStateReplaced

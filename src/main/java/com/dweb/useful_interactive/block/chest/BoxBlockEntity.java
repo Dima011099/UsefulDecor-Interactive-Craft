@@ -23,11 +23,12 @@ import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 
 
-
+@SuppressWarnings("null")
 public class BoxBlockEntity extends RandomizableContainerBlockEntity implements ILockableManager {
+    
     private NonNullList<ItemStack> inventory = NonNullList.withSize(27, ItemStack.EMPTY);
     private final LockComponent lock = new LockComponent();
-@SuppressWarnings("null")
+
     private static final Codec<NonNullList<ItemStack>> INVENTORY_CODEC = 
         ItemStack.OPTIONAL_CODEC.listOf().xmap(
             list -> {
@@ -51,6 +52,13 @@ public class BoxBlockEntity extends RandomizableContainerBlockEntity implements 
     }
 
     @Override
+    public ItemStack getItem(int slot) {
+        if(isLocked())
+            return ItemStack.EMPTY;
+        return super.getItem(slot);
+    }
+
+    @Override
     public boolean tryUnlock(String key) {
         return lock.tryUnlock(key);
     }
@@ -64,23 +72,23 @@ public class BoxBlockEntity extends RandomizableContainerBlockEntity implements 
     public boolean hasKey() {
         return lock.hasKey();
     }
-@SuppressWarnings("null")
+
     @Override
     protected Component getDefaultName() {
         return Component.translatable("container.useful_interactive.box");
     }
-@SuppressWarnings("null")
+
     @Override
     protected NonNullList<ItemStack> getItems() {
         return this.inventory;
     }
-@SuppressWarnings("null")
+
     @Override
     protected void setItems(NonNullList<ItemStack> inventory) {
         this.inventory = inventory;
         setChanged();
     }
-@SuppressWarnings("null")
+
     @Override
     protected AbstractContainerMenu createMenu(int syncId, Inventory playerInventory) {
         return ChestMenu.threeRows(syncId, playerInventory, this);
@@ -90,7 +98,7 @@ public class BoxBlockEntity extends RandomizableContainerBlockEntity implements 
     public int getContainerSize() {
         return 27;
     }
-@SuppressWarnings("null")
+
     @Override
     protected void saveAdditional(ValueOutput view) {
         super.saveAdditional(view);
@@ -100,7 +108,7 @@ public class BoxBlockEntity extends RandomizableContainerBlockEntity implements 
         view.store("Inventory", INVENTORY_CODEC, this.inventory);
         view.putBoolean("closed", lock.isLocked());
     }
-@SuppressWarnings("null")
+
     @Override
     public Packet<ClientGamePacketListener> getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this, (be, registries) -> {
@@ -112,7 +120,7 @@ public class BoxBlockEntity extends RandomizableContainerBlockEntity implements 
         return nbt;
     });
     }
-@SuppressWarnings("null")
+
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
         CompoundTag tag = new CompoundTag();
@@ -122,7 +130,7 @@ public class BoxBlockEntity extends RandomizableContainerBlockEntity implements 
         tag.store("Inventory",INVENTORY_CODEC,  inventory);
         return tag;
     }
-@SuppressWarnings("null")
+
     @Override
     protected void loadAdditional(ValueInput view) {
         lock.bindKey(view.read("BoxKey", Codec.STRING).orElse(null));

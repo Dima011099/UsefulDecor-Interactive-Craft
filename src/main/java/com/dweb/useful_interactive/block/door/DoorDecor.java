@@ -10,6 +10,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
@@ -21,16 +22,21 @@ import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 
 
 @SuppressWarnings("null")
-public class DoorDecor extends DoorBlock implements EntityBlock { //BlockEntityProvider
+public class DoorDecor extends DoorBlock implements EntityBlock {
+    public static final BooleanProperty LOCKED = BooleanProperty.create("locked");
 
     public DoorDecor(BlockSetType blockSetType, BlockBehaviour.Properties settings) {
         super(blockSetType, settings);
+        this.registerDefaultState(this.stateDefinition.any().setValue(LOCKED, false));
     }
 
     @Override
@@ -46,6 +52,25 @@ public class DoorDecor extends DoorBlock implements EntityBlock { //BlockEntityP
     }
 
     @Override
+    public void setOpen(Entity sourceEntity, Level level, BlockState state, BlockPos pos, boolean shouldOpen) {
+        if(!state.getValue(LOCKED))
+            super.setOpen(sourceEntity, level, state, pos, shouldOpen);
+    }
+
+
+    @Override
+    protected boolean isPathfindable(BlockState state, PathComputationType type) {
+        if(state.getValue(LOCKED)) return false;
+        return super.isPathfindable(state, type);
+    }
+
+    @Override
+    protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
+        super.createBlockStateDefinition(builder);
+        builder.add(LOCKED); 
+    }
+
+    @Override
     protected InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
         if (world.isClientSide()) return InteractionResult.SUCCESS;
 
@@ -55,7 +80,10 @@ public class DoorDecor extends DoorBlock implements EntityBlock { //BlockEntityP
         ItemStack stack = player.getItemInHand(InteractionHand.MAIN_HAND);
 
         if (LockableManager.handleKeyUse(player, world, stack, pos, door)){
+            BlockState newState = state.setValue(LOCKED, door.isLocked());
+            world.setBlock(pos, newState, Block.UPDATE_ALL);
             door.setChanged();
+
             world.sendBlockUpdated(
                 door.getBlockPos(),
                 world.getBlockState(door.getBlockPos()),
@@ -78,6 +106,7 @@ public class DoorDecor extends DoorBlock implements EntityBlock { //BlockEntityP
         else
             world.playSound(null, pos, SoundEvents.WOODEN_DOOR_CLOSE, SoundSource.BLOCKS, 1.0F, 1.0F);
 
+        
         return result;
     }
 

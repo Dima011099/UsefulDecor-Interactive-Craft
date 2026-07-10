@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "useful_interactive:box",
+    "useful_interactive:birch_box",
+    "useful_interactive:oak_box",
+    "useful_interactive:dark_chest",
+    "useful_interactive:spider_chest",
+    "useful_interactive:vampire_chest",
+    "useful_interactive:birch_box_cabinet",
+    "useful_interactive:brown_cabinet",
+    "useful_interactive:desert_cabinet",
+    "useful_interactive:glass_cabinet",
+    "useful_interactive:night_cabinet",
+    "useful_interactive:spider_cabinet",
+    "useful_interactive:vampire_cabinet"
+  ]
+}
