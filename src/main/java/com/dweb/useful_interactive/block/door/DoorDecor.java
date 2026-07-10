@@ -1,6 +1,8 @@
 package com.dweb.useful_interactive.block.door;
 
 
+import org.jspecify.annotations.Nullable;
+
 import com.dweb.useful_interactive.core.lock.ILockableManager;
 import com.dweb.useful_interactive.domain.lock.LockableManager;
 
@@ -27,6 +29,7 @@ import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.phys.BlockHitResult;
 
 
@@ -68,6 +71,13 @@ public class DoorDecor extends DoorBlock implements EntityBlock {
     protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
         builder.add(LOCKED); 
+    }
+
+    @Override
+    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block block,
+            @Nullable Orientation orientation, boolean movedByPiston) {
+        if(!state.getValue(LOCKED))
+            super.neighborChanged(state, level, pos, block, orientation, movedByPiston);
     }
 
     @Override
