@@ -7,14 +7,19 @@ import com.dweb.useful_interactive.core.lock.ILockableManager;
 import com.dweb.useful_interactive.domain.lock.LockableManager;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -142,9 +147,50 @@ public class DoorDecor extends DoorBlock implements EntityBlock {
         BlockPos lowerPos = state.getValue(HALF) == DoubleBlockHalf.LOWER ? pos : pos.below();
         BlockEntity be = world.getBlockEntity(lowerPos);
 
+        ItemStack itemInHand = player.getMainHandItem();
         if (be instanceof ILockableManager lock && lock.isLocked()) {
-            return base / 30.0f;
+            if (itemInHand.has(DataComponents.TOOL)) {
+                Tool toolComponent = itemInHand.get(DataComponents.TOOL);
+                if (toolComponent != null) {
+                    float maxToolSpeed = toolComponent.rules().stream()
+                    .map(rule -> rule.speed().orElse(1.0f))
+                    .max(Float::compare)
+                    .orElse(toolComponent.defaultMiningSpeed());
+
+                    if (maxToolSpeed >= 8.0f) {
+                        return base / 80.0f;
+                    }
+                }
+            }
+            return 0.0f;
         }
         return base;
     }
+
+    @Override
+    protected void attack(BlockState state, Level level, BlockPos pos, Player player) {
+        super.attack(state, level, pos, player);
+    }
+
+    @Override
+    public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
+
+
+    BlockPos lowerPos = state.getValue(HALF) == DoubleBlockHalf.LOWER ? pos : pos.below();
+    BlockEntity be =  level.getBlockEntity(lowerPos);
+    
+    if (be instanceof ILockableManager lock && lock.isLocked()) {
+        if (!level.isClientSide() && player instanceof ServerPlayer serverPlayer) {
+            serverPlayer.hurtServer((ServerLevel) level, serverPlayer.damageSources().generic(), 6.0f);
+            ItemStack playerTool = serverPlayer.getMainHandItem();
+            if (!playerTool.isEmpty() && playerTool.isDamageableItem()) {
+                    playerTool.hurtAndBreak(3300, (ServerLevel) level, serverPlayer, (item) -> {
+                    serverPlayer.onEquippedItemBroken(item, EquipmentSlot.MAINHAND);
+                });
+            }
+        }
+    }
+    return super.playerWillDestroy(level, pos, state, player);
+}
+
 }

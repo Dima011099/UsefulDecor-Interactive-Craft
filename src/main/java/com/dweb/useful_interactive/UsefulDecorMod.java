@@ -1,9 +1,21 @@
 package com.dweb.useful_interactive;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
+import net.fabricmc.fabric.api.event.player.UseBlockCallback;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.DoorBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.dweb.useful_interactive.block.door.DoorDecor;
+import com.dweb.useful_interactive.block.door.DoorDecorEntity;
 import com.dweb.useful_interactive.recipe.ModRecipeTypes;
 import com.dweb.useful_interactive.registry.ModComponentType;
 import com.dweb.useful_interactive.registry.ModItemGroups;
@@ -21,6 +33,11 @@ public class UsefulDecorMod implements ModInitializer {
 	public static final String MOD_ID = "useful_interactive";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
+	private static final int PROTECTION_RADIUS_X = 15;
+    private static final int PROTECTION_RADIUS_Z = 15;
+    private static final int PROTECTION_RADIUS_Y_UP = 10;
+    private static final int PROTECTION_RADIUS_Y_DOWN = 3;
+
 	@Override
 	public void onInitialize() {
 		LOGGER.info("Initializing Useful Decor Mod...");
@@ -28,6 +45,9 @@ public class UsefulDecorMod implements ModInitializer {
 		registerCoreSystems();
 		registerGameContent();
 		registerUserInterfaces();
+
+		buildBlock();
+		attackBlock();
 
 		LOGGER.info("Useful Decor Mod initialized successfully!");
 	}
@@ -48,4 +68,100 @@ public class UsefulDecorMod implements ModInitializer {
 		ModScreenHandlers.registerScreenHandlers();
 		ModItemGroups.registerItemGroups();
 	}
+
+
+	private boolean isInHouseArea(BlockPos targetPos, BlockPos doorPos) {
+        boolean xMatches = targetPos.getX() >= doorPos.getX() - PROTECTION_RADIUS_X && targetPos.getX() <= doorPos.getX() + PROTECTION_RADIUS_X;
+        boolean zMatches = targetPos.getZ() >= doorPos.getZ() - PROTECTION_RADIUS_Z && targetPos.getZ() <= doorPos.getZ() + PROTECTION_RADIUS_Z;
+        
+        // По высоте проверяем вверх и вниз от двери
+        boolean yMatches = targetPos.getY() >= doorPos.getY() - PROTECTION_RADIUS_Y_DOWN && targetPos.getY() <= doorPos.getY() + PROTECTION_RADIUS_Y_UP;
+
+        return xMatches && yMatches && zMatches;
+    }
+
+	private boolean isAreaProtectedByClosedDoor(Level level, BlockPos targetPos) {
+        BlockPos.MutableBlockPos checkPos = new BlockPos.MutableBlockPos();
+
+        for (int x = -PROTECTION_RADIUS_X; x <= PROTECTION_RADIUS_X; x++) {
+            for (int z = -PROTECTION_RADIUS_Z; z <= PROTECTION_RADIUS_Z; z++) {
+                for (int y = -PROTECTION_RADIUS_Y_UP; y <= PROTECTION_RADIUS_Y_DOWN; y++) {
+                    
+                    checkPos.set(targetPos.getX() + x, targetPos.getY() + y, targetPos.getZ() + z);
+                    
+                    if (isDoorClosed(level, checkPos)) {
+                        // Если нашли закрытую дверь, проверяем точные границы кубоида
+                        if (isInHouseArea(targetPos, checkPos)) {
+                            return true; // Зона действительно защищена
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+	private void attackBlock(){
+		 PlayerBlockBreakEvents.BEFORE.register((level, player, breakPos, state, blockEntity) -> {
+            if (player.isCreative()) return true;
+
+			if(state.getBlock() instanceof DoorDecor)
+				return true;
+
+            if (isAreaProtectedByClosedDoor(level, breakPos)) {
+                player.sendOverlayMessage(Component.literal("§cЭтот блок защищен закрытой дверью!"));
+                return false; // Ломать нельзя
+            }
+            return true;
+        });
+	}
+
+	private void buildBlock(){
+// 2. ЗАЩИТА ОТ СТРОИТЕЛЬСТВА (С умной фильтрацией предметов)
+UseBlockCallback.EVENT.register((player, level, hand, hitResult) -> {
+    if (player.isCreative()) return InteractionResult.PASS;
+
+    BlockPos clickedPos = hitResult.getBlockPos();
+
+    // Если зона под защитой закрытой двери
+    if (isAreaProtectedByClosedDoor(level, clickedPos)) {
+        
+        // 1. ИСКЛЮЧЕНИЕ: Если кликают по самой двери — разрешаем (чтобы её открыть)
+        BlockState clickedState = level.getBlockState(clickedPos);
+        if (clickedState.getBlock() instanceof DoorBlock) {
+            return InteractionResult.PASS; 
+        }
+
+        // 2. ФИЛЬТР: Проверяем, что именно у игрока в руке
+        net.minecraft.world.item.ItemStack itemInHand = player.getItemInHand(hand);
+        
+        // Проверяем, является ли предмет блоком (который можно поставить) 
+        // или ведром (с водой/лавой/рыхлым снегом)
+        boolean isPlacingBlock = itemInHand.getItem() instanceof net.minecraft.world.item.BlockItem;
+        boolean isUsingBucket = itemInHand.getItem() instanceof net.minecraft.world.item.BucketItem || 
+                                 itemInHand.getItem() instanceof net.minecraft.world.item.SolidBucketItem;
+
+        if (isPlacingBlock || isUsingBucket) {
+            // Если игрок пытается СТРОИТЬ или лить жидкости — запрещаем
+            if (level.isClientSide()) {
+                player.sendOverlayMessage(Component.literal("§cНельзя строить на территории защищенного дома!"));
+            }
+            return InteractionResult.FAIL; // Блокируем только стройку
+        }
+    }
+
+    // Во всех остальных случаях (клик по сундуку, печке, пустой рукой) — разрешаем ванильное поведение
+    return InteractionResult.PASS; 
+});
+	}
+
+
+	@SuppressWarnings("null")
+    private boolean isDoorClosed(Level level, BlockPos pos) {
+        BlockEntity be = level.getBlockEntity(pos);
+        if (be instanceof DoorDecorEntity door) {
+            return door.isLocked();
+        }
+        return false;
+    }
 }
