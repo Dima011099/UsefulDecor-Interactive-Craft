@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "lock_box",
+  "category": "redstone",
+  "pattern": [
+    "PPP",
+    "PCP",
+    "PPP"
+  ],
+  "key": {
+    "P": [
+      "minecraft:dark_oak_planks"
+    ],
+    "C": [
+      "minecraft:chest"
+    ]
+  },
+  "result": {
+    "id": "useful_interactive:dark_chest",
+    "count": 1
+  }
+}

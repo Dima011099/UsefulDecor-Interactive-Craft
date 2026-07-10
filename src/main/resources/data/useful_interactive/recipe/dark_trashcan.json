@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "trashcan",
+  "category": "redstone",
+  "pattern": [
+    "P P",
+    "PCP",
+    "PPP"
+  ],
+  "key": {
+    "P": [
+      "minecraft:dark_oak_planks"
+    ],
+    "C": [
+      "minecraft:cauldron"
+    ]
+  },
+  "result": {
+    "id": "useful_interactive:dark_trashcan",
+    "count": 1
+  }
+}

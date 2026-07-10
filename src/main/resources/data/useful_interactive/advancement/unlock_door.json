@@ -20,7 +20,13 @@
       "useful_interactive:oak_decor_door",
       "useful_interactive:metal_decor_door",
       "useful_interactive:birch_decor_door",
-      "useful_interactive:glass_decor_door"
+      "useful_interactive:glass_decor_door",
+      "useful_interactive:oak_glass_decor_door",
+      "useful_interactive:dark_door",
+      "useful_interactive:forest_door",
+      "useful_interactive:night_door",
+      "useful_interactive:spider_door",
+      "useful_interactive:vampire_door"
     ]
   }
 }

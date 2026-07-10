@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "window",
+  "category": "building",
+  "pattern": [
+    "SGS",
+    "PGP",
+    "SGS"
+  ],
+  "key": {
+    "P": [
+      "minecraft:dark_oak_planks"
+    ],
+    "G": [
+      "minecraft:glass_pane"
+    ],
+    "S": [
+      "minecraft:string"
+    ]
+  },
+  "result": {
+    "id": "useful_interactive:spider_window1",
+    "count": 3
+  }
+}

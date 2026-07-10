@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "cabinet",
+  "category": "redstone",
+  "pattern": [
+    "PGP",
+    "GBG",
+    "PGP"
+  ],
+  "key": {
+    "P": [
+      "minecraft:oak_planks"
+    ],
+    "G": [
+      "minecraft:glass_pane"
+    ],
+    "B": [
+      "minecraft:barrel"
+    ]
+  },
+  "result": {
+    "id": "useful_interactive:glass_cabinet",
+    "count": 1
+  }
+}

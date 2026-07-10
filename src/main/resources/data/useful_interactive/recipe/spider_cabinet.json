@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "cabinet",
+  "category": "redstone",
+  "pattern": [
+    "PSP",
+    "SBS",
+    "PBP"
+  ],
+  "key": {
+    "P": [
+      "minecraft:dark_oak_planks"
+    ],
+    "S": [
+      "minecraft:string"
+    ],
+    "B": [
+      "minecraft:barrel"
+    ]
+  },
+  "result": {
+    "id": "useful_interactive:spider_cabinet",
+    "count": 1
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "decor_door",
+  "category": "building",
+  "pattern": [
+    "PG",
+    "PG",
+    "PG"
+  ],
+  "key": {
+    "P": [
+      "minecraft:oak_planks"
+    ],
+    "G": [
+      "minecraft:glass"
+    ]
+  },
+  "result": {
+    "id": "useful_interactive:oak_glass_decor_door",
+    "count": 1
+  }
+}

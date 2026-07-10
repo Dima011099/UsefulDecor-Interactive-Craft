@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "useful_clock",
+  "category": "redstone",
+  "pattern": [
+    "GNG",
+    "NRN",
+    "GNG"
+  ],
+  "key": {
+    "G": ["minecraft:gold_nugget"],
+    "N": ["minecraft:jungle_planks"],
+    "R": ["minecraft:redstone_torch"]
+  },
+  "result": {
+    "id": "useful_interactive:vintage_wall_clock",
+    "count": 1
+  }
+}

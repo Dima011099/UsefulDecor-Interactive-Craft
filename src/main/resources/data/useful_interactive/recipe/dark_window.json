@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "window",
+  "category": "building",
+  "pattern": [
+    "PGP",
+    "PGP",
+    "PGP"
+  ],
+  "key": {
+    "P": [
+      "minecraft:dark_oak_planks"
+    ],
+    "G": [
+      "minecraft:glass_pane"
+    ]
+  },
+  "result": {
+    "id": "useful_interactive:dark_window",
+    "count": 3
+  }
+}

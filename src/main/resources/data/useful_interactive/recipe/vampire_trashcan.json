@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "trashcan",
+  "category": "redstone",
+  "pattern": [
+    "C C",
+    "RXR",
+    "CCC"
+  ],
+  "key": {
+    "C": [
+      "minecraft:crimson_planks"
+    ],
+    "R": [
+      "minecraft:redstone"
+    ],
+    "X": [
+      "minecraft:cauldron"
+    ]
+  },
+  "result": {
+    "id": "useful_interactive:vampire_trashcan",
+    "count": 1
+  }
+}

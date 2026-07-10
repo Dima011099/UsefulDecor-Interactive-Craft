@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "decor_door",
+  "category": "building",
+  "pattern": [
+    "PP",
+    "PV",
+    "PP"
+  ],
+  "key": {
+    "P": [
+      "minecraft:spruce_planks"
+    ],
+    "V": [
+      "minecraft:vine"
+    ]
+  },
+  "result": {
+    "id": "useful_interactive:forest_door",
+    "count": 1
+  }
+}

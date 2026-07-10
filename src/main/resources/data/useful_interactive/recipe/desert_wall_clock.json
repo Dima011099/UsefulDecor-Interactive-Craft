@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "useful_clock",
+  "category": "redstone",
+  "pattern": [
+    "ISI",
+    "SRS",
+    "ISI"
+  ],
+  "key": {
+    "I": ["minecraft:iron_nugget"],
+    "S": ["minecraft:smooth_sandstone"],
+    "R": ["minecraft:redstone_torch"]
+  },
+  "result": {
+    "id": "useful_interactive:desert_wall_clock",
+    "count": 1
+  }
+}

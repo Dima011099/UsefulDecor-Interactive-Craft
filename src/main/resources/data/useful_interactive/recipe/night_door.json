@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "decor_door",
+  "category": "building",
+  "pattern": [
+    "LL",
+    "LD",
+    "LL"
+  ],
+  "key": {
+    "L": [
+      "minecraft:lapis_lazuli"
+    ],
+    "D": [
+      "minecraft:glowstone_dust"
+    ]
+  },
+  "result": {
+    "id": "useful_interactive:night_door",
+    "count": 1
+  }
+}

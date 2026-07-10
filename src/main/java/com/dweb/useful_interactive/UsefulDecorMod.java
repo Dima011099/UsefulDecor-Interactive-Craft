@@ -3,6 +3,7 @@ package com.dweb.useful_interactive;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
@@ -74,7 +75,6 @@ public class UsefulDecorMod implements ModInitializer {
         boolean xMatches = targetPos.getX() >= doorPos.getX() - PROTECTION_RADIUS_X && targetPos.getX() <= doorPos.getX() + PROTECTION_RADIUS_X;
         boolean zMatches = targetPos.getZ() >= doorPos.getZ() - PROTECTION_RADIUS_Z && targetPos.getZ() <= doorPos.getZ() + PROTECTION_RADIUS_Z;
         
-        // По высоте проверяем вверх и вниз от двери
         boolean yMatches = targetPos.getY() >= doorPos.getY() - PROTECTION_RADIUS_Y_DOWN && targetPos.getY() <= doorPos.getY() + PROTECTION_RADIUS_Y_UP;
 
         return xMatches && yMatches && zMatches;
@@ -90,9 +90,8 @@ public class UsefulDecorMod implements ModInitializer {
                     checkPos.set(targetPos.getX() + x, targetPos.getY() + y, targetPos.getZ() + z);
                     
                     if (isDoorClosed(level, checkPos)) {
-                        // Если нашли закрытую дверь, проверяем точные границы кубоида
                         if (isInHouseArea(targetPos, checkPos)) {
-                            return true; // Зона действительно защищена
+                            return true; 
                         }
                     }
                 }
@@ -109,48 +108,43 @@ public class UsefulDecorMod implements ModInitializer {
 				return true;
 
             if (isAreaProtectedByClosedDoor(level, breakPos)) {
-                player.sendOverlayMessage(Component.literal("§cЭтот блок защищен закрытой дверью!"));
-                return false; // Ломать нельзя
+                player.sendOverlayMessage(
+                    Component.translatable("message.useful_interactive.protected_by_door")
+                    .withStyle(ChatFormatting.RED));
+                return false; 
             }
             return true;
         });
 	}
 
 	private void buildBlock(){
-// 2. ЗАЩИТА ОТ СТРОИТЕЛЬСТВА (С умной фильтрацией предметов)
 UseBlockCallback.EVENT.register((player, level, hand, hitResult) -> {
     if (player.isCreative()) return InteractionResult.PASS;
 
     BlockPos clickedPos = hitResult.getBlockPos();
 
-    // Если зона под защитой закрытой двери
     if (isAreaProtectedByClosedDoor(level, clickedPos)) {
         
-        // 1. ИСКЛЮЧЕНИЕ: Если кликают по самой двери — разрешаем (чтобы её открыть)
         BlockState clickedState = level.getBlockState(clickedPos);
         if (clickedState.getBlock() instanceof DoorBlock) {
             return InteractionResult.PASS; 
         }
 
-        // 2. ФИЛЬТР: Проверяем, что именно у игрока в руке
         net.minecraft.world.item.ItemStack itemInHand = player.getItemInHand(hand);
         
-        // Проверяем, является ли предмет блоком (который можно поставить) 
-        // или ведром (с водой/лавой/рыхлым снегом)
         boolean isPlacingBlock = itemInHand.getItem() instanceof net.minecraft.world.item.BlockItem;
         boolean isUsingBucket = itemInHand.getItem() instanceof net.minecraft.world.item.BucketItem || 
                                  itemInHand.getItem() instanceof net.minecraft.world.item.SolidBucketItem;
 
         if (isPlacingBlock || isUsingBucket) {
-            // Если игрок пытается СТРОИТЬ или лить жидкости — запрещаем
             if (level.isClientSide()) {
-                player.sendOverlayMessage(Component.literal("§cНельзя строить на территории защищенного дома!"));
+                player.sendOverlayMessage(
+                    Component.translatable("message.useful_interactive.cannot_build_here")
+                    .withStyle(ChatFormatting.RED));
             }
-            return InteractionResult.FAIL; // Блокируем только стройку
+            return InteractionResult.FAIL; 
         }
     }
-
-    // Во всех остальных случаях (клик по сундуку, печке, пустой рукой) — разрешаем ванильное поведение
     return InteractionResult.PASS; 
 });
 	}

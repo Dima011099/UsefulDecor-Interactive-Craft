@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "cabinet",
+  "category": "redstone",
+  "pattern": [
+    "CCC",
+    "CBC",
+    "CRC"
+  ],
+  "key": {
+    "C": [
+      "minecraft:crimson_planks"
+    ],
+    "R": [
+      "minecraft:redstone_block"
+    ],
+    "B": [
+      "minecraft:barrel"
+    ]
+  },
+  "result": {
+    "id": "useful_interactive:vampire_cabinet",
+    "count": 1
+  }
+}

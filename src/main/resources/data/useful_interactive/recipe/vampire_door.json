@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "decor_door",
+  "category": "building",
+  "pattern": [
+    "CC",
+    "CR",
+    "CC"
+  ],
+  "key": {
+    "C": [
+      "minecraft:crimson_planks"
+    ],
+    "R": [
+      "minecraft:redstone"
+    ]
+  },
+  "result": {
+    "id": "useful_interactive:vampire_door",
+    "count": 1
+  }
+}

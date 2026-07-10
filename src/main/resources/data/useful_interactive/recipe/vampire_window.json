@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "window",
+  "category": "building",
+  "pattern": [
+    "PGP",
+    "PRP",
+    "PGP"
+  ],
+  "key": {
+    "P": [
+      "minecraft:crimson_planks"
+    ],
+    "G": [
+      "minecraft:glass_pane"
+    ],
+    "R": [
+      "minecraft:redstone"
+    ]
+  },
+  "result": {
+    "id": "useful_interactive:vampire_window",
+    "count": 3
+  }
+}

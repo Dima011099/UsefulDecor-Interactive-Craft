@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "useful_clock",
+  "category": "redstone",
+  "pattern": [
+    "GWC",
+    "WRW",
+    "CWG"
+  ],
+  "key": {
+    "G": ["minecraft:gold_nugget"],
+    "C": ["minecraft:crimson_planks"],
+    "W": ["minecraft:dark_oak_planks"],
+    "R": ["minecraft:redstone_torch"]
+  },
+  "result": {
+    "id": "useful_interactive:vampire_wall_clock",
+    "count": 1
+  }
+}

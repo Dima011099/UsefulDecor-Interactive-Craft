@@ -2,8 +2,9 @@
     "item.useful_interactive.key_item": "Lock Key",
     "block.useful_interactive.box": "Locked Chest",
     "item.useful_interactive.box": "Locked Chest",
-    "block.useful_interactive.aok_box": "Oak Locked Chest",
-    "item.useful_interactive.aok_box": "Oak Locked Chest",
+    "block.useful_interactive.oak_box": "Oak Locked Chest",
+    "item.useful_interactive.oak_box": "Oak Locked Chest",
+
 
     "block.useful_interactive.birch_box": "Birch Locked Chest",
     "item.useful_interactive.birch_box": "Birch Locked Chest",
@@ -69,6 +70,50 @@
 
     "item.useful_interactive.timber_ring_clock": "Timber Ring Clock",
     "item.useful_interactive.birch_eco_clock": "Birch Eco Clock",
+
+    
+  "item.useful_interactive.dark_door": "Dark Door",
+  "item.useful_interactive.forest_door": "Forest Door",
+  "item.useful_interactive.night_door": "Night Door",
+  "item.useful_interactive.spider_door": "Spider Door",
+  "item.useful_interactive.vampire_door": "Vampire Door",
+
+  "item.useful_interactive.brown_cabinet": "Brown Cabinet",
+  "item.useful_interactive.desert_cabinet": "Desert Cabinet",
+  "item.useful_interactive.glass_cabinet": "Glass Cabinet",
+  "item.useful_interactive.night_cabinet": "Night Cabinet",
+  "item.useful_interactive.spider_cabinet": "Spider Cabinet",
+  "item.useful_interactive.vampire_cabinet": "Vampire Cabinet",
+
+  "item.useful_interactive.dark_chest": "Dark Chest",
+  "item.useful_interactive.spider_chest": "Spider Chest",
+  "item.useful_interactive.vampire_chest": "Vampire Chest",
+
+  "item.useful_interactive.dark_trashcan": "Dark Trash Can",
+  "item.useful_interactive.spider_trashcan": "Spider Trash Can",
+  "item.useful_interactive.vampire_trashcan": "Vampire Trash Can",
+
+  "item.useful_interactive.dark_window": "Dark Window",
+  "item.useful_interactive.spider_window1": "Spider Window (Clear)",
+  "item.useful_interactive.spider_window2": "Spider Window (Tinted)",
+  "item.useful_interactive.vampire_window": "Vampire Window",
+
+  "item.useful_interactive.classic_wall_clock": "Classic Wall Clock",
+  "item.useful_interactive.dark_wall_clock": "Dark Wall Clock",
+  "item.useful_interactive.day_wall_clock": "Day Wall Clock",
+  "item.useful_interactive.desert_wall_clock": "Desert Wall Clock",
+  "item.useful_interactive.forest_wall_clock": "Forest Wall Clock",
+  "item.useful_interactive.night_wall_clock": "Night Wall Clock",
+  "item.useful_interactive.space_wall_clock": "Space Wall Clock",
+  "item.useful_interactive.spider_wall_clock": "Spider Wall Clock",
+  "item.useful_interactive.vampire_wall_clock": "Vampire Wall Clock",
+  "item.useful_interactive.vintage_wall_clock": "Vintage Wall Clock",
+
+
+
+  "message.useful_interactive.protected_by_door": "This block is protected by a locked door!",
+  "message.useful_interactive.cannot_build_here": "You cannot build inside a protected house!",
+
 
   "item.useful_interactive.trash": "Trash Can",
   "item.useful_interactive.oak_glass_decor_door": "Glazed Oak Door"

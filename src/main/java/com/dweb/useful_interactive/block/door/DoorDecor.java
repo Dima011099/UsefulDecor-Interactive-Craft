@@ -192,5 +192,4 @@ public class DoorDecor extends DoorBlock implements EntityBlock {
     }
     return super.playerWillDestroy(level, pos, state, player);
 }
-
 }

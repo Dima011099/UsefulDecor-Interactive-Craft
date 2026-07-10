@@ -19,7 +19,12 @@
       "useful_interactive:oak_glass_pane",
       "useful_interactive:oak_iron_glass_pane",
       "useful_interactive:birch_iron_glass_pane",
-      "useful_interactive:iron_glass_pane"
+      "useful_interactive:iron_glass_pane",
+
+      "useful_interactive:dark_window",
+      "useful_interactive:spider_window1",
+      "useful_interactive:spider_window2",
+      "useful_interactive:vampire_window"
     ]
   }
 }

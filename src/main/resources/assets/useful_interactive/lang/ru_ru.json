@@ -71,7 +71,46 @@
 
 
   "item.useful_interactive.trash": "Урна",
-  "item.useful_interactive.oak_glass_decor_door": "Застеклённая дубовая дверь"
+  "item.useful_interactive.oak_glass_decor_door": "Застеклённая дубовая дверь",
 
+  
+  "item.useful_interactive.dark_door": "Тёмная дверь",
+  "item.useful_interactive.forest_door": "Лесная дверь",
+  "item.useful_interactive.night_door": "Ночная дверь",
+  "item.useful_interactive.spider_door": "Паучья дверь",
+  "item.useful_interactive.vampire_door": "Вампирская дверь",
 
+  "item.useful_interactive.brown_cabinet": "Коричневый шкаф",
+  "item.useful_interactive.desert_cabinet": "Пустынный шкаф",
+  "item.useful_interactive.glass_cabinet": "Шкаф со стеклом",
+  "item.useful_interactive.night_cabinet": "Ночной шкаф",
+  "item.useful_interactive.spider_cabinet": "Паучий шкаф",
+  "item.useful_interactive.vampire_cabinet": "Вампирский шкаф",
+
+  "item.useful_interactive.dark_chest": "Тёмный сундук",
+  "item.useful_interactive.spider_chest": "Паучий сундук",
+  "item.useful_interactive.vampire_chest": "Вампирский сундук",
+
+  "item.useful_interactive.dark_trashcan": "Тёмный мусорный бак",
+  "item.useful_interactive.spider_trashcan": "Паучий мусорный бак",
+  "item.useful_interactive.vampire_trashcan": "Вампирский мусорный бак",
+
+  "item.useful_interactive.dark_window": "Тёмное окно",
+  "item.useful_interactive.spider_window1": "Паучье окно (Прозрачное)",
+  "item.useful_interactive.spider_window2": "Паучье окно (Тонированное)",
+  "item.useful_interactive.vampire_window": "Вампирское окно",
+
+  "item.useful_interactive.classic_wall_clock": "Классические настенные часы",
+  "item.useful_interactive.dark_wall_clock": "Тёмные настенные часы",
+  "item.useful_interactive.day_wall_clock": "Дневные настенные часы",
+  "item.useful_interactive.desert_wall_clock": "Пустынные настенные часы",
+  "item.useful_interactive.forest_wall_clock": "Лесные настенные часы",
+  "item.useful_interactive.night_wall_clock": "Ночные настенные часы",
+  "item.useful_interactive.space_wall_clock": "Космические настенные часы",
+  "item.useful_interactive.spider_wall_clock": "Паучьи настенные часы",
+  "item.useful_interactive.vampire_wall_clock": "Вампирские настенные часы",
+  "item.useful_interactive.vintage_wall_clock": "Винтажные настенные часы",
+
+  "message.useful_interactive.protected_by_door": "Этот блок защищён закрытой дверью!",
+  "message.useful_interactive.cannot_build_here": "Нельзя строить на территории защищённого дома!"
 }

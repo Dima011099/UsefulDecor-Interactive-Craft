@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "useful_clock",
+  "category": "redstone",
+  "pattern": [
+    "ILI",
+    "LRL",
+    "ILI"
+  ],
+  "key": {
+    "I": ["minecraft:iron_nugget"],
+    "L": ["minecraft:lapis_lazuli"],
+    "R": ["minecraft:redstone_torch"]
+  },
+  "result": {
+    "id": "useful_interactive:night_wall_clock",
+    "count": 1
+  }
+}

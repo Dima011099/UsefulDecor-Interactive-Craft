@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "useful_clock",
+  "category": "redstone",
+  "pattern": [
+    "ABA",
+    "BRB",
+    "ABA"
+  ],
+  "key": {
+    "A": ["minecraft:amethyst_shard"],
+    "B": ["minecraft:blackstone"],
+    "R": ["minecraft:redstone_torch"]
+  },
+  "result": {
+    "id": "useful_interactive:space_wall_clock",
+    "count": 1
+  }
+}

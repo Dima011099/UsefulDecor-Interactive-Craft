@@ -21,7 +21,18 @@
       "useful_interactive:crimson_wall_clock",
       "useful_interactive:obsidian_wall_clock",
       "useful_interactive:birch_eco_clock",
-      "useful_interactive:timber_ring_clock"
+      "useful_interactive:timber_ring_clock",
+
+      "useful_interactive:classic_wall_clock",
+      "useful_interactive:dark_wall_clock",
+      "useful_interactive:day_wall_clock",
+      "useful_interactive:desert_wall_clock",
+      "useful_interactive:forest_wall_clock",
+      "useful_interactive:night_wall_clock",
+      "useful_interactive:space_wall_clock",
+      "useful_interactive:spider_wall_clock",
+      "useful_interactive:vampire_wall_clock",
+      "useful_interactive:vintage_wall_clock"
     ]
   }
 }
