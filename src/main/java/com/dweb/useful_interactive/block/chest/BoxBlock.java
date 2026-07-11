@@ -1,7 +1,6 @@
 package com.dweb.useful_interactive.block.chest;
 
 import com.dweb.useful_interactive.domain.lock.LockableManager;
-import com.mojang.serialization.MapCodec;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -35,16 +34,16 @@ import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("null")
 public class BoxBlock extends BaseEntityBlock {
-    public static final MapCodec<BoxBlock> CODEC = simpleCodec(BoxBlock::new);
+   // public static final MapCodec<BoxBlock> CODEC = simpleCodec(BoxBlock::new);
     public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
 
     private static final int SIGNAL_DURATION = 30;
 
-    @Override
+    /*@Override
     public MapCodec<? extends BoxBlock> codec() {
         return CODEC;
-    }
+    }*/
 
     public BoxBlock(Properties settings) {
         super(settings);

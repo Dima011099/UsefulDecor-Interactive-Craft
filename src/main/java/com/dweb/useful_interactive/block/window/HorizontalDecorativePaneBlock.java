@@ -1,8 +1,6 @@
 package com.dweb.useful_interactive.block.window;
 
 
-import com.mojang.serialization.MapCodec;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -16,7 +14,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 @SuppressWarnings("null")
 public class HorizontalDecorativePaneBlock extends HorizontalDirectionalBlock{
-    public static final MapCodec<HorizontalPaneBlock> CODEC = simpleCodec(HorizontalPaneBlock::new);
+   // public static final MapCodec<HorizontalPaneBlock> CODEC = simpleCodec(HorizontalPaneBlock::new);
 
     protected static final VoxelShape NORTH_SHAPE = Block.box(0.0, 0.0, 0.0, 16.0, 16.0, 1.0);//7-5 8-10
     protected static final VoxelShape WEST_SHAPE  = Block.box(0.0, 0.0, 0.0, 1.0, 16.0, 16.0);
@@ -58,8 +56,8 @@ public class HorizontalDecorativePaneBlock extends HorizontalDirectionalBlock{
         return this.defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite());
     }
 
-    @Override
+    /*@Override
     protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
         return CODEC;
-    }
+    }*/
 }

@@ -1,8 +1,6 @@
 package com.dweb.useful_interactive.block.keybox;
 
-import com.dweb.useful_interactive.block.chest.BoxBlock;
 import com.dweb.useful_interactive.ui.keybox.KeyBoxScreenHandler;
-import com.mojang.serialization.MapCodec;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -27,17 +25,17 @@ import net.minecraft.world.phys.BlockHitResult;
 
 @SuppressWarnings("null")
 public class KeyBoxBlock extends BaseEntityBlock{
-    public static final MapCodec<BoxBlock> CODEC = simpleCodec(BoxBlock::new);
+    //public static final MapCodec<BoxBlock> CODEC = simpleCodeс(BoxBlock::new);
     public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
 
     public KeyBoxBlock(BlockBehaviour.Properties settings) {
         super(settings);
     }
 
-    @Override
-    public MapCodec<? extends BoxBlock> codec() {
+   /*  @Override
+    public MapCodec<? extends KeyBoxBlock> codec() {
         return CODEC;
-    }
+    }*/
 
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {

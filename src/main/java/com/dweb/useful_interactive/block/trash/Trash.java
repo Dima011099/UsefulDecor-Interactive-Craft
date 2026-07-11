@@ -1,6 +1,5 @@
 package com.dweb.useful_interactive.block.trash;
 
-import com.mojang.serialization.MapCodec;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -19,7 +18,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 @SuppressWarnings("null")
 public class Trash extends Block {
-    public static final MapCodec<Trash> CODEC = simpleCodec(Trash::new);
+   // public static final MapCodec<Trash> CODEC = simpleCodec(Trash::new);
 
     private static final VoxelShape SHAPE = Block.box(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
 
@@ -27,10 +26,10 @@ public class Trash extends Block {
         super(properties);
     }
 
-    @Override
+   /* @Override
     protected MapCodec<? extends Block> codec() {
         return CODEC;
-    }
+    }*/
 
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {

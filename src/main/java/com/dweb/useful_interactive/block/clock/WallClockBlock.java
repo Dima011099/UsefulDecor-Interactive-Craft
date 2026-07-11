@@ -4,7 +4,6 @@ package com.dweb.useful_interactive.block.clock;
 import org.jspecify.annotations.Nullable;
 
 import com.dweb.useful_interactive.registry.blockentites.ModBlockEntites;
-import com.mojang.serialization.MapCodec;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -39,7 +38,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 @SuppressWarnings("null")
 public class WallClockBlock extends HorizontalDirectionalBlock implements EntityBlock {
     
-    public static final MapCodec<WallClockBlock> CODEC = simpleCodec(WallClockBlock::new);
+   // public static final MapCodec<WallClockBlock> CODEC = simpleCodec(WallClockBlock::new);
 
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
   
@@ -149,8 +148,8 @@ protected InteractionResult useWithoutItem(BlockState state, Level level, BlockP
         return this.defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite());
     }
 
-    @Override
+   /*  @Override
     protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
         return CODEC;
-    }
+    }*/
 }
