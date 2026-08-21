@@ -34,6 +34,11 @@ public class ModArchitecturalBlocks {
     public static final ResourceKey<Block> SPIDER_DOOR_KEY = ModBlocks.createBlockKey("spider_door");
     public static final ResourceKey<Block> VAMPIRE_DOOR_KEY = ModBlocks.createBlockKey("vampire_door");
 
+        public static final ResourceKey<Block> DESERT_FORTRESS_DOOR_KEY = ModBlocks.createBlockKey("desert_fortress_door");
+        public static final ResourceKey<Block> DESERT_TEMPLE_DOOR_KEY = ModBlocks.createBlockKey("desert_temple_door");
+        public static final ResourceKey<Block> DESERT_TOWN_DOOR_KEY = ModBlocks.createBlockKey("desert_town_door");
+        public static final ResourceKey<Block> DESERT_WOVEN_DOOR_KEY = ModBlocks.createBlockKey("desert_woven_door");
+
     public static final ResourceKey<Block> OAK_GLASS_PANE_KEY = ModBlocks.createBlockKey("oak_glass_pane");
     public static final ResourceKey<Block> OAK_IRON_GLASS_PANE_KEY = ModBlocks.createBlockKey("oak_iron_glass_pane");
     public static final ResourceKey<Block> IRON_GLASS_PANE_KEY = ModBlocks.createBlockKey("iron_glass_pane");
@@ -98,6 +103,20 @@ public class ModArchitecturalBlocks {
             new DoorDecor(BlockSetType.BIRCH, createWoodenDoorProps(VAMPIRE_DOOR_KEY).mapColor(MapColor.SAND)), VAMPIRE_DOOR_KEY
     );
     
+
+
+        public static final Block DESERT_FORTRESS_DOOR_BLOCK = ModBlocks.registerBlock(
+                new DoorDecor(BlockSetType.BIRCH, createWoodenDoorProps(DESERT_FORTRESS_DOOR_KEY).mapColor(MapColor.SAND)), DESERT_FORTRESS_DOOR_KEY
+        );
+        public static final Block DESERT_TEMPLE_DOOR_BLOCK = ModBlocks.registerBlock(
+                new DoorDecor(BlockSetType.BIRCH, createWoodenDoorProps(DESERT_TEMPLE_DOOR_KEY).mapColor(MapColor.SAND)), DESERT_TEMPLE_DOOR_KEY
+        );
+        public static final Block DESERT_TOWN_DOOR_BLOCK = ModBlocks.registerBlock(
+                new DoorDecor(BlockSetType.BIRCH, createWoodenDoorProps(DESERT_TOWN_DOOR_KEY).mapColor(MapColor.SAND)), DESERT_TOWN_DOOR_KEY
+        );
+        public static final Block DESERT_WOVEN_DOOR_BLOCK = ModBlocks.registerBlock(
+                new DoorDecor(BlockSetType.BIRCH, createWoodenDoorProps(DESERT_WOVEN_DOOR_KEY).mapColor(MapColor.SAND)), DESERT_WOVEN_DOOR_KEY
+        );
 
     // --- Glass Panes ---
 

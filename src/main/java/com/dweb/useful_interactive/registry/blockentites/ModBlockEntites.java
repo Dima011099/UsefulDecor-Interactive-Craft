@@ -55,7 +55,12 @@ public static final BlockEntityType<DoorDecorEntity> DOOR_BLOCK_ENTITY_TYPE = Re
         ModArchitecturalBlocks.FORSET_DOOR_BLOCK,
         ModArchitecturalBlocks.NIGHT_DOOR_BLOCK,
         ModArchitecturalBlocks.SPIDER_DOOR_BLOCK,
-        ModArchitecturalBlocks.VAMPIRE_DOOR_BLOCK).build()
+        ModArchitecturalBlocks.VAMPIRE_DOOR_BLOCK,
+        ModArchitecturalBlocks.DESERT_FORTRESS_DOOR_BLOCK,
+        ModArchitecturalBlocks.DESERT_TEMPLE_DOOR_BLOCK,
+        ModArchitecturalBlocks.DESERT_TOWN_DOOR_BLOCK,
+        ModArchitecturalBlocks.DESERT_WOVEN_DOOR_BLOCK
+    ).build()
 );
 
 public static final  BlockEntityType<KeyBoxBlockEntity> KEY_BOX_ENTITY_TYPE = Registry.register(

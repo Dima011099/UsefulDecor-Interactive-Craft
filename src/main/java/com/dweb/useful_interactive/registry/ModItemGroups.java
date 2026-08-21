@@ -72,6 +72,11 @@ public class ModItemGroups {
                         entries.accept(ModArchitecturalBlocks.SPIDER_DOOR_BLOCK);
                         entries.accept(ModArchitecturalBlocks.VAMPIRE_DOOR_BLOCK);
 
+                        entries.accept(ModArchitecturalBlocks.DESERT_FORTRESS_DOOR_BLOCK);
+                        entries.accept(ModArchitecturalBlocks.DESERT_TEMPLE_DOOR_BLOCK);
+                        entries.accept(ModArchitecturalBlocks.DESERT_TOWN_DOOR_BLOCK);
+                        entries.accept(ModArchitecturalBlocks.DESERT_WOVEN_DOOR_BLOCK);
+
                         /* Clock */
                         entries.accept(ModUtilityBlocks.CRIMSON_WALL_CLOCK_BLOCK);
                         entries.accept(ModUtilityBlocks.OCEANIC_WALL_CLOCK_BLOCK);
