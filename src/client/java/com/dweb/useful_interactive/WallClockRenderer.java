@@ -8,6 +8,8 @@ import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 
+import org.joml.Matrix4f;
+
 import com.dweb.useful_interactive.block.clock.WallClockBlock;
 import com.dweb.useful_interactive.block.clock.WallClockBlockEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -106,7 +108,7 @@ private static final Identifier PLAIN_WHITE = Identifier.fromNamespaceAndPath("u
             applyBlockFacing(poseStack, state.facing);
 
             poseStack.translate(0.0f, 0.0f, 0.42);
-            poseStack.mulPose(Axis.ZP.rotationDegrees(state.hourRotation)); 
+            poseStack.mulPose(new Matrix4f().rotation(Axis.ZP.rotationDegrees(state.hourRotation))); 
 
             buildSafeQuad(poseStack, vertexConsumer, -0.015f, 0.015f, 0.0f, 0.16f, 0.0f, 255, 255, 255, 255);
 
@@ -122,7 +124,7 @@ private static final Identifier PLAIN_WHITE = Identifier.fromNamespaceAndPath("u
             applyBlockFacing(poseStack, state.facing);
             
             poseStack.translate(0.0f, 0.0f, 0.43f);
-            poseStack.mulPose(Axis.ZP.rotationDegrees(state.minuteRotation));
+            poseStack.mulPose(new Matrix4f().rotation(Axis.ZP.rotationDegrees(state.minuteRotation)));
             
             buildSafeQuad(poseStack, vertexConsumer, -0.01f, 0.01f, 0.0f, 0.21f, 0.0f, 255, 255, 255, 255);
 
@@ -133,13 +135,13 @@ private static final Identifier PLAIN_WHITE = Identifier.fromNamespaceAndPath("u
     private void applyBlockFacing(PoseStack poseStack, Direction facing) {
         switch (facing) {
             case SOUTH:
-                poseStack.mulPose(Axis.YP.rotationDegrees(180.0f));
+                poseStack.mulPose(new Matrix4f().rotation(Axis.YP.rotationDegrees(180.0f)));
                 break;
             case WEST:
-                poseStack.mulPose(Axis.YP.rotationDegrees(90.0f));
+                poseStack.mulPose(new Matrix4f().rotation(Axis.YP.rotationDegrees(90.0f)));
                 break;
             case EAST:
-                poseStack.mulPose(Axis.YP.rotationDegrees(-90.0f));
+                poseStack.mulPose(new Matrix4f().rotation(Axis.YP.rotationDegrees(-90.0f)));
                 break;
             default:
                 break;
