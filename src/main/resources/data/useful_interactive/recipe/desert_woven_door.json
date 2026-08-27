@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "decor_door",
+  "category": "building",
+  "pattern": [
+    "BB",
+    "BS",
+    "BB"
+  ],
+  "key": {
+    "B": [
+      "minecraft:bamboo_planks"
+    ],
+    "S": [
+      "minecraft:string"
+    ]
+  },
+  "result": {
+    "id": "useful_interactive:desert_woven_door",
+    "count": 1
+  }
+}

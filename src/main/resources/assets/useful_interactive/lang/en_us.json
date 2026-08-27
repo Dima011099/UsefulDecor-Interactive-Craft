@@ -116,7 +116,16 @@
 
 
   "item.useful_interactive.trash": "Trash Can",
-  "item.useful_interactive.oak_glass_decor_door": "Glazed Oak Door"
+  "item.useful_interactive.oak_glass_decor_door": "Glazed Oak Door",
 
+
+  "block.useful_interactive.desert_fortress_door": "Desert Fortress Door",
+  "block.useful_interactive.desert_temple_door": "Desert Temple Door",
+  "block.useful_interactive.desert_town_door": "Desert Village Door",
+  "block.useful_interactive.desert_woven_door": "Desert Woven Door",
+  "item.useful_interactive.desert_fortress_door": "Desert Fortress Door",
+  "item.useful_interactive.desert_temple_door": "Desert Temple Door",
+  "item.useful_interactive.desert_town_door": "Desert Village Door",
+  "item.useful_interactive.desert_woven_door": "Desert Woven Door"
 
 }

@@ -112,5 +112,14 @@
   "item.useful_interactive.vintage_wall_clock": "Винтажные настенные часы",
 
   "message.useful_interactive.protected_by_door": "Этот блок защищён закрытой дверью!",
-  "message.useful_interactive.cannot_build_here": "Нельзя строить на территории защищённого дома!"
+  "message.useful_interactive.cannot_build_here": "Нельзя строить на территории защищённого дома!",
+
+  "block.useful_interactive.desert_fortress_door": "Пустынная крепостная дверь",
+  "block.useful_interactive.desert_temple_door": "Дверь пустынного храма",
+  "block.useful_interactive.desert_town_door": "Пустынная деревенская дверь",
+  "block.useful_interactive.desert_woven_door": "Пустынная плетёная дверь",
+  "item.useful_interactive.desert_fortress_door": "Пустынная крепостная дверь",
+  "item.useful_interactive.desert_temple_door": "Дверь пустынного храма",
+  "item.useful_interactive.desert_town_door": "Пустынная деревенская дверь",
+  "item.useful_interactive.desert_woven_door": "Пустынная плетёная дверь"
 }

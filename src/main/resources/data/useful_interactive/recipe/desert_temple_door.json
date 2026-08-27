@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "decor_door",
+  "category": "building",
+  "pattern": [
+    "SS",
+    "SG",
+    "SS"
+  ],
+  "key": {
+    "S": [
+      "minecraft:smooth_sandstone"
+    ],
+    "G": [
+      "minecraft:gold_block"
+    ]
+  },
+  "result": {
+    "id": "useful_interactive:desert_temple_door",
+    "count": 1
+  }
+}

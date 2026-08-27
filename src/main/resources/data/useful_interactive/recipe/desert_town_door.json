@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "decor_door",
+  "category": "building",
+  "pattern": [
+    "AG",
+    "AD",
+    "AA"
+  ],
+  "key": {
+    "A": [
+      "minecraft:acacia_planks"
+    ],
+    "D": [
+      "minecraft:dark_oak_planks"
+    ],
+    "G": [
+      "minecraft:glass"
+    ]
+  },
+  "result": {
+    "id": "useful_interactive:desert_town_door",
+    "count": 1
+  }
+}
